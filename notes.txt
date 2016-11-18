@@ -1,0 +1,95 @@
+CONNECT FOUR
+********** MVP - MINIMUM VIABLE PRODUCT **************************************************
+Your game of Connect Four must have at a minimum:
+- An interactive board which renders on page load
+- A way for players to mark an empty space on their turn
+- The turns should alternate (red, black, red, black, etc.)
+- A player should not be able to mark a space that has already been played
+- The game should announce a winner if a player gets four tokens in a row, horizontally or vertically
+*******************************************************************************************
+
+////// USER STORY
+- when I visit the connect four website, I want to be able to see the board (there will be a message saying that it is red's turn and to click on a column)
+- I'm going to click on one of the arrows/or columns to start the game
+- Once I make the first move, the token will change its color and the next player has to click on an arrow/or column
+- the game will continue until one color gets four tokens in a row
+
+
+////// DESIGN
+Things I need to see on the page:
+- a board with 6 rows and 7 columns
+- design two tokens (one red and one black)
+- show which turn it is (text/button with the color)
+- a 'new game' button
+
+
+////// CODE PLANNING
+1. need to write html template
+    a) link css, js and jquery files (head)
+    b) write html tags in the body
+2. create box with 6 rows and 7 columns with css (make it simple for now)
+    a) make the holes inside the box (do some research)
+    b) show the tokens when somebody clicks on an arrow/column to fill out an empty space (do some research)
+3. alternate turns and show that text (do some research)
+4. winning conditions (for loop and if statements?)
+5. clear out the discs when the user clicks on the 'new game' button
+
+
+////// PSEUDOCODE
+
+** HTML
+<head>
+- jquery file
+- js file
+- link to css file
+- title of the game
+
+<body>
+- h1 with the title of the game
+- board div
+- 'new game' button
+- text showing up which turn it is
+
+** CSS
+- board (rectangle and mini rectangles?)
+- spaces in columns
+- button
+- title and copy fonts from Google Fonts
+
+
+** JS/JQUERY
+- window.onload
+
+- when user hovers on a column, highlight that column/arrow
+  > mouseover event / css hover
+
+- when a user clicks on a column/arrow, add a token at the next space available
+  > click event?
+
+- switch turns
+  > if/else?
+
+- clicked spaces do not respond to additional clicks
+  > if/else?
+
+- announce a winner
+  > winner conditions
+    - if/else?
+
+- 'new game' button
+  > for loop
+
+
+////// THINGS TO FIGURE OUT
+1. winning conditions
+2. how to design a board with holes in it
+3. alternate turns
+4. clear button
+
+click, bottom most spot
+
+////// RANDOM THOUGHTS
+- I can create squares like I did with the tic tac toe and put them all together. A square with a space in the middle and when it is clicked, to change that square with the color of the token inside
+
+
+////// WINNING CONDITIONS
