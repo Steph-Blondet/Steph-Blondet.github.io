@@ -42,50 +42,48 @@ $(function() {
 // SELECTING ELEMENTS
 var $board = $('#board'); // selecting board id to create board
 
+var $newBoardDiv = $('.squares'); // selecting new board div with the class squares
+
+var $toggle = true;
+
+// var $redToken = $('<div>'); // creating a new div that goes below the new board div
+//   $redToken.attr('id', 'red-token'); // gave attribute of circle to the new div
+//
+// var $blackToken = $('<div>'); // creating a new div that goes below the new board div
+//   $blackToken.attr('id', 'black-token'); // gave attribute of circle to the new div
 
 
 
 // SWITCH TURNS
-var toggle = true;
-
-var $toggleFunction = function() {
-  console.log('testing toggle'); // click listener is working
-  if (toggle === '#red-token' || toggle === '#black-token') {
-    } else if (toggle == true) {
-      var $redToken = $('<div>'); // creating a new div that goes below the new board div
-      $redToken.attr('id', 'red-token'); // gave attribute of redToken to the new div
-      $newBoardDiv.append($redToken); // appending the redToken div to the newBoardDiv (squares)
-      $circleDiv.remove('#circle'); // removed white cicle div
+var $toggleFunction = function(div) {
+  console.log(div); // click listener is working
+  if ($toggle === '#red-token' || $toggle === '#black-token') {
+    } else if ($toggle == true) {
+      $circleDiv.attr('id', 'red-token'); // gave attribute of redToken to the new div
     } else {
-      var $blackToken = $('<div>'); // creating a new div that goes below the new board div
-      $blackToken.attr('id', 'black-token'); // gave attribute of redToken to the new div
-      $newBoardDiv.append($blackToken); // appending the redToken div to the newBoardDiv (squares)
-      $circleDiv.remove('#circle'); // removed white cicle div
+      $circleDiv.attr('id', 'black-token'); // gave attribute of blackToken to the new div
     };
-      toggle = !toggle;
-
-    // if (this.classList.contains('equis', 'full') || this.classList.contains('cero', 'full')) {
-    //   this.removeEventListener('click', $toggleFunction);
+      $toggle = !$toggle;
+    // if ($('#red-token') || $('#red-token')) {
+    //   $('#red-token').unbind('click', $toggleFunction);
     // }
-
 }
 
 
-
 // CREATING CONNECT FOUR BOARD
-for (var i = 0; i < 42; i++) { // iterating 42 times
-  var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
-  $newBoardDiv.addClass('squares'); // adding the class squares to the board div
-  $board.append($newBoardDiv); // appending the new div that goes inside the board div
 
-  var $circleDiv = $('<div>'); // creating a new div that goes below the new board div
-  $circleDiv.attr('id', 'circle'); // gave attribute of circle to the new div
-  $newBoardDiv.append($circleDiv);
+  for (var i = 0; i < 42; i++) { // iterating 42 times
+    var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
+    $newBoardDiv.addClass('squares'); // adding the class squares to the board div
+    $board.append($newBoardDiv); // appending the new div that goes inside the board div
 
+    var $circleDiv = $('<div>'); // creating a new div that goes below the new board div
+      $circleDiv.attr('id', 'circle'); // gave attribute of circle to the new div
+      $circleDiv.attr('tile', i);
+      $newBoardDiv.append($circleDiv);
 
-  $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
-
-};
+      $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
+  };
 
 
 
@@ -97,6 +95,15 @@ for (var i = 0; i < 42; i++) { // iterating 42 times
 //     $squares[i].remove('---', '---');
 //   }
 // }
+
+// var $clickButton = $('#clear-board'); // getting element by id
+// $clickButton.on('click', function() { // on click, the button will reset the game
+//   // var $newGame = $(#circle); // getting element by the id of circle
+//   // for(var i = 0; i < $newGame.length; i++) {
+//   //       $newGame[i].innerHTML = '';
+//   //   }
+//     console.log('I clicked the clear button');
+// })
 
 
 
@@ -130,6 +137,7 @@ for (var i = 0; i < 42; i++) { // iterating 42 times
 //   });
 
 
+
 // var $clickButton = $('#clear-board'); // getting element by id
 // $clickButton.on('click', function() { // on click, the button will reset the game
 //   var $newGame = $(#circle); // getting element by the id of circle
@@ -139,22 +147,79 @@ for (var i = 0; i < 42; i++) { // iterating 42 times
 //     console.log('I clicked the clear button');
 // })
 
+// var $clearBoard = $('clear-board');
+//   $clearBoard.on('click', $createBoard)
+//   console.log('clear board was clicked');
+//
+// // $createBoard();
+
+
 
 // var $redToken = $('#circle'); // getting circle id
 // $redToken.addClass('red-token'); // adding the red-token class to the circle id
 
+// } else if ($toggle == true) {
+//   $circleDiv.remove('#circle');
+//   $circleDiv.addClass('.red-token');
+// } else {
+//   $circleDiv.remove('#circle');
+//   $circleDiv.addClass('.black-token');
+// };
 
+
+// var $redToken = $('<div>'); // creating a new div that goes below the new board div
+//   $redToken.attr('id', 'red-token'); // gave attribute of redToken to the new div
+//   $newBoardDiv.append($redToken); // appending the redToken div to the newBoardDiv (squares)
+//
+// var $blackToken = $('<div>'); // creating a new div that goes below the new board div
+//   $blackToken.attr('id', 'black-token'); // gave attribute of blackToken to the new div
+//   $newBoardDiv.append($blackToken); // appending the blackToken div to the newBoardDiv (squares)
+
+
+
+// WORKING
 // var $toggleFunction = function() {
-//   console.log('testing toggle');
-//   if (toggle === '.red-token' || toggle === '.black-token') {
-//     } else if (toggle == true) {
-//       $circleDiv.text('red text');
-//       $newBoardDiv.attr('id', '#red-token');
-//       $circleDiv.remove('#circle');
+//   console.log('testing toggle'); // click listener is working
+//   if ($toggle === '#red-token' || $toggle === '#black-token') {
+//     } else if ($toggle == true) {
+//       var $redToken = $('<div>'); // creating a new div that goes below the new board div
+//       $redToken.attr('id', 'red-token'); // gave attribute of redToken to the new div
+//       $newBoardDiv.append($redToken); // appending the redToken div to the newBoardDiv (squares)
+//       $circleDiv.remove('#circle'); // removed white cicle div
 //     } else {
-//       $circleDiv.text('black text');
-//       $circleDiv.addClass('black-token');
+//       var $blackToken = $('<div>'); // creating a new div that goes below the new board div
+//       $blackToken.attr('id', 'black-token'); // gave attribute of blackToken to the new div
+//       $newBoardDiv.append($blackToken); // appending the redToken div to the newBoardDiv (squares)
+//       $circleDiv.remove('#circle'); // removed white cicle div
 //     };
-//       toggle = !toggle;
+//       $toggle = !$toggle;
+//
+//     // if ($('#red-token') || $('#red-token')) {
+//     //   $('#red-token').unbind('click', $toggleFunction);
+//     // }
+//
+// }
+
+// TAMBIEN WORKING
+// var $toggleFunction = function() {
+//   console.log('testing toggle'); // click listener is working
+//
+//   for (var i = 0; i < 42; i++) {
+//     array[i]
+//   }
+//
+//     if ($toggle === '#red-token' || $toggle === '#black-token') {
+//       } else if ($toggle == true) {
+//         $newBoardDiv.append($redToken);
+//         $circleDiv.remove('#circle');
+//       } else {
+//         $newBoardDiv.append($blackToken);
+//         $circleDiv.remove('#circle'); // removed white cicle div
+//       };
+//         $toggle = !$toggle;
+//
+//     // if ($('#red-token') || $('#red-token')) {
+//     //   $('#red-token').unbind('click', $toggleFunction);
+//     // }
 //
 // }
