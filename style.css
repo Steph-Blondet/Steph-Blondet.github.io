@@ -47,7 +47,7 @@ p {
   text-align: center;
   background-color: pink;
   text-align: center;
-  border: 0.5px solid black; /*just for visualization*/
+  border: 0.5px solid green; /*just for visualization*/
 }
 
 #circle {
@@ -58,7 +58,7 @@ p {
   margin: 10% auto;
 }
 
-.red-token {
+#red-token {
   width: 80px;
 	height: 80px;
 	background: red;
@@ -66,7 +66,7 @@ p {
   margin: 10% auto;
 }
 
-.black-token {
+#black-token {
   width: 80px;
 	height: 80px;
 	background: black;
@@ -100,3 +100,5 @@ p {
   text-align: center;
   border: 0.5px solid red;
 }*/
+
+/* animations - delay? */
