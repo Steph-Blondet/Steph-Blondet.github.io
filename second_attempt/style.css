@@ -1,0 +1,57 @@
+/*body {
+  background-color: #DE9BC4;
+}*/
+
+h1, h2, p {
+  text-align: center;
+  font-family: "Times New Roman", Georgia, Serif;
+}
+
+h1, p {
+  padding-top: 1%;
+}
+
+.clearfix:after {
+  content: " ";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+#board {
+  width: 800px;
+  height: 655px;
+  /*height: 100%;*/
+  background-color: blue;
+  /*border: 5px solid #63B4C7;*/
+  margin: auto;
+  box-shadow: 3px 3px 5px #888888;
+}
+
+.first-column, .second-column, .third-column, .fourth-column, .fifth-column, .sixth-column, .seventh-column {
+  display: inline-block;
+  float: left;
+  /*width: 25%;*/
+}
+
+/* trying to use ems to style for the first time */
+.circle {
+  float: left;
+  width: 100px;
+	height: 100px;
+  line-height: 2.9em;
+  background-color: white;
+  /*border: 3px solid white;*/
+  border-radius: 50px;
+  margin: 0.28em 0.41em;
+  /*box-shadow: 3px 3px 5px #888888;*/
+  overflow: hidden;
+}
+
+#clear-board {
+  margin: 2% auto;
+  display: block;
+  font-family: "Times New Roman", Georgia, Serif;
+  font-size: 12px;
+}
