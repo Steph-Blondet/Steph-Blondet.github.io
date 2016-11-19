@@ -1,3 +1,31 @@
 /*create board (rectangle)*/
 /*create new game button*/
 /*create turns box*/
+h1, h2, p {
+  text-align: center;
+}
+
+h1, p {
+  padding-top: 1%;
+}
+
+#switch-turn {
+
+}
+
+#board {
+  width: 500px;
+  height: 500px;
+  margin: 5% auto;
+  display: block;
+
+  background-color: blue;
+  vertical-align: middle;
+  overflow: hidden;
+
+}
+
+#clear-board {
+  margin: auto;
+  display: block;
+}
