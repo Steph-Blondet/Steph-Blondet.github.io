@@ -47,13 +47,29 @@ p {
   text-align: center;
   background-color: pink;
   text-align: center;
-  border: 0.5px solid red; /*just for visualization*/
+  border: 0.5px solid black; /*just for visualization*/
 }
 
 #circle {
   width: 80px;
 	height: 80px;
 	background: white;
+  border-radius: 50px;
+  margin: 10% auto;
+}
+
+.red-token {
+  width: 80px;
+	height: 80px;
+	background: red;
+  border-radius: 50px;
+  margin: 10% auto;
+}
+
+.black-token {
+  width: 80px;
+	height: 80px;
+	background: black;
   border-radius: 50px;
   margin: 10% auto;
 }
