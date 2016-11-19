@@ -46,9 +46,14 @@ var $board = $('#board'); // selecting board id to create board
 
 for (var i = 0; i < 42; i++) { // iterating 42 times
   var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
-  $newBoardDiv.addClass('.squares'); // adding the class squares to the board div
+  $newBoardDiv.addClass('squares'); // adding the class squares to the board div
   $board.append($newBoardDiv); // appending the new div that goes inside the board div
-  $newBoardDiv.on('click', function(){
+
+  var $circleDiv = $('<div>');
+  $circleDiv.attr('id', 'circle'); // gave attribute of circle to the new div
+  $newBoardDiv.append($circleDiv);
+
+  $newBoardDiv.on('click', function(){ // on click, the square will...
 
   });
 };
@@ -68,3 +73,19 @@ for (var i = 0; i < 42; i++) { // iterating 42 times
 
 
 });
+
+
+
+
+/////////////////////////////////////////
+// *** THOUGHTS AND PRACTICE CODE *** //
+///////////////////////////////////////
+// for (var i = 0; i < 42; i++) { // iterating 42 times
+//   var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
+//   $newBoardDiv.addClass('squares'); // adding the class squares to the board div
+//   $newBoardDiv.attr('id', 'circle'); // gave attribute of circle to the new div
+//   $board.append($newBoardDiv); // appending the new div that goes inside the board div
+//
+//   $newBoardDiv.on('click', function(){ // on click, the square will...
+//
+//   });
