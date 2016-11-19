@@ -1,9 +1,9 @@
 CONNECT FOUR
 ********** MVP - MINIMUM VIABLE PRODUCT **************************************************
 Your game of Connect Four must have at a minimum:
-- An interactive board which renders on page load
+[X] An interactive board which renders on page load
 - A way for players to mark an empty space on their turn
-- The turns should alternate (red, black, red, black, etc.)
+[X] The turns should alternate (red, black, red, black, etc.)
 - A player should not be able to mark a space that has already been played
 - The game should announce a winner if a player gets four tokens in a row, horizontally or vertically
 *******************************************************************************************
@@ -30,14 +30,15 @@ Things I need to see on the page:
 [X] create box with 6 rows and 7 columns with css (make it simple for now)
     [X] make the holes inside the box (do some research)
     b) show the tokens when somebody clicks on an arrow/column to fill out an empty space (do some research)
-3. alternate turns and show that text (do some research)
-4. winning conditions (for loop and if statements?)
-5. clear out the discs when the user clicks on the 'new game' button
+[X]. alternate tokens
+4. when alternating tokens, show that text (do some research)
+5. winning conditions (for loop and if statements?)
+6. clear out the discs when the user clicks on the 'new game' button
 
 
 ////// PSEUDOCODE
 
-** HTML
+[X] HTML
 <head>
 - jquery file
 - js file
@@ -50,7 +51,7 @@ Things I need to see on the page:
 - 'new game' button
 - text showing up which turn it is
 
-** CSS
+[X] CSS
 - board (rectangle and mini rectangles?)
 - spaces in columns
 - button
@@ -66,7 +67,7 @@ Things I need to see on the page:
 - when a user clicks on a column/arrow, add a token at the next space available
   > click event?
 
-- switch turns
+[X] switch turns
   > if/else?
 
 - clicked spaces do not respond to additional clicks
