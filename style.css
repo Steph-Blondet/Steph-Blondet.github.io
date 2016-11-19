@@ -50,6 +50,14 @@ p {
   border: 0.5px solid red; /*just for visualization*/
 }
 
+#circle {
+  width: 80px;
+	height: 80px;
+	background: white;
+  border-radius: 50px;
+  margin: 10% auto;
+}
+
 #clear-board {
   margin: auto;
   display: block;
