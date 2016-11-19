@@ -17,18 +17,18 @@ Your game of Connect Four must have at a minimum:
 
 ////// DESIGN
 Things I need to see on the page:
-- a board with 6 rows and 7 columns
+[X] a board with 6 rows and 7 columns
 - design two tokens (one red and one black)
 - show which turn it is (text/button with the color)
 - a 'new game' button
 
 
 ////// CODE PLANNING
-1. need to write html template
-    a) link css, js and jquery files (head)
-    b) write html tags in the body
-2. create box with 6 rows and 7 columns with css (make it simple for now)
-    a) make the holes inside the box (do some research)
+[X] need to write html template
+    [X] link css, js and jquery files (head)
+    [X] write html tags in the body
+[X] create box with 6 rows and 7 columns with css (make it simple for now)
+    [X] make the holes inside the box (do some research)
     b) show the tokens when somebody clicks on an arrow/column to fill out an empty space (do some research)
 3. alternate turns and show that text (do some research)
 4. winning conditions (for loop and if statements?)
@@ -81,12 +81,12 @@ Things I need to see on the page:
 
 
 ////// THINGS TO FIGURE OUT
-1. winning conditions
+1. winning conditions --> array with all possible winning conditions?
 2. how to design a board with holes in it
 3. alternate turns
 4. clear button
 
-click, bottom most spot
+
 
 ////// RANDOM THOUGHTS
 - I can create squares like I did with the tic tac toe and put them all together. A square with a space in the middle and when it is clicked, to change that square with the color of the token inside
