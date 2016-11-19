@@ -19,25 +19,39 @@ var column5 = ['39', '32', '25', '18', '11', '4'];
 var column6 = ['40', '33', '26', '19', '12', '5'];
 var column7 = ['41', '34', '27', '20', '13', '6'];
 
-// 1. write the numbers of tiles as strings in the columns arrays from bottom to top/ if strings doesn't work try tile and number
+
+// var checkTileNumber = function() {
+//   if ($('tile') === '35' ) {
+//     console.log('tile 35');
+//   }
+// }
+// checkTileNumber();
+
+// 1. write the numbers of tiles as strings in the columns arrays from bottom to top
+//        ---> if strings don't work try tile and number
 // 2. create a function that checks the tile number
   // 3. create a function that checks if the tile is red/black
   // 4. create a function that checks the player's turn
+
 
 
 // SWITCH TURNS
 var $toggleFunction = function() {
   console.log('testing toggleFunction'); // click listener is working
 
-  if ($toggle === '#red-token' || $toggle === '#black-token') {
-      //do nothing//
-    } else if ($toggle == true) {
-      $circleDiv.attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
 
 
-
+  if ($toggle == true) { // this will make the red token to start first
+    var $tokenIds = $('#circles');
+      $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
+      // var $circleDiv = $('div');
+      // $circleDiv.remove('#circle');
+      $(this).remove('#circle');
     } else {
-      $circleDiv.attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
+      $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
+      // var $circleDiv = $('div');
+      // $circleDiv.remove('#circle');
+      $(this).remove('#circle'); 
     };
       $toggle = !$toggle;
 
@@ -49,15 +63,18 @@ var $toggleFunction = function() {
 // CREATING CONNECT FOUR BOARD [X]
   for (var i = 0; i < 42; i++) { // iterating 42 times
     var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
-    $newBoardDiv.addClass('squares'); // adding the class squares to the board div
-    $board.append($newBoardDiv); // appending the new div that goes inside the board div
+      $newBoardDiv.addClass('squares'); // adding the class squares to the board div
+      $newBoardDiv.attr('tile', i);
+      $board.append($newBoardDiv); // appending the new div that goes inside the board div
 
-    var $circleDiv = $('<div>'); // creating a new div that goes below the new board div
-      $circleDiv.attr('id', 'circle'); // gave attribute of circle to the new div
-      $circleDiv.attr('tile', i); // every time the loop runs, add a tile attr with a number from 0-41
-      $newBoardDiv.append($circleDiv); // appending the circle div that goes inside the $newBoardDiv
+    var $secondDiv = $('<div>'); // creating a new div that goes below the new board div
+      $secondDiv.attr('id', 'circle'); // gave attribute of circle to the new div
+      // $secondDiv.attr('tile', i); // every time the loop runs, add a tile attr with a number from 0-41
+      $newBoardDiv.append($secondDiv); // appending the circle div that goes inside the $newBoardDiv
 
       $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
+
+
   };
 
 
@@ -251,7 +268,7 @@ var $toggleFunction = function() {
 
 
 
-////////////////// MY FUNCTION!!!! /////////////////////////////
+////////////////// MY FUNCTIONS!!!! /////////////////////////////
 
 // var $toggleFunction = function(div) {
 //   console.log(div); // click listener is working
@@ -266,3 +283,46 @@ var $toggleFunction = function() {
 //     //   $('#red-token').unbind('click', $toggleFunction);
 //     // }
 // }
+
+// if ($toggle === '#red-token' || $toggle === '#black-token') {
+//     //do nothing//
+//   } else if ($toggle == true) {
+//     $circleDiv.attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
+//   } else {
+//     $circleDiv.attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
+//   };
+//     $toggle = !$toggle;
+
+
+
+// // SWITCH TURNS
+//   var $toggleFunction = function() {
+//     console.log('testing toggleFunction'); // click listener is working
+//
+//     if ($toggle === 'red-token' || $toggle === 'black-token') {
+//         //do nothing//
+//       } else if ($toggle == true) {
+//         $secondDiv.addClass('red-token'); // gave attribute of redToken to the $circleDiv created below
+//       } else {
+//         $secondDiv.addClass('black-token'); // gave attribute of blackToken to $circleDiv created below
+//       };
+//         $toggle = !$toggle;
+//
+//   }
+//
+//
+// // CREATING CONNECT FOUR BOARD [X]
+//     for (var i = 0; i < 42; i++) { // iterating 42 times
+//       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
+//         $newBoardDiv.addClass('squares'); // adding the class squares to the board div
+//         $board.append($newBoardDiv); // appending the new div that goes inside the board div
+//
+//       var $secondDiv = $('<div>'); // creating a new div that goes below the new board div
+//         $secondDiv.addClass('circle'); // gave attribute of circle to the new div
+//         $secondDiv.addClass('tile', i); // every time the loop runs, add a tile attr with a number from 0-41
+//         $newBoardDiv.append($secondDiv); // appending the circle div that goes inside the $newBoardDiv
+//
+//         $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
+//
+//
+//     };
