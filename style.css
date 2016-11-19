@@ -55,7 +55,7 @@ p {
 	height: 80px;
 	background: white;
   border-radius: 50px;
-  margin: 10% auto;
+  margin: 0 auto;
 }
 
 #red-token {
@@ -63,7 +63,7 @@ p {
 	height: 80px;
 	background: red;
   border-radius: 50px;
-  margin: 10% auto;
+  margin: 0 auto;
 }
 
 #black-token {
@@ -71,7 +71,7 @@ p {
 	height: 80px;
 	background: black;
   border-radius: 50px;
-  margin: 10% auto;
+  margin: 0 auto;
 }
 
 #clear-board {
