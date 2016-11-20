@@ -4,7 +4,7 @@ Your game of Connect Four must have at a minimum:
 [X] An interactive board which renders on page load
 - A way for players to mark an empty space on their turn
 [X] The turns should alternate (red, black, red, black, etc.)
-- A player should not be able to mark a space that has already been played
+[X] A player should not be able to mark a space that has already been played
 - The game should announce a winner if a player gets four tokens in a row, horizontally or vertically
 *******************************************************************************************
 

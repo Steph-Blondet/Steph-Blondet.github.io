@@ -35,44 +35,32 @@ var column7 = ['41', '34', '27', '20', '13', '6'];
 
 
 
-// SWITCH TURNS
+// SWITCH TURNS [X]
 var $toggleFunction = function() {
   console.log('testing toggleFunction'); // click listener is working
-
-
 
   if ($toggle == true) { // this will make the red token to start first
     var $tokenIds = $('#circles');
       $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
-      // var $circleDiv = $('div');
-      // $circleDiv.remove('#circle');
-      $(this).remove('#circle');
     } else {
       $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
-      // var $circleDiv = $('div');
-      // $circleDiv.remove('#circle');
-      $(this).remove('#circle');
     };
       $toggle = !$toggle;
 
-}
+      if ($('#red-token') || $('#black-token')) {
+         $(this).off('click', $toggleFunction);
+      } // a player should not be able to mark a space that has already been played
+};
 
 
 // CREATING CONNECT FOUR BOARD [X]
   for (var i = 0; i < 42; i++) { // iterating 42 times
     var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
-      $newBoardDiv.addClass('circle'); // adding the class squares to the board div
-      $newBoardDiv.attr('tile', i);
-      $board.append($newBoardDiv); // appending the new div that goes inside the board div
-
-    // var $secondDiv = $('<div>'); // creating a new div that goes below the new board div
-    //   $secondDiv.attr('id', 'circle'); // gave attribute of circle to the new div
-    //   // $secondDiv.attr('tile', i); // every time the loop runs, add a tile attr with a number from 0-41
-    //   $newBoardDiv.append($secondDiv); // appending the circle div that goes inside the $newBoardDiv
+      $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
+      $newBoardDiv.attr('id', i); // adding ids to the circles
+      $board.append($newBoardDiv); // appending the new board div that goes inside the board div
 
       $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
-
-
   };
 
 
@@ -193,6 +181,8 @@ var $toggleFunction = function() {
   // create a variable that selects the button
   // add an event listener with
 //****************************************************************************************************************
+
+
 
 // for (var i = 0; i < 42; i++) { // iterating 42 times
 //   var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
