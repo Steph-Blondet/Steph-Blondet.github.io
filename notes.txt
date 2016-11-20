@@ -29,11 +29,11 @@ Things I need to see on the page:
     [X] write html tags in the body
 [X] create box with 6 rows and 7 columns with css (make it simple for now)
     [X] make the holes inside the box (do some research)
-    b) show the tokens when somebody clicks on an arrow/column to fill out an empty space (do some research)
-[X]. alternate tokens
+    [X] show the tokens when somebody clicks on an arrow/column to fill out an empty space (do some research)
+[X] alternate tokens
 4. when alternating tokens, show that text (do some research)
 5. winning conditions (for loop and if statements?)
-6. clear out the discs when the user clicks on the 'new game' button
+[X] clear out the discs when the user clicks on the 'new game' button
 
 
 ////// PSEUDOCODE
