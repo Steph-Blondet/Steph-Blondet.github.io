@@ -3,31 +3,35 @@ console.log('testing connect four file');
 $(function() {
 
 // SELECTING ELEMENTS
-  var $board = $('#board');
+  var $board = $('#board'); // grabbing the board id
 
-  var $clearButton = $('#clear-board');
+  var $clearButton = $('#clear-board'); // grapbbing the clear-board id
 
-  var $turn = $('p');
+  var $turn = $('p'); // grabbing p tag from index
 
-  var $toggle = true;
+  var $toggle = true; // global variable set to true
 
+  var $tileNmbr; // --?
 
-  // BUTTON / RESET BOARD ---> this is working but I need to figure out a way to make the board playable again
-    $clearButton.on('click', function(){
-      // $turn.text('');
-      var $clearBoard = $('.circle');
-
-      for (var i = 0; i < $clearBoard.length; i++) {
-        $clearBoard.removeAttr('id');
-        toggle = true;
-        $clearBoard.on('click', $toggleFunction);
-
-        $turn.text("It's Red's turn");
-      }
-    });
+  var $red, $black; // --?
 
 
-// CREATING COLUMNS ARRAYS
+// BUTTON / RESET BOARD
+  $clearButton.on('click', function(){
+
+    var $clearBoard = $('.circle'); // grabbing the circle class
+
+    for (var i = 0; i < $clearBoard.length; i++) {
+      $clearBoard.removeAttr('id'); // when the $clearButton is clicked, it will remove the id red-token or black-token
+      toggle = true;
+      $clearBoard.on('click', $toggleFunction);
+
+      $turn.text("It's Red's turn"); // when the clear button is clicked, the p tag will show that it is red's turn
+    }
+  });
+
+
+// CREATING COLUMNS ARRAYS  ---?
     var column1 = ["35", "28", "21", "14", "7", "0"];
     var column2 = ["36", "29", "22", "15", "8", "1"];
     var column3 = ["37", "30", "23", "16", "9", "2"];
@@ -36,16 +40,59 @@ $(function() {
     var column6 = ["40", "33", "26", "19", "12", "5"];
     var column7 = ["41", "34", "27", "20", "13", "6"];
 
+    // WINNING TILES ---?
+    var $winning = [
+      ["35", "36", "37", "38"] , ["36", "37", "38", "39"]
+    ];
 
-// WINNING CONDITIONS
 
-  // if (column1[5] == ('id="red-token')) {
-  //   console.log('testing 0');
-  // };
 
-  // $.each(column1, function(id) {
-  //   $("#red-token" + key).text(value);
-  // });
+
+// WINNING CONDITIONS ---?
+
+// var $checkWin = function() {
+// 	$tileNmbr++;
+// 	var $circleClass = $('.circle');
+//
+// 	if ($checkTiles($red)) {
+// 		for (var i=0; i < $circleClass.length; i++) {
+// 			$circleClass[i].text("red won!");
+// 		}
+// 	} else if ($checkTiles($black)) {
+// 		for (var j=0; j < $circleClass.length; j++) {
+// 			$circleClass.text("black won!");
+// 		}
+// 	} else if ($tileNmbr == 42) {
+// 		$board.text("tie!");
+// 	}
+// }
+
+
+
+// CHECK TILES ---?
+
+// var $checkTiles = function ($tokenPositions) {
+//   for (var i = 0; i < $winning.length; i++) {
+//     var $wins = 0;
+//     for (var j = 0; j < $winning[i].length; j++) {
+//       for (var k = 0; k < $tokenPositions.length; k++) {
+//         if ($tokenPositions[i][j] == $tokenPositions[k]) {
+//           $wins++;
+//         }
+//       }
+//     }
+//     if (wins == 3) {
+//       return true
+//     }
+//   }
+//   return false
+// };
+
+
+// if (column1[5] == ('id="red-token')) {
+//   console.log('testing 0');
+// };  ---> not working ???
+
 
 
 // SWITCH TURNS [X]
@@ -53,17 +100,17 @@ $(function() {
     console.log('testing toggleFunction'); // click listener is working
 
     if ($toggle == true) { // this will make the red token to start first
-        $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
+        $(this).attr('id', 'red-token'); // gave attribute of redToken to the $newBoardDiv created below
         $turn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
       } else {
-        $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
+        $(this).attr('id', 'black-token'); // gave attribute of blackToken to $newBoardDiv created below
         $turn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
       };
-        $toggle = !$toggle;
+        $toggle = !$toggle; // a;ternates the turns between red and black
 
     // a player should not be able to mark a space that has already been played
     if ($('#red-token') || $('#black-token')) {
-       $(this).off('click', $toggleFunction);
+       $(this).off('click', $toggleFunction); // turning off the toggle function so users can't click again
     }
 
   };
