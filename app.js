@@ -5,19 +5,37 @@ $(function() {
 // SELECTING ELEMENTS
 var $board = $('#board'); // selecting board id to create board
 
-var $newBoardDiv = $('.squares'); // selecting new board div with the class squares
-
 var $toggle = true;
 
 
-// CREATING EMPTY COLUMNS ARRAYS
-var column1 = ['35', '28', '21', '14', '7', '0'];
-var column2 = ['36', '29', '22', '15', '8', '1'];
-var column3 = ['37', '30', '23', '16', '9', '2'];
-var column4 = ['38', '31', '24', '17', '10', '3'];
-var column5 = ['39', '32', '25', '18', '11', '4'];
-var column6 = ['40', '33', '26', '19', '12', '5'];
-var column7 = ['41', '34', '27', '20', '13', '6'];
+// CREATING COLUMNS ARRAYS
+var column1 = ["35", "28", "21", "14", "7", "0"];
+var column2 = ["36", "29", "22", "15", "8", "1"];
+var column3 = ["37", "30", "23", "16", "9", "2"];
+var column4 = ["38", "31", "24", "17", "10", "3"];
+var column5 = ["39", "32", "25", "18", "11", "4"];
+var column6 = ["40", "33", "26", "19", "12", "5"];
+var column7 = ["41", "34", "27", "20", "13", "6"];
+
+
+// var winningOptions = [
+//   [1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7]
+// ];
+//
+// var wins = function() {
+//   console.log('checking winning conditions');
+//   var horizontalWins = document.querySelector('---');
+//
+//   for (var i = 0; i < winningOptions.length; i++) {
+//     winningOptions[i]
+//   }
+//
+//   if (winningOptions === true) {
+//
+//   }
+// }
+//
+// wins();
 
 
 // var checkTileNumber = function() {
@@ -40,68 +58,65 @@ var $toggleFunction = function() {
   console.log('testing toggleFunction'); // click listener is working
 
   if ($toggle == true) { // this will make the red token to start first
-    var $tokenIds = $('#circles');
       $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
     } else {
       $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
     };
       $toggle = !$toggle;
 
-      if ($('#red-token') || $('#black-token')) {
-         $(this).off('click', $toggleFunction);
-      } // a player should not be able to mark a space that has already been played
+  // a player should not be able to mark a space that has already been played
+  if ($('#red-token') || $('#black-token')) {
+     $(this).off('click', $toggleFunction);
+  }
 };
 
 
 // CREATING CONNECT FOUR BOARD [X]
+
   for (var i = 0; i < 42; i++) { // iterating 42 times
     var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
       $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-      $newBoardDiv.attr('id', i); // adding ids to the circles
+      $newBoardDiv.attr('tile', i); // adding ids to the circles
       $board.append($newBoardDiv); // appending the new board div that goes inside the board div
 
       $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
   };
 
 
-
-
-
-// var winningOptions = [
-//   [1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7]
-// ];
-//
-// var wins = function() {
-//   console.log('checking winning conditions');
-//   var horizontalWins = document.querySelector('---');
-//
-//   for (var i = 0; i < winningOptions.length; i++) {
-//     winningOptions[i]
-//   }
-//
-//   if (winningOptions === true) {
-//
-//   }
-// }
-//
-// wins();
-
 // BUTTON / RESET BOARD
-// var $clearBoard = function() {
-//   var $squares = $('.squares'); // getting class squares
-//   for (var i = 0; i < $squares.length; i++) {
-//     $squares[i].remove('---', '---');
+
+
+
+
+var $clearBoard = $('#clear-board'); // grabbing the button
+var $redToken = $('#red-token');
+  $clearBoard.on('click', function(){
+    $('.circle').removeAttr('id');
+    console.log('I clicked the clear button'); // button is working
+  });
+
+
+
+
+  });
+
+
+  // var $clearBoard = $('#clear-board'); // grabbing the button
+  //   $clearBoard.on('click', $createBoard);
+  //   $createBoard();
+
+  // $clearBoard.on('click', function(){
+  //   console.log('I clicked the clear button'); // button is working
+  // });
+//
+//   var clearBoard = function() {
+//   var board = document.querySelectorAll('.square');
+//   for (var i = 0; i < board.length; i++) {
+//     board[i].innerText = "";
+//     board[i].classList.remove('playerX', 'playerO');
 //   }
 // }
 
-// var $clickButton = $('#clear-board'); // getting element by id
-// $clickButton.on('click', function() { // on click, the button will reset the game
-//   // var $newGame = $(#circle); // getting element by the id of circle
-//   // for(var i = 0; i < $newGame.length; i++) {
-//   //       $newGame[i].innerHTML = '';
-//   //   }
-//     console.log('I clicked the clear button');
-// })
 
 
 
@@ -117,7 +132,9 @@ var $toggleFunction = function() {
 
 
 
-});
+
+
+// });
 
 
 //********************* ORIGINAL CODE
@@ -347,6 +364,26 @@ var $toggleFunction = function() {
 //         $newBoardDiv.append($secondDiv); // appending the circle div that goes inside the $newBoardDiv
 //
 //         $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
-//
-//
 //     };
+
+//   $clearBoard.on('click', function(){
+//     for (var i = 0; i < $redToken.length; i++) {
+//       $redToken.remove('#red-token');
+//          console.log('I clicked the clear button'); // button is working
+//     }
+//
+// })};
+//
+// $circleDiv.remove('#circle');
+
+
+
+
+// var $redToken = $('#red-token');
+//
+// $clearBoard.on('click', function(){
+//   for (var i = 0; i < $redToken.length; i++) {
+//     $redToken.remove('#red-token');
+//        console.log('I clicked the clear button'); // button is working
+//   }
+// });
