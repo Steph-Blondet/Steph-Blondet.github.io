@@ -5,9 +5,11 @@ $(function() {
 // SELECTING ELEMENTS
   var $board = $('#board');
 
-  var $toggle = true;
+  var $clearButton = $('#clear-board');
 
-  var $clearBoard = $('#clear-board');
+  var $turn = $('p');
+
+  var $toggle = true;
 
 
 // CREATING COLUMNS ARRAYS
@@ -37,8 +39,10 @@ $(function() {
 
     if ($toggle == true) { // this will make the red token to start first
         $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
+        $turn.text("It's Black's turn");
       } else {
         $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
+        $turn.text("It's Red's turn");
       };
         $toggle = !$toggle;
 
@@ -51,32 +55,42 @@ $(function() {
 
 
 // CREATING CONNECT FOUR BOARD [X]
-// var $createBoard = function() {
-//   for (var i = 0; i < 42; i++) { // iterating 42 times
-//     var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
-//       $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-//       $newBoardDiv.attr('tile', i); // adding ids to the circles
-//       $board.append($newBoardDiv); // appending the new board div that goes inside the board div
-//
-//       $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
-//   }
-// };
+  for (var i = 0; i < 42; i++) { // iterating 42 times
+    var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
+      $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
+      $newBoardDiv.attr('tile', i); // adding ids to the circles
+      $board.append($newBoardDiv); // appending the new board div that goes inside the board div
+
+      $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
+
+};
 
 
 // BUTTON / RESET BOARD ---> this is working but I need to figure out a way to make the board playable again
-    $clearBoard.on('click', function(){
-      $('.circle').removeAttr('id');
-      console.log('I clicked the clear button'); // button is working
-      for (var i = 0; i < 42; i++) { // iterating 42 times
-        var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
-          $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-          $newBoardDiv.attr('tile', i); // adding ids to the circles
-          $board.append($newBoardDiv); // appending the new board div that goes inside the board div
+  $clearButton.on('click', function(){
+    $turn.text('');
+    var $clearBoard = $('.circle');
 
-          $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
-      }
-    });
-    // $createBoard();
+    for (var i = 0; i < $clearBoard.length; i++) {
+      $clearBoard.removeAttr('id');
+      toggle = true;
+      $clearBoard[i].on('click', $toggleFunction);
+    }
+    $turn.text("It's Black's turn");
+
+  });
+
+
+
+
+    // $clearBoard.on('click', function(){
+    //   $('.circle').removeAttr('id');
+    //   console.log('I clicked the clear button'); // button is working
+    //
+    //   $clearBoard.on('click', $createBoard); // on click, the square will...
+    //
+    // });
+    // // $createBoard();
 
 
 
