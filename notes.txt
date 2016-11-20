@@ -2,7 +2,7 @@ CONNECT FOUR
 ********** MVP - MINIMUM VIABLE PRODUCT **************************************************
 Your game of Connect Four must have at a minimum:
 [X] An interactive board which renders on page load
-- A way for players to mark an empty space on their turn
+[X] A way for players to mark an empty space on their turn
 [X] The turns should alternate (red, black, red, black, etc.)
 [X] A player should not be able to mark a space that has already been played
 - The game should announce a winner if a player gets four tokens in a row, horizontally or vertically
@@ -31,7 +31,7 @@ Things I need to see on the page:
     [X] make the holes inside the box (do some research)
     [X] show the tokens when somebody clicks on an arrow/column to fill out an empty space (do some research)
 [X] alternate tokens
-4. when alternating tokens, show that text (do some research)
+[X] when alternating tokens, show that text (do some research)
 5. winning conditions (for loop and if statements?)
 [X] clear out the discs when the user clicks on the 'new game' button
 
@@ -70,14 +70,14 @@ Things I need to see on the page:
 [X] switch turns
   > if/else?
 
-- clicked spaces do not respond to additional clicks
+[X] clicked spaces do not respond to additional clicks
   > if/else?
 
 - announce a winner
   > winner conditions
     - if/else?
 
-- 'new game' button
+[X] 'new game' button
   > for loop
 
 
