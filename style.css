@@ -36,39 +36,31 @@ p {
   height: 612px;
   margin: 5% auto;
   display: block;
-  background-color: blue;
-}
-
-.squares {
-  width: 100px;
-  height: 100px;
-  display: inline-block;
-  /*margin: 0 auto;*/
-  text-align: center;
   background-color: pink;
-  text-align: center;
-  border: 0.5px solid green; /*just for visualization*/
 }
 
-#circle {
-  width: 80px;
-	height: 80px;
+
+
+.circle {
+  width: 100px;
+	height: 100px;
+  display: inline-block;
 	background: white;
   border-radius: 50px;
   margin: 0 auto;
 }
 
 #red-token {
-  width: 80px;
-	height: 80px;
+  width: 100px;
+	height: 100px;
 	background: red;
   border-radius: 50px;
   margin: 0 auto;
 }
 
 #black-token {
-  width: 80px;
-	height: 80px;
+  width: 100px;
+	height: 100px;
 	background: black;
   border-radius: 50px;
   margin: 0 auto;
@@ -102,3 +94,20 @@ p {
 }*/
 
 /* animations - delay? */
+
+
+
+/*/////////////////////////////////////////
+// *** THOUGHTS AND PRACTICE CODE *** //
+///////////////////////////////////////*/
+
+/*.squares {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+  /*margin: 0 auto;
+  text-align: center;
+  background-color: pink;
+  text-align: center;
+  border: 0.5px solid green;/*just for visualization
+}*/
