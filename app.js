@@ -3,119 +3,80 @@ console.log('testing connect four file');
 $(function() {
 
 // SELECTING ELEMENTS
-var $board = $('#board'); // selecting board id to create board
+  var $board = $('#board');
 
-var $toggle = true;
+  var $toggle = true;
+
+  var $clearBoard = $('#clear-board');
 
 
 // CREATING COLUMNS ARRAYS
-var column1 = ["35", "28", "21", "14", "7", "0"];
-var column2 = ["36", "29", "22", "15", "8", "1"];
-var column3 = ["37", "30", "23", "16", "9", "2"];
-var column4 = ["38", "31", "24", "17", "10", "3"];
-var column5 = ["39", "32", "25", "18", "11", "4"];
-var column6 = ["40", "33", "26", "19", "12", "5"];
-var column7 = ["41", "34", "27", "20", "13", "6"];
+    var column1 = ["35", "28", "21", "14", "7", "0"];
+    var column2 = ["36", "29", "22", "15", "8", "1"];
+    var column3 = ["37", "30", "23", "16", "9", "2"];
+    var column4 = ["38", "31", "24", "17", "10", "3"];
+    var column5 = ["39", "32", "25", "18", "11", "4"];
+    var column6 = ["40", "33", "26", "19", "12", "5"];
+    var column7 = ["41", "34", "27", "20", "13", "6"];
 
 
-// var winningOptions = [
-//   [1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7]
-// ];
-//
-// var wins = function() {
-//   console.log('checking winning conditions');
-//   var horizontalWins = document.querySelector('---');
-//
-//   for (var i = 0; i < winningOptions.length; i++) {
-//     winningOptions[i]
-//   }
-//
-//   if (winningOptions === true) {
-//
-//   }
-// }
-//
-// wins();
+// WINNING CONDITIONS
 
+  // if (column1[5] == ('id="red-token')) {
+  //   console.log('testing 0');
+  // };
 
-// var checkTileNumber = function() {
-//   if ($('tile') === '35' ) {
-//     console.log('tile 35');
-//   }
-// }
-// checkTileNumber();
-
-// 1. write the numbers of tiles as strings in the columns arrays from bottom to top
-//        ---> if strings don't work try tile and number
-// 2. create a function that checks the tile number
-  // 3. create a function that checks if the tile is red/black
-  // 4. create a function that checks the player's turn
-
+  // $.each(column1, function(id) {
+  //   $("#red-token" + key).text(value);
+  // });
 
 
 // SWITCH TURNS [X]
-var $toggleFunction = function() {
-  console.log('testing toggleFunction'); // click listener is working
+  var $toggleFunction = function() {
+    console.log('testing toggleFunction'); // click listener is working
 
-  if ($toggle == true) { // this will make the red token to start first
-      $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
-    } else {
-      $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
-    };
-      $toggle = !$toggle;
+    if ($toggle == true) { // this will make the red token to start first
+        $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
+      } else {
+        $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
+      };
+        $toggle = !$toggle;
 
-  // a player should not be able to mark a space that has already been played
-  if ($('#red-token') || $('#black-token')) {
-     $(this).off('click', $toggleFunction);
-  }
-};
+    // a player should not be able to mark a space that has already been played
+    if ($('#red-token') || $('#black-token')) {
+       $(this).off('click', $toggleFunction);
+    }
 
-
-// CREATING CONNECT FOUR BOARD [X]
-
-  for (var i = 0; i < 42; i++) { // iterating 42 times
-    var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
-      $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-      $newBoardDiv.attr('tile', i); // adding ids to the circles
-      $board.append($newBoardDiv); // appending the new board div that goes inside the board div
-
-      $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
   };
 
 
-// BUTTON / RESET BOARD
-
-
-
-
-var $clearBoard = $('#clear-board'); // grabbing the button
-var $redToken = $('#red-token');
-  $clearBoard.on('click', function(){
-    $('.circle').removeAttr('id');
-    console.log('I clicked the clear button'); // button is working
-  });
-
-
-
-
-  });
-
-
-  // var $clearBoard = $('#clear-board'); // grabbing the button
-  //   $clearBoard.on('click', $createBoard);
-  //   $createBoard();
-
-  // $clearBoard.on('click', function(){
-  //   console.log('I clicked the clear button'); // button is working
-  // });
+// CREATING CONNECT FOUR BOARD [X]
+// var $createBoard = function() {
+//   for (var i = 0; i < 42; i++) { // iterating 42 times
+//     var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
+//       $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
+//       $newBoardDiv.attr('tile', i); // adding ids to the circles
+//       $board.append($newBoardDiv); // appending the new board div that goes inside the board div
 //
-//   var clearBoard = function() {
-//   var board = document.querySelectorAll('.square');
-//   for (var i = 0; i < board.length; i++) {
-//     board[i].innerText = "";
-//     board[i].classList.remove('playerX', 'playerO');
+//       $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
 //   }
-// }
+// };
+
+
+// BUTTON / RESET BOARD ---> this is working but I need to figure out a way to make the board playable again
+    $clearBoard.on('click', function(){
+      $('.circle').removeAttr('id');
+      console.log('I clicked the clear button'); // button is working
+      for (var i = 0; i < 42; i++) { // iterating 42 times
+        var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
+          $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
+          $newBoardDiv.attr('tile', i); // adding ids to the circles
+          $board.append($newBoardDiv); // appending the new board div that goes inside the board div
+
+          $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
+      }
+    });
+    // $createBoard();
 
 
 
@@ -126,15 +87,10 @@ var $redToken = $('#red-token');
 
 
 
+});//---> end of code, do not change!
 
 
 
-
-
-
-
-
-// });
 
 
 //********************* ORIGINAL CODE
@@ -198,6 +154,12 @@ var $redToken = $('#red-token');
   // create a variable that selects the button
   // add an event listener with
 //****************************************************************************************************************
+
+// 1. write the numbers of tiles as strings in the columns arrays from bottom to top
+//        ---> if strings don't work try tile and number
+// 2. create a function that checks the tile number
+  // 3. create a function that checks if the tile is red/black
+  // 4. create a function that checks the player's turn
 
 
 
@@ -377,8 +339,6 @@ var $redToken = $('#red-token');
 // $circleDiv.remove('#circle');
 
 
-
-
 // var $redToken = $('#red-token');
 //
 // $clearBoard.on('click', function(){
@@ -387,3 +347,59 @@ var $redToken = $('#red-token');
 //        console.log('I clicked the clear button'); // button is working
 //   }
 // });
+
+
+// var $clearBoard = $('#clear-board'); // grabbing the button
+//   $clearBoard.on('click', $createBoard);
+//   $createBoard();
+
+// $clearBoard.on('click', function(){
+//   console.log('I clicked the clear button'); // button is working
+// });
+//
+//   var clearBoard = function() {
+//   var board = document.querySelectorAll('.square');
+//   for (var i = 0; i < board.length; i++) {
+//     board[i].innerText = "";
+//     board[i].classList.remove('playerX', 'playerO');
+//   }
+// }
+// });
+
+
+
+
+//// TRY
+// var $winningOptions = function(){
+//   if ([ column[0], column[1], column[2], column[3], column[4], column[5] ] === $('#red-token')) {
+//     console.log('testing win');
+//   };
+//
+//   console.log($winningOptions);
+
+// var winningOptions = [
+//   [1, 2, 3, 4], [2, 3, 4, 5], [3, 4, 5, 6], [4, 5, 6, 7]
+// ];
+//
+// var wins = function() {
+//   console.log('checking winning conditions');
+//   var horizontalWins = document.querySelector('---');
+//
+//   for (var i = 0; i < winningOptions.length; i++) {
+//     winningOptions[i]
+//   }
+//
+//   if (winningOptions === true) {
+//
+//   }
+// }
+//
+// wins();
+
+
+// var checkTileNumber = function() {
+//   if ($('tile') === '35' ) {
+//     console.log('tile 35');
+//   }
+// }
+// checkTileNumber();
