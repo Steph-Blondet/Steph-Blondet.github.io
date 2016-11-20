@@ -12,6 +12,21 @@ $(function() {
   var $toggle = true;
 
 
+  // BUTTON / RESET BOARD ---> this is working but I need to figure out a way to make the board playable again
+    $clearButton.on('click', function(){
+      // $turn.text('');
+      var $clearBoard = $('.circle');
+
+      for (var i = 0; i < $clearBoard.length; i++) {
+        $clearBoard.removeAttr('id');
+        toggle = true;
+        $clearBoard.on('click', $toggleFunction);
+
+        $turn.text("It's Red's turn");
+      }
+    });
+
+
 // CREATING COLUMNS ARRAYS
     var column1 = ["35", "28", "21", "14", "7", "0"];
     var column2 = ["36", "29", "22", "15", "8", "1"];
@@ -39,10 +54,10 @@ $(function() {
 
     if ($toggle == true) { // this will make the red token to start first
         $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
-        $turn.text("It's Black's turn");
+        $turn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
       } else {
         $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
-        $turn.text("It's Red's turn");
+        $turn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
       };
         $toggle = !$toggle;
 
@@ -64,40 +79,6 @@ $(function() {
       $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
 
 };
-
-
-// BUTTON / RESET BOARD ---> this is working but I need to figure out a way to make the board playable again
-  $clearButton.on('click', function(){
-    $turn.text('');
-    var $clearBoard = $('.circle');
-
-    for (var i = 0; i < $clearBoard.length; i++) {
-      $clearBoard.removeAttr('id');
-      toggle = true;
-      $clearBoard[i].on('click', $toggleFunction);
-    }
-    $turn.text("It's Black's turn");
-
-  });
-
-
-
-
-    // $clearBoard.on('click', function(){
-    //   $('.circle').removeAttr('id');
-    //   console.log('I clicked the clear button'); // button is working
-    //
-    //   $clearBoard.on('click', $createBoard); // on click, the square will...
-    //
-    // });
-    // // $createBoard();
-
-
-
-
-
-
-
 
 
 
@@ -417,3 +398,13 @@ $(function() {
 //   }
 // }
 // checkTileNumber();
+
+
+// $clearBoard.on('click', function(){
+//   $('.circle').removeAttr('id');
+//   console.log('I clicked the clear button'); // button is working
+//
+//   $clearBoard.on('click', $createBoard); // on click, the square will...
+//
+// });
+// // $createBoard();
