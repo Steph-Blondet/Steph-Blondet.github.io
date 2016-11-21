@@ -9,9 +9,10 @@ Your game of Connect Four must have at a minimum:
 *******************************************************************************************
 
 INSTRUCTOR's SUGGESTIONS:
-- change the id red,black token to classes. this will add it after the circle class in the same quotes.
+[X] change the id red,black token to classes. this will add it after the circle class in the same quotes.
 - arrange it to columns and rows instead of tile numbers
-- add a drop button instead of a mouseover
+  --> my thoughts: I need to figure out how to go to the bottom most first, then create an array with each circle number, create a for loop that checks if it's red/black, go to the next, check the same thing etc... until I have four of the same.
+[X] add a drop button instead of a mouseover
 
 // THINGS TO DO DURING THE WEEK
 
