@@ -8,6 +8,15 @@ Your game of Connect Four must have at a minimum:
 - The game should announce a winner if a player gets four tokens in a row, horizontally or vertically
 *******************************************************************************************
 
+// THINGS TO DO DURING THE WEEK
+
+1. figure out how to make the tokens switch again after the user clicks on the 'new game' button
+2. figure out how to grab the tiles and store them in columns
+3. figure out how to use mouseover once I've figured out how to store the tiles in columns
+4. figure out how to make the tokens go to the bottom
+5. figure out the winning conditions
+
+
 ////// USER STORY
 - when I visit the connect four website, I want to be able to see the board (there will be a message saying that it is red's turn and to click on a column)
 - I'm going to click on one of the arrows/or columns to start the game
@@ -83,9 +92,9 @@ Things I need to see on the page:
 
 ////// THINGS TO FIGURE OUT
 1. winning conditions --> array with all possible winning conditions?
-2. how to design a board with holes in it
-3. alternate turns
-4. clear button
+[X] how to design a board with holes in it
+[X] alternate turns
+[X] clear button
 
 
 ////// RANDOM THOUGHTS
@@ -131,7 +140,7 @@ Things I need to see on the page:
 
 
 
-// OLD WINNING CONDITIONS OLD
+// OLD -- WINNING CONDITIONS -- OLD
 ** Horizontal       ** Vertical          ** Diagonal
 1   2   3   4   |   1   8   15  22   |   15  23  31  39
 2   3   4   5   |   8   15  22  29   |
