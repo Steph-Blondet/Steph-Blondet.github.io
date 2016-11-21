@@ -17,6 +17,10 @@ $(function() {
 
   var $red, $black; // --?
 
+  var $newBoardDiv;
+
+
+
 
 // SWITCH TURNS [X]
   var $toggleFunction = function() {
@@ -52,7 +56,6 @@ $(function() {
   // $columnMouseover();
 
 
-
 // CREATING COLUMNS ARRAYS  ---?
     var column1 = ["35", "28", "21", "14", "7", 0];
     var column2 = ["36", "29", "22", "15", "8", "1"];
@@ -64,13 +67,13 @@ $(function() {
 
     // WINNING TILES ---?
     var $winning = [
-      [35, 36, 37, 38] , [36, 37, 38, 39]
+      [35, 36, 37, 38] , [35, 28, 21, 14], [35, 29, 23, 17]
     ];
 
 
     if (0 === $('#red-token')) {
       console.log('testing 0');
-    };  // ---> not working ???
+    };  // ---> not working - why?!?!?
 
 
 // WINNING CONDITIONS ---?
@@ -115,30 +118,38 @@ $(function() {
 
 
 // CREATING CONNECT FOUR BOARD [X]
+var createBoard = function() {
   for (var i = 0; i < 42; i++) { // iterating 42 times
     var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
       $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
       $newBoardDiv.attr('tile', i); // adding ids to the circles
       $board.append($newBoardDiv); // appending the new board div that goes inside the board div
-
       $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
-
+  };
 };
+
+createBoard(); // calling createBoard to create the board
 
 
 // BUTTON / RESET BOARD [X]
-  $clearButton.on('click', function(){
+var clearBoard = function() {
 
-    var $circleClass = $('.circle'); // grabbing the circle class
+  var $circleClass = $('.circle'); // grabbing the circle class
+  console.log('this is circle class ' + $circleClass);
 
-    for (var i = 0; i < $circleClass.length; i++) {
-      $circleClass.removeAttr('id'); // when the $clearButton is clicked, it will remove the id red-token or black-token
-      toggle = true;
-      $circleClass.on('click', $toggleFunction);
+  // for (var i = 0; i < $circleClass.length; i++) {
+    $circleClass.on('click', $toggleFunction);
+    console.log($circleClass);
+    toggle = true;
+    $circleClass.removeAttr('id'); // when the $clearButton is clicked, it will remove the id red-token or black-token
+    console.log(toggle);
+  // }
+};
 
-      $nextTurn.text("It's Red's turn"); // when the clear button is clicked, the p tag will show that it is red's turn
-    }
-  });
+$clearButton.on('click', function(){
+  clearBoard();
+
+});
 
 
 
@@ -148,7 +159,7 @@ $(function() {
 
 
 
-
+// $nextTurn.text("It's Red's turn"); // when the clear button is clicked, the p tag will show that it is red's turn
 //********************* ORIGINAL CODE
 // if ($toggle == true) { // this will make the red token to start first
 //   var $tokenIds = $('#circles');
