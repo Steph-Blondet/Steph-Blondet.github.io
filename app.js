@@ -20,18 +20,16 @@ $(function() {
   var $newBoardDiv;
 
 
-
-
 // SWITCH TURNS [X]
   var $toggleFunction = function() {
     console.log('testing toggleFunction'); // click listener is working
 
     if ($toggle) {
-        $(this).attr('id', 'red-token'); // gave attribute of redToken to the $newBoardDiv created below
-        $nextTurn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
+        $(this).attr('id', 'red-token'); // if toggle is true, it will add the attribute of redToken to the $newBoardDiv created below
+        $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
       } else {
-        $(this).attr('id', 'black-token'); // gave attribute of blackToken to $newBoardDiv created below
-        $nextTurn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
+        $(this).attr('id', 'black-token'); // if toggle is false, it will add the attribute of blackToken to the $newBoardDiv created below
+        $nextTurn.text("It's Red's turn"); // when blackToken is added to the div, the p tag will change to red's turn
       };
         $toggle = !$toggle; // alternates the turns between red and black
 
@@ -39,92 +37,16 @@ $(function() {
       if ($('#red-token') || $('#black-token')) {
         $(this).off('click', $toggleFunction); // turning off the toggle function so users can't click again
       }
-
-    };
-
-
-  // MOUSEOVER
-  // var $columnMouseover = function() {
-  //   // var $circleClass = $('.circle');
-  //
-  //   var $
-  //
-  //   $circleClass.mouseover(function() {
-  //     $circleClass.css('background', 'yellow');
-  //   })
-  // };
-  // $columnMouseover();
-
-
-// CREATING COLUMNS ARRAYS  ---?
-    var column1 = ["35", "28", "21", "14", "7", 0];
-    var column2 = ["36", "29", "22", "15", "8", "1"];
-    var column3 = ["37", "30", "23", "16", "9", "2"];
-    var column4 = ["38", "31", "24", "17", "10", "3"];
-    var column5 = ["39", "32", "25", "18", "11", "4"];
-    var column6 = ["40", "33", "26", "19", "12", "5"];
-    var column7 = ["41", "34", "27", "20", "13", "6"];
-
-    // WINNING TILES ---?
-    var $winning = [
-      [35, 36, 37, 38] , [35, 28, 21, 14], [35, 29, 23, 17]
-    ];
-
-
-    if (0 === $('#red-token')) {
-      console.log('testing 0');
-    };  // ---> not working - why?!?!?
-
-
-// WINNING CONDITIONS ---?
-
-// var $checkWin = function() {
-// 	$tileNmbr++;
-// 	var $circleClass = $('.circle');
-//
-// 	if ($checkTiles($red)) {
-// 		for (var i=0; i < $circleClass.length; i++) {
-// 			$circleClass[i].text("red won!");
-// 		}
-// 	} else if ($checkTiles($black)) {
-// 		for (var j=0; j < $circleClass.length; j++) {
-// 			$circleClass.text("black won!");
-// 		}
-// 	} else if ($tileNmbr == 42) {
-// 		$board.text("tie!");
-// 	}
-// }
-
-
-
-// CHECK TILES ---?
-
-// var $checkTiles = function ($tokenPositions) {
-//   for (var i = 0; i < $winning.length; i++) {
-//     var $wins = 0;
-//     for (var j = 0; j < $winning[i].length; j++) {
-//       for (var k = 0; k < $tokenPositions.length; k++) {
-//         if ($tokenPositions[i][j] == $tokenPositions[k]) {
-//           $wins++;
-//         }
-//       }
-//     }
-//     if (wins == 3) {
-//       return true
-//     }
-//   }
-//   return false
-// };
-
+  };
 
 // CREATING CONNECT FOUR BOARD [X]
 var createBoard = function() {
   for (var i = 0; i < 42; i++) { // iterating 42 times
     var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
       $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-      $newBoardDiv.attr('tile', i); // adding ids to the circles
-      $board.append($newBoardDiv); // appending the new board div that goes inside the board div
-      $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
+      $newBoardDiv.attr('tile', i); // adding tiles with numbers to the circles
+      $board.append($newBoardDiv); // appending the newBoardDiv that goes inside the board div
+      $newBoardDiv.on('click', $toggleFunction); // on click, the square will... (see the switch turns above)
   };
 };
 
@@ -141,7 +63,7 @@ var clearBoard = function() {
     $circleClass.on('click', $toggleFunction);
     console.log($circleClass);
     toggle = true;
-    $circleClass.removeAttr('id'); // when the $clearButton is clicked, it will remove the id red-token or black-token
+    $circleClass.removeAttr('id'); // when the clear board is clicked, it will remove the id red-token or black-token
     console.log(toggle);
   // }
 };
@@ -159,7 +81,7 @@ $clearButton.on('click', function(){
 
 
 
-// $nextTurn.text("It's Red's turn"); // when the clear button is clicked, the p tag will show that it is red's turn
+
 //********************* ORIGINAL CODE
 // if ($toggle == true) { // this will make the red token to start first
 //   var $tokenIds = $('#circles');
@@ -471,4 +393,80 @@ $clearButton.on('click', function(){
 //      $(this).off('click', $toggleFunction); // turning off the toggle function so users can't click again
 //   }
 //
+// };
+
+
+
+/// KEEP WORKING ON THIS AFTER I FIGURE OUT THE CLEAR BUTTON PROBLEM
+// MOUSEOVER
+// var $columnMouseover = function() {
+//   // var $circleClass = $('.circle');
+//
+//   var $
+//
+//   $circleClass.mouseover(function() {
+//     $circleClass.css('background', 'yellow');
+//   })
+// };
+// $columnMouseover();
+
+
+// // CREATING COLUMNS ARRAYS  ---?
+//     var column1 = ["35", "28", "21", "14", "7", 0];
+//     var column2 = ["36", "29", "22", "15", "8", "1"];
+//     var column3 = ["37", "30", "23", "16", "9", "2"];
+//     var column4 = ["38", "31", "24", "17", "10", "3"];
+//     var column5 = ["39", "32", "25", "18", "11", "4"];
+//     var column6 = ["40", "33", "26", "19", "12", "5"];
+//     var column7 = ["41", "34", "27", "20", "13", "6"];
+//
+//     // WINNING TILES ---?
+//     var $winning = [
+//       [35, 36, 37, 38] , [35, 28, 21, 14], [35, 29, 23, 17]
+//     ];
+//
+//
+//     if (0 === $('#red-token')) {
+//       console.log('testing 0');
+//     };  // ---> not working - why?!?!?
+
+
+// WINNING CONDITIONS ---?
+
+// var $checkWin = function() {
+// 	$tileNmbr++;
+// 	var $circleClass = $('.circle');
+//
+// 	if ($checkTiles($red)) {
+// 		for (var i=0; i < $circleClass.length; i++) {
+// 			$circleClass[i].text("red won!");
+// 		}
+// 	} else if ($checkTiles($black)) {
+// 		for (var j=0; j < $circleClass.length; j++) {
+// 			$circleClass.text("black won!");
+// 		}
+// 	} else if ($tileNmbr == 42) {
+// 		$board.text("tie!");
+// 	}
+// }
+
+
+
+// CHECK TILES ---?
+
+// var $checkTiles = function ($tokenPositions) {
+//   for (var i = 0; i < $winning.length; i++) {
+//     var $wins = 0;
+//     for (var j = 0; j < $winning[i].length; j++) {
+//       for (var k = 0; k < $tokenPositions.length; k++) {
+//         if ($tokenPositions[i][j] == $tokenPositions[k]) {
+//           $wins++;
+//         }
+//       }
+//     }
+//     if (wins == 3) {
+//       return true
+//     }
+//   }
+//   return false
 // };
