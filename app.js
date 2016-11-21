@@ -7,7 +7,7 @@ $(function() {
 
   var $clearButton = $('#clear-board'); // grapbbing the clear-board id
 
-  var $turn = $('p'); // grabbing p tag from index
+  var $nextTurn = $('p'); // grabbing p tag from index
 
   var $toggle = true; // global variable set to true
 
@@ -18,9 +18,43 @@ $(function() {
   var $red, $black; // --?
 
 
+// SWITCH TURNS [X]
+  var $toggleFunction = function() {
+    console.log('testing toggleFunction'); // click listener is working
+
+    if ($toggle) {
+        $(this).attr('id', 'red-token'); // gave attribute of redToken to the $newBoardDiv created below
+        $nextTurn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
+      } else {
+        $(this).attr('id', 'black-token'); // gave attribute of blackToken to $newBoardDiv created below
+        $nextTurn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
+      };
+        $toggle = !$toggle; // alternates the turns between red and black
+
+      // a player should not be able to mark a space that has already been played
+      if ($('#red-token') || $('#black-token')) {
+        $(this).off('click', $toggleFunction); // turning off the toggle function so users can't click again
+      }
+
+    };
+
+
+  // MOUSEOVER
+  // var $columnMouseover = function() {
+  //   // var $circleClass = $('.circle');
+  //
+  //   var $
+  //
+  //   $circleClass.mouseover(function() {
+  //     $circleClass.css('background', 'yellow');
+  //   })
+  // };
+  // $columnMouseover();
+
+
 
 // CREATING COLUMNS ARRAYS  ---?
-    var column1 = ["35", "28", "21", "14", "7", "0"];
+    var column1 = ["35", "28", "21", "14", "7", 0];
     var column2 = ["36", "29", "22", "15", "8", "1"];
     var column3 = ["37", "30", "23", "16", "9", "2"];
     var column4 = ["38", "31", "24", "17", "10", "3"];
@@ -30,21 +64,13 @@ $(function() {
 
     // WINNING TILES ---?
     var $winning = [
-      ["35", "36", "37", "38"] , ["36", "37", "38", "39"]
+      [35, 36, 37, 38] , [36, 37, 38, 39]
     ];
 
 
-// MOUSEOVER
-// var $columnMouseover = function() {
-//   // var $circleClass = $('.circle');
-//
-//   var $
-//
-//   $circleClass.mouseover(function() {
-//     $circleClass.css('background', 'yellow');
-//   })
-// };
-// $columnMouseover();
+    if (0 === $('#red-token')) {
+      console.log('testing 0');
+    };  // ---> not working ???
 
 
 // WINNING CONDITIONS ---?
@@ -88,33 +114,6 @@ $(function() {
 // };
 
 
-// if (column1[5] == ('id="red-token')) {
-//   console.log('testing 0');
-// };  ---> not working ???
-
-
-
-// SWITCH TURNS [X]
-  var $toggleFunction = function() {
-    console.log('testing toggleFunction'); // click listener is working
-
-    if ($toggle == true) { // this will make the red token to start first
-        $(this).attr('id', 'red-token'); // gave attribute of redToken to the $newBoardDiv created below
-        $turn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
-      } else {
-        $(this).attr('id', 'black-token'); // gave attribute of blackToken to $newBoardDiv created below
-        $turn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
-      };
-        $toggle = !$toggle; // a;ternates the turns between red and black
-
-    // a player should not be able to mark a space that has already been played
-    if ($('#red-token') || $('#black-token')) {
-       $(this).off('click', $toggleFunction); // turning off the toggle function so users can't click again
-    }
-
-  };
-
-
 // CREATING CONNECT FOUR BOARD [X]
   for (var i = 0; i < 42; i++) { // iterating 42 times
     var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
@@ -137,9 +136,11 @@ $(function() {
       toggle = true;
       $circleClass.on('click', $toggleFunction);
 
-      $turn.text("It's Red's turn"); // when the clear button is clicked, the p tag will show that it is red's turn
+      $nextTurn.text("It's Red's turn"); // when the clear button is clicked, the p tag will show that it is red's turn
     }
   });
+
+
 
 
 });//---> end of code, do not change!
@@ -270,52 +271,23 @@ $(function() {
 
 
 // WORKING
-// var $toggleFunction = function() {
-//   console.log('testing toggle'); // click listener is working
-//   if ($toggle === '#red-token' || $toggle === '#black-token') {
-//     } else if ($toggle == true) {
-//       var $redToken = $('<div>'); // creating a new div that goes below the new board div
-//       $redToken.attr('id', 'red-token'); // gave attribute of redToken to the new div
-//       $newBoardDiv.append($redToken); // appending the redToken div to the newBoardDiv (squares)
-//       $circleDiv.remove('#circle'); // removed white cicle div
-//     } else {
-//       var $blackToken = $('<div>'); // creating a new div that goes below the new board div
-//       $blackToken.attr('id', 'black-token'); // gave attribute of blackToken to the new div
-//       $newBoardDiv.append($blackToken); // appending the redToken div to the newBoardDiv (squares)
-//       $circleDiv.remove('#circle'); // removed white cicle div
-//     };
-//       $toggle = !$toggle;
+// if ($toggle === '#red-token' || $toggle === '#black-token') {
+//   //do nothing
+// } else if ($toggle == true) { // this will make the red token to start first
+//     $(this).attr('id', 'red-token'); // gave attribute of redToken to the $newBoardDiv created below
+//     $nextTurn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
+//   } else {
+//     $(this).attr('id', 'black-token'); // gave attribute of blackToken to $newBoardDiv created below
+//     $nextTurn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
+//   };
+//     $toggle = !$toggle; // alternates the turns between red and black
 //
-//     // if ($('#red-token') || $('#red-token')) {
-//     //   $('#red-token').unbind('click', $toggleFunction);
-//     // }
-//
-// }
-
-// TAMBIEN WORKING
-// var $toggleFunction = function() {
-//   console.log('testing toggle'); // click listener is working
-//
-//   for (var i = 0; i < 42; i++) {
-//     array[i]
+//   // a player should not be able to mark a space that has already been played
+//   if ($('#red-token') || $('#black-token')) {
+//     $(this).off('click', $toggleFunction); // turning off the toggle function so users can't click again
 //   }
 //
-//     if ($toggle === '#red-token' || $toggle === '#black-token') {
-//       } else if ($toggle == true) {
-//         $newBoardDiv.append($redToken);
-//         $circleDiv.remove('#circle');
-//       } else {
-//         $newBoardDiv.append($blackToken);
-//         $circleDiv.remove('#circle'); // removed white cicle div
-//       };
-//         $toggle = !$toggle;
-//
-//     // if ($('#red-token') || $('#red-token')) {
-//     //   $('#red-token').unbind('click', $toggleFunction);
-//     // }
-//
-// }
-
+// };
 
 // for (var i = 0; i < column1.length; i++) {
 //     console.log((column1.push(i) == 5));
@@ -468,3 +440,24 @@ $(function() {
 //
 // });
 // // $createBoard();
+
+
+// MY CODE
+// var $toggleFunction = function() {
+//   console.log('testing toggleFunction'); // click listener is working
+//
+//   if ($toggle) { // this will make the red token to start first
+//       $(this).attr('id', 'red-token'); // gave attribute of redToken to the $newBoardDiv created below
+//       $nextTurn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
+//     } else {
+//       $(this).attr('id', 'black-token'); // gave attribute of blackToken to $newBoardDiv created below
+//       $nextTurn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
+//     };
+//       $toggle = !$toggle; // alternates the turns between red and black
+//
+//   // a player should not be able to mark a space that has already been played
+//   if ($('#red-token') || $('#black-token')) {
+//      $(this).off('click', $toggleFunction); // turning off the toggle function so users can't click again
+//   }
+//
+// };
