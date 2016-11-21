@@ -51,7 +51,7 @@ p {
   margin: 2px;
 }
 
-#red-token {
+.red-token {
   width: 98px;
 	height: 98px;
 	background: red;
@@ -59,7 +59,7 @@ p {
   margin: 2px;
 }
 
-#black-token {
+.black-token {
   width: 98px;
 	height: 98px;
 	background: black;
