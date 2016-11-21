@@ -43,36 +43,25 @@ $(function() {
 
   };// --> closing toggleFunction function
 
-// BUTTON / RESET BOARD [X]
-  var clearBoard = function() {
-
-    var $circleClass = $('.circle'); // grabbing the circle class
-    console.log('this is circle class ' + $circleClass);
-
-    $circleClass.on('click', toggleFunction);
-    // console.log($circleClass);
-    toggle = true;
-    $circleClass.removeAttr('id'); // when the clear board is clicked, it will remove the id red-token or black-token
-
-  };// --> closing clearBoard function
-
-  $clearButton.on('click', function(){
-    clearBoard(); // this will run the clearBoard function
-  });// --> closing $clearButton function
-
 
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
+    $board.empty() // this will reset the board after I click the clearButton
     for (var i = 0; i < 42; i++) { // iterating 42 times
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
         $newBoardDiv.attr('tile', i); // adding tiles with numbers to the circles
         $board.append($newBoardDiv); // appending the newBoardDiv that goes inside the board div
         $newBoardDiv.on('click', toggleFunction); // on click, the circle will... (see the switch turns above)
-    };
+      };
   }; // --> closing createBoard function
 
   createBoard(); // calling createBoard to create the board when the page loads
+
+  // 3. CLEAR BOARD  [X]
+  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+
+
 
 
 
@@ -83,6 +72,7 @@ $(function() {
 });//---> end of code, do not change!
 
 
+//Tiles --> I want to get the tile number, then I want to check
 
 
 
