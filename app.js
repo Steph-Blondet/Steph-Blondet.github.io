@@ -25,11 +25,11 @@ $(function() {
     console.log('testing toggleFunction'); // click listener is working
 
     if (toggle) {
-        $(this).attr('id', 'red-token'); // if toggle is true, it will add the attribute of redToken to the $newBoardDiv created below
+        $(this).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
         $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
         // console.log('toggle is true');
       } else {
-        $(this).attr('id', 'black-token'); // if toggle is false, it will add the attribute of blackToken to the $newBoardDiv created below
+        $(this).addClass('black-token'); // if toggle is false, it will add the class of blackToken to the $newBoardDiv created below
         $nextTurn.text("It's Red's turn"); // when blackToken is added to the div, the p tag will change to red's turn
         // console.log('toggle is false');
       };
@@ -37,7 +37,7 @@ $(function() {
       toggle = !toggle; // alternates the turns between red and black
 
       // a player should not be able to mark a space that has already been played
-      if ($('#red-token') || $('#black-token')) {
+      if ($('.red-token') || $('.black-token')) {
         $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
       };
 
@@ -47,12 +47,12 @@ $(function() {
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
     $board.empty() // this will reset the board after I click the clearButton
-    for (var i = 0; i < 42; i++) { // iterating 42 times
+    for (var i = 0; i < 42; i++) { // I want to create 42 white circles that when clicked will change to red/black
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-        $newBoardDiv.attr('tile', i); // adding tiles with numbers to the circles
+        // $newBoardDiv.attr('tile', i); // adding tiles with numbers to the circles --> not going to work anymore
         $board.append($newBoardDiv); // appending the newBoardDiv that goes inside the board div
-        $newBoardDiv.on('click', toggleFunction); // on click, the circle will... (see the switch turns above)
+        $newBoardDiv.on('click', toggleFunction); // on click, the circle will... (see the 'switch turns' above)
       };
   }; // --> closing createBoard function
 
