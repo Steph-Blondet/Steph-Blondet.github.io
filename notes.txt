@@ -8,13 +8,17 @@ Your game of Connect Four must have at a minimum:
 - The game should announce a winner if a player gets four tokens in a row, horizontally or vertically
 *******************************************************************************************
 
+INSTRUCTOR's SUGGESTIONS:
+- change the id red,black token to classes. this will add it after the circle class in the same quotes.
+- arrange it to columns and rows instead of tile numbers
+- add a drop button instead of a mouseover
+
 // THINGS TO DO DURING THE WEEK
 
-1. figure out how to make the tokens switch again after the user clicks on the 'new game' button
-2. figure out how to grab the tiles and store them in columns
-3. figure out how to use mouseover once I've figured out how to store the tiles in columns
-4. figure out how to make the tokens go to the bottom
-5. figure out the winning conditions
+[X] figure out how to make the tokens switch again after the user clicks on the 'new game' button
+2. figure out how to make the tokens go to the bottom
+3. figure out the winning conditions
+
 
 
 ////// USER STORY
@@ -27,9 +31,9 @@ Your game of Connect Four must have at a minimum:
 ////// DESIGN
 Things I need to see on the page:
 [X] a board with 6 rows and 7 columns
-- design two tokens (one red and one black)
-- show which turn it is (text/button with the color)
-- a 'new game' button
+[X] design two tokens (one red and one black)
+[X] show which turn it is (text/button with the color)
+[X] a 'new game' button
 
 
 ////// CODE PLANNING
@@ -99,10 +103,6 @@ Things I need to see on the page:
 
 ////// RANDOM THOUGHTS
 - I can create squares like I did with the tic tac toe and put them all together. A square with a space in the middle and when it is clicked, to change that square with the color of the token inside
-
-
-
-
 
 
 ////// WINNING CONDITIONS
