@@ -11,24 +11,12 @@ $(function() {
 
   var $toggle = true; // global variable set to true
 
+  var $circleClass = $('.circle'); // grabbing the circle class
+
   var $tileNmbr; // --?
 
   var $red, $black; // --?
 
-
-// BUTTON / RESET BOARD
-  $clearButton.on('click', function(){
-
-    var $clearBoard = $('.circle'); // grabbing the circle class
-
-    for (var i = 0; i < $clearBoard.length; i++) {
-      $clearBoard.removeAttr('id'); // when the $clearButton is clicked, it will remove the id red-token or black-token
-      toggle = true;
-      $clearBoard.on('click', $toggleFunction);
-
-      $turn.text("It's Red's turn"); // when the clear button is clicked, the p tag will show that it is red's turn
-    }
-  });
 
 
 // CREATING COLUMNS ARRAYS  ---?
@@ -46,6 +34,17 @@ $(function() {
     ];
 
 
+// MOUSEOVER
+// var $columnMouseover = function() {
+//   // var $circleClass = $('.circle');
+//
+//   var $
+//
+//   $circleClass.mouseover(function() {
+//     $circleClass.css('background', 'yellow');
+//   })
+// };
+// $columnMouseover();
 
 
 // WINNING CONDITIONS ---?
@@ -127,6 +126,20 @@ $(function() {
 
 };
 
+
+// BUTTON / RESET BOARD [X]
+  $clearButton.on('click', function(){
+
+    var $circleClass = $('.circle'); // grabbing the circle class
+
+    for (var i = 0; i < $circleClass.length; i++) {
+      $circleClass.removeAttr('id'); // when the $clearButton is clicked, it will remove the id red-token or black-token
+      toggle = true;
+      $circleClass.on('click', $toggleFunction);
+
+      $turn.text("It's Red's turn"); // when the clear button is clicked, the p tag will show that it is red's turn
+    }
+  });
 
 
 });//---> end of code, do not change!
