@@ -41,6 +41,14 @@ $(function() {
 
   };// --> closing toggleFunction function
 
+  // 3. CLEAR BOARD  [X]
+  // $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+  $clearButton.on('click', function() {
+    createBoard();
+    clickButtons();
+
+  });
+
 
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
@@ -57,10 +65,6 @@ $(function() {
   }; // --> closing createBoard function
 
   createBoard(); // calling createBoard to create the board when the page loads
-
-
-  // 3. CLEAR BOARD  [X]
-  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
 
 
 // CREATING COLUMNS ARRAYS
@@ -85,19 +89,29 @@ $(function() {
    console.log($button1Id); // checked all the buttonIds and they work!
 
 
- $button1Id.on('click', function(){
+var clickButtons = function () {
+  $button1Id.on('click', function(){
 
-   for (var i = 0; i < column1.length; i++) {
-    if (column1[i].hasClass('circle')) {
-       if (!column1[i].hasClass('red-token')) {
-         toggleFunction(column1[i]); // this makes the token red
-         break; // this will stop the column to be filled out completely
-       } // --> if red ends
-
+    for (var i = 0; i < column1.length; i++) {
+      if (column1[i].hasClass('circle') && !column1[i].hasClass('red-token')) {
+        toggleFunction(column1[i]); // this makes the token red
+        break; // this will stop the column to be filled out completely
+        } else {
         toggle = !toggle; // alternates the turns between red and black
-      } // --> if circle ends
-    } // --> for loop ends
-}); // --> function ends
+        }
+      }
+  }); // --> click function ends
+}; // --> function ends
+clickButtons();
+
+
+// 3. CLEAR BOARD  [X]
+// $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+// $clearButton.on('click', function() {
+//   createBoard();
+//   clickButtons();
+//
+// });
 
 // --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
 
@@ -623,3 +637,19 @@ $(function() {
 //  else if (('.red-token') || ('.black-token')){
 //      toggle = true; // this makes the token black
 //   }
+
+
+
+// $button1Id.on('click', function(){
+//
+//   for (var i = 0; i < column1.length; i++) {
+//    if (column1[i].hasClass('circle')) {
+//       if (!column1[i].hasClass('red-token')) {
+//         toggleFunction(column1[i]); // this makes the token red
+//         break; // this will stop the column to be filled out completely
+//       } // --> if red ends
+//
+//        toggle = !toggle; // alternates the turns between red and black
+//      } // --> if circle ends
+//    } // --> for loop ends
+// }); // --> function ends
