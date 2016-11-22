@@ -13,11 +13,13 @@ $(function() {
 
   var $circleClass = $('.circle'); // grabbing the circle class
 
-  var $tileNmbr; // --?
-
-  var $red, $black; // --?
+  // var $tileNmbr; // --?
+  //
+  // var $red, $black; // --?
 
   var $newBoardDiv;
+
+  var clickButtons;
 
 
 // 2. SWITCH TURNS [X]
@@ -34,6 +36,7 @@ $(function() {
       // console.log('toggle is false');
       };
 
+      toggle = !toggle;
       // // a player should not be able to mark a space that has already been played
       // if ($('.red-token') || $('.black-token')) {
       //   $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
@@ -41,13 +44,6 @@ $(function() {
 
   };// --> closing toggleFunction function
 
-  // 3. CLEAR BOARD  [X]
-  // $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
-  $clearButton.on('click', function() {
-    createBoard();
-    clickButtons();
-
-  });
 
 
 // 1. CREATING CONNECT FOUR BOARD [X]
@@ -60,11 +56,11 @@ $(function() {
         $board.append($newBoardDiv); // appending the newBoardDiv that goes inside the board div
 
         // $newBoardDiv.on('click', toggleFunction); // on click, the circle will... (see the 'switch turns' above)
-
       };
   }; // --> closing createBoard function
 
   createBoard(); // calling createBoard to create the board when the page loads
+  // clickButtons();
 
 
 // CREATING COLUMNS ARRAYS
@@ -88,60 +84,71 @@ $(function() {
   var $button7Id = $('#button7');
    console.log($button1Id); // checked all the buttonIds and they work!
 
-
+// click buttons is putting a color in an empty space.
 var clickButtons = function () {
   $button1Id.on('click', function(){
 
     for (var i = 0; i < column1.length; i++) {
-      if (column1[i].hasClass('circle') && !column1[i].hasClass('red-token')) {
+      if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
+        console.log('space is taken');
+      } else {
         toggleFunction(column1[i]); // this makes the token red
         break; // this will stop the column to be filled out completely
-        } else {
-        toggle = !toggle; // alternates the turns between red and black
-        }
+      }
+        // alternates the turns between red and black
+
+
       }
   }); // --> click function ends
 }; // --> function ends
+
 clickButtons();
+// createBoard();
 
 
 // 3. CLEAR BOARD  [X]
-// $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
-// $clearButton.on('click', function() {
-//   createBoard();
-//   clickButtons();
-//
-// });
+ $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+ // $clearButton.on('click', function() {
+ //   createBoard();
+ //   // clickButtons();
+ // }); // --> end clear button function
+
+
+
+
+
+
 
 // --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
 
-  // $button2Id.on('click', function(){
-  //   for (var i = 0; i < column2.length; i++) {
-  //     if (!column2[i].hasClass('red-token')) {
-  //     toggleFunction(column2[i]);
-  //     break;
-  //     }
-  //   };
-  // });
+  $button2Id.on('click', function(){
+    // for (var i = 0; i < column2.length; i++) {
+    //   if (!column2[i].hasClass('red-token')) {
+    //   toggleFunction(column2[i]);
+    //   break;
+    //   }
+    // };
+    console.log('I clicked button2');
+  });
 
   $button3Id.on('click', function(){
-      console.log('I clicked button3');
+    console.log('I clicked button3');
   });
 
   $button4Id.on('click', function(){
-      console.log('I clicked button4');
+    console.log('I clicked button4');
   });
 
   $button5Id.on('click', function(){
-      console.log('I clicked button5');
+    console.log('I clicked button5');
   });
 
   $button6Id.on('click', function(){
-      console.log('I clicked button6');
+    console.log('I clicked button6');
   });
 
   $button7Id.on('click', function(){
-      console.log('I clicked button7');
+    console.log('I clicked button7');
   });
 
 
