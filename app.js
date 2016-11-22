@@ -21,15 +21,16 @@ $(function() {
 
 
 // 2. SWITCH TURNS [X]
-  var toggleFunction = function() {
+  var toggleFunction = function(column) {
     console.log('testing toggleFunction'); // click listener is working
 
     if (toggle) {
-        $(this).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
+        console.log(this);
+        $(column).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
         $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
         // console.log('toggle is true');
       } else {
-        $(this).addClass('black-token'); // if toggle is false, it will add the class of blackToken to the $newBoardDiv created below
+        $(column).addClass('black-token'); // if toggle is false, it will add the class of blackToken to the $newBoardDiv created below
         $nextTurn.text("It's Red's turn"); // when blackToken is added to the div, the p tag will change to red's turn
         // console.log('toggle is false');
       };
@@ -65,53 +66,75 @@ $(function() {
 
 
 // PLAY HERE BUTTON
-var buttonColumns = {
-  button1: [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')],
-  button2: [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')],
-  button3: [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')],
-  button4: [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')],
-  button5: [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')],
-  button6: [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')],
-  button7: [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')]
-}
+// var buttonColumns = {
+//   button1: [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')],
+//   button2: [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')],
+//   button3: [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')],
+//   button4: [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')],
+//   button5: [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')],
+//   button6: [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')],
+//   button7: [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')]
+// }
+// console.log(buttonColumns.button1[0]); // this is working
 
-  // GRABBING PLAY HERE BUTTONS FROM THE HTML
-    var $button1Id = $('#button1');
-    var $button2Id = $('#button2');
-    var $button3Id = $('#button3');
-    var $button4Id = $('#button4');
-    var $button5Id = $('#button5');
-    var $button6Id = $('#button6');
-    var $button7Id = $('#button7');
-     console.log($button1Id); // checked all the buttonIds and they work!
+// CREATING COLUMNS ARRAYS
+  var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
+  var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
+  var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
+  var column4 = [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')];
+  var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
+  var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
+  var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
+  console.log(column1[2]); // I wrote the array correctly! :)
+  // console.log('this is number: ' + column1[1]);
 
-    $button1Id.on('click', function(){
-        console.log('I clicked button1');
-    });
+// GRABBING PLAY HERE BUTTONS FROM THE HTML
+  var $button1Id = $('#button1');
+  var $button2Id = $('#button2');
+  var $button3Id = $('#button3');
+  var $button4Id = $('#button4');
+  var $button5Id = $('#button5');
+  var $button6Id = $('#button6');
+  var $button7Id = $('#button7');
+   console.log($button1Id); // checked all the buttonIds and they work!
 
-    $button2Id.on('click', function(){
-        console.log('I clicked button2');
-    });
+  $button1Id.on('click', function(){
+    for (var i = 0; i < column1.length; i++) {
+      if (!column1[i].hasClass('red-token')) {
+      toggleFunction(column1[i]);
+      break;
+    } else {
 
-    $button3Id.on('click', function(){
-        console.log('I clicked button3');
-    });
+    }
+  };
+});
 
-    $button4Id.on('click', function(){
-        console.log('I clicked button4');
-    });
 
-    $button5Id.on('click', function(){
-        console.log('I clicked button5');
-    });
+// --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
 
-    $button6Id.on('click', function(){
-        console.log('I clicked button6');
-    });
+  $button2Id.on('click', function(){
+      console.log('I clicked button2');
+  });
 
-    $button7Id.on('click', function(){
-        console.log('I clicked button7');
-    });
+  $button3Id.on('click', function(){
+      console.log('I clicked button3');
+  });
+
+  $button4Id.on('click', function(){
+      console.log('I clicked button4');
+  });
+
+  $button5Id.on('click', function(){
+      console.log('I clicked button5');
+  });
+
+  $button6Id.on('click', function(){
+      console.log('I clicked button6');
+  });
+
+  $button7Id.on('click', function(){
+      console.log('I clicked button7');
+  });
 
 
 
@@ -565,3 +588,9 @@ var buttonColumns = {
 // };
 //
 // accessingObjects(); // calling the function
+
+
+
+// if ($button1Id == $('.circle')) {
+// console.log('testing');
+// }
