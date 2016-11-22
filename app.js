@@ -34,12 +34,11 @@ $(function() {
       // console.log('toggle is false');
       };
 
-      toggle = !toggle; // alternates the turns between red and black
-
-      // a player should not be able to mark a space that has already been played
+      // // a player should not be able to mark a space that has already been played
       // if ($('.red-token') || $('.black-token')) {
-      //   $(column).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
+      //   $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
       // };
+
 
   };// --> closing toggleFunction function
 
@@ -87,20 +86,33 @@ $(function() {
    console.log($button1Id); // checked all the buttonIds and they work!
 
 
-   $button1Id.on('click', function(){
+ $button1Id.on('click', function(){
 
-      for (var i = 0; i < column1.length; i++) {
-        if (!column1[i].hasClass('red-token')) {
-          toggleFunction(column1[i]);
-          break; // this will stop the column to be filled out completely
-        } else if (!column1[i].hasClass('red-token') && !column1[i].hasClass('black-token')) {
-          toggle = false;
-          // break;
-        } else if (column1[i].hasClass('red-token') && column1[i].hasClass('black-token')) {
-          toggle = true;
-        }
-      }
-      });
+   for (var i = 0; i < column1.length; i++) {
+     if (!column1[i].hasClass('red-token')) {
+       toggleFunction(column1[i]); // this makes the token red
+       break; // this will stop the column to be filled out completely
+     } else {
+       toggle = !toggle;
+     }
+    //  else if (column1[i].hasClass('red-token') && column1[i].hasClass('black-token')) {
+    //    toggleFunction(column1[i]);
+    //   }
+ // alternates the turns between red and black
+
+    //  else if (!column1[i].hasClass('black-token')) {
+    //    toggle = true;
+    //  }
+    //  else if (('.red-token') || ('.black-token')){
+    //      toggle = true; // this makes the token black
+    //   }
+
+      // a player should not be able to mark a space that has already been played
+      // if ($('.red-token') || $('.black-token')) {
+      //   $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
+      // };
+    }
+  });
 
 
 // --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
