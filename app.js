@@ -19,11 +19,9 @@ $(function() {
 
   var $newBoardDiv;
 
-  // var clickButtons;
 
 
-
-// 2. SWITCH TURNS [X]
+// 3. SWITCH TURNS [X]
   var toggleFunction = function(column) {
     console.log('testing toggleFunction'); // click listener is working
 
@@ -59,7 +57,7 @@ $(function() {
 
 
 
-// 4. MAKING THE PLAY HERE BUTTONS CLICKABLE
+// 2. MAKING THE PLAY HERE BUTTONS CLICKABLE
 // creating arrays for the columns
   var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
   var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
@@ -169,12 +167,39 @@ $(function() {
   clickButtons();
 
 
-  // 3. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
-  //  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
-   $clearButton.on('click', function() {
-     createBoard();
-    //  clickButtons();
-   }); // --> end clear button function
+
+// 4. WINNING TIMEEEEEEEEEEE
+
+var $winsArray = [
+    [$('#35'), $('#36'), $('#37'), $('#38')], [$('#36'), $('#37'), $('#38'), $('#39')], [$('#37'), $('#38'), $('#39'), $('#40')], [$('#38'), $('#39'), $('#40'), $('#41')]
+
+];
+// console.log($winsArray[3]);
+
+// WINNING PSEUDOCODE
+// I want to go to the first array and check if the token is red
+// if true, go to the next space in the same array and check if it's red
+// if true, go to the third space in the same array and check if it's red
+// if true, go to the fourth space in the same array and check if it's red
+// if false, go to the next array
+// ---> look into nested loops?
+
+
+var $checkingWins = function() {
+  for (var i = 0; i < $winsArray.length; i++) {
+    if ($winsArray[i][i].hasClass('red-token'))
+  } else if ()
+};
+
+$checkingWins();
+
+
+// 5. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
+//  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+ $clearButton.on('click', function() {
+   createBoard();
+  //  clickButtons();
+ }); // --> end clear button function
 
 
 });//---> end of code, do not change!
