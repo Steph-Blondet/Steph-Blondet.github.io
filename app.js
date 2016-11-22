@@ -39,7 +39,6 @@ $(function() {
       //   $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
       // };
 
-
   };// --> closing toggleFunction function
 
 
@@ -89,31 +88,16 @@ $(function() {
  $button1Id.on('click', function(){
 
    for (var i = 0; i < column1.length; i++) {
-     if (!column1[i].hasClass('red-token')) {
-       toggleFunction(column1[i]); // this makes the token red
-       break; // this will stop the column to be filled out completely
-     } else {
-       toggle = !toggle;
-     }
-    //  else if (column1[i].hasClass('red-token') && column1[i].hasClass('black-token')) {
-    //    toggleFunction(column1[i]);
-    //   }
- // alternates the turns between red and black
+    if (column1[i].hasClass('circle')) {
+       if (!column1[i].hasClass('red-token')) {
+         toggleFunction(column1[i]); // this makes the token red
+         break; // this will stop the column to be filled out completely
+       } // --> if red ends
 
-    //  else if (!column1[i].hasClass('black-token')) {
-    //    toggle = true;
-    //  }
-    //  else if (('.red-token') || ('.black-token')){
-    //      toggle = true; // this makes the token black
-    //   }
-
-      // a player should not be able to mark a space that has already been played
-      // if ($('.red-token') || $('.black-token')) {
-      //   $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
-      // };
-    }
-  });
-
+        toggle = !toggle; // alternates the turns between red and black
+      } // --> if circle ends
+    } // --> for loop ends
+}); // --> function ends
 
 // --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
 
@@ -617,3 +601,25 @@ $(function() {
 //   button7: [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')]
 // }
 // console.log(buttonColumns.button1[0]); // this is working
+
+
+
+
+//    else if (!column1[i].hasClass('red-token')) {
+//    toggle = false;
+//    toggleFunction(column1[i]);
+//    break;
+//  }
+
+
+//  else if (column1[i].hasClass('red-token') && column1[i].hasClass('black-token')) {
+//    toggleFunction(column1[i]);
+//   }
+
+
+//  else if (!column1[i].hasClass('black-token')) {
+//    toggle = true;
+//  }
+//  else if (('.red-token') || ('.black-token')){
+//      toggle = true; // this makes the token black
+//   }
