@@ -20,31 +20,6 @@ $(function() {
   var $newBoardDiv;
 
 
-// 2. SWITCH TURNS [X]
-  var toggleFunction = function(column) {
-    console.log('testing toggleFunction'); // click listener is working
-
-    if (toggle) {
-        console.log(this);
-        $(column).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
-        $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
-        // console.log('toggle is true');
-      } else {
-        $(column).addClass('black-token'); // if toggle is false, it will add the class of blackToken to the $newBoardDiv created below
-        $nextTurn.text("It's Red's turn"); // when blackToken is added to the div, the p tag will change to red's turn
-        // console.log('toggle is false');
-      };
-
-      toggle = !toggle; // alternates the turns between red and black
-
-      // a player should not be able to mark a space that has already been played
-      if ($('.red-token') || $('.black-token')) {
-        $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
-      };
-
-  };// --> closing toggleFunction function
-
-
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
     $board.empty() // this will reset the board after I click the clearButton
@@ -61,21 +36,10 @@ $(function() {
 
   createBoard(); // calling createBoard to create the board when the page loads
 
+
   // 3. CLEAR BOARD  [X]
   $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
 
-
-// PLAY HERE BUTTON
-// var buttonColumns = {
-//   button1: [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')],
-//   button2: [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')],
-//   button3: [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')],
-//   button4: [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')],
-//   button5: [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')],
-//   button6: [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')],
-//   button7: [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')]
-// }
-// console.log(buttonColumns.button1[0]); // this is working
 
 // CREATING COLUMNS ARRAYS
   var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
@@ -98,23 +62,52 @@ $(function() {
   var $button7Id = $('#button7');
    console.log($button1Id); // checked all the buttonIds and they work!
 
-  $button1Id.on('click', function(){
-    for (var i = 0; i < column1.length; i++) {
-      if (!column1[i].hasClass('red-token')) {
-      toggleFunction(column1[i]);
-      break;
-    } else {
 
+   $button1Id.on('click', function(){
+
+      for (var i = 0; i < column1.length; i++) {
+        if (!column1[i].hasClass('red-token')) {
+          toggleFunction(column1[i]);
+          break; // this will stop the column to be filled out completely
+        } else if (!column1[i].hasClass('red-token') || !column1[i].hasClass('black-token')) {
+          toggleFunction(column1[i]);
+        }
     }
-  };
-});
+  });
 
+// 2. SWITCH TURNS [X]
+    var toggleFunction = function(column) {
+      console.log('testing toggleFunction'); // click listener is working
+
+      if (toggle) {
+        $(column).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
+        $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
+        // console.log('toggle is true');
+        } else {
+        $(column).addClass('black-token'); // if toggle is false, it will add the class of blackToken to the $newBoardDiv created below
+        $nextTurn.text("It's Red's turn"); // when blackToken is added to the div, the p tag will change to red's turn
+        // console.log('toggle is false');
+        };
+
+        toggle = !toggle; // alternates the turns between red and black
+
+        // a player should not be able to mark a space that has already been played
+        // if ($('.red-token') || $('.black-token')) {
+        //   $(column).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
+        // };
+
+    };// --> closing toggleFunction function
 
 // --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
 
-  $button2Id.on('click', function(){
-      console.log('I clicked button2');
-  });
+  // $button2Id.on('click', function(){
+  //   for (var i = 0; i < column2.length; i++) {
+  //     if (!column2[i].hasClass('red-token')) {
+  //     toggleFunction(column2[i]);
+  //     break;
+  //     }
+  //   };
+  // });
 
   $button3Id.on('click', function(){
       console.log('I clicked button3');
@@ -594,3 +587,16 @@ $(function() {
 // if ($button1Id == $('.circle')) {
 // console.log('testing');
 // }
+
+
+// PLAY HERE BUTTON
+// var buttonColumns = {
+//   button1: [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')],
+//   button2: [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')],
+//   button3: [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')],
+//   button4: [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')],
+//   button5: [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')],
+//   button6: [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')],
+//   button7: [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')]
+// }
+// console.log(buttonColumns.button1[0]); // this is working
