@@ -50,9 +50,11 @@ $(function() {
     for (var i = 0; i < 42; i++) { // I want to create 42 white circles that when clicked will change to red/black
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-        // $newBoardDiv.attr('tile', i); // adding tiles with numbers to the circles --> not going to work anymore
+        $newBoardDiv.attr('id', i); // adding ids with numbers to the circles -- adding this again just in case I need it later
         $board.append($newBoardDiv); // appending the newBoardDiv that goes inside the board div
-        $newBoardDiv.on('click', toggleFunction); // on click, the circle will... (see the 'switch turns' above)
+
+        // $newBoardDiv.on('click', toggleFunction); // on click, the circle will... (see the 'switch turns' above)
+
       };
   }; // --> closing createBoard function
 
@@ -62,6 +64,42 @@ $(function() {
   $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
 
 
+// PLAY HERE BUTTON
+var buttonColumns = {
+  button1: [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')],
+  button2: [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')],
+  button3: [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')],
+  button4: [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')],
+  button5: [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')],
+  button6: [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')],
+  button7: [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')]
+}
+
+var accessingObjects = function() {
+  for (var i = 0; i < buttonColumns.button1.length; i++) {
+    console.log(buttonColumns.button1[i]); // printing every element in the button1 key
+  }
+};
+
+accessingObjects(); // calling the function
+
+// CREATING COLUMNS ARRAYS
+  //  var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
+  //  var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
+  //  var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
+  //  var column4 = [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')];
+  //  var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
+  //  var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
+  //  var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
+  // console.log(column1[4]); // I wrote the array correctly! :)
+  // //
+  // var checking = function (){
+  //   for (var i = 0; i < column1.length; i++) {
+  //     array[i]
+  //   }
+
+
+  // };
 
 
 
@@ -72,7 +110,8 @@ $(function() {
 });//---> end of code, do not change!
 
 
-//Tiles --> I want to get the tile number, then I want to check
+
+
 
 
 
