@@ -38,7 +38,6 @@ $(function() {
 
       toggle = !toggle; // alternates the turns between red and black
 
-
   };// --> closing toggleFunction function
 
 
@@ -60,43 +59,86 @@ $(function() {
   // clickButtons();
 
 
-// CREATING COLUMNS ARRAYS
-  var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
-  var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
-  var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
-  var column4 = [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')];
-  var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
-  var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
-  var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
-  console.log(column1[2]); // I wrote the array correctly! :)
+  // CREATING COLUMNS ARRAYS
+    var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
+    var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
+    var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
+    var column4 = [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')];
+    var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
+    var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
+    var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
+    console.log(column1[2]); // I wrote the array correctly! :)
 
+  // GRABBING PLAY HERE BUTTONS FROM THE HTML
+    var $button1Id = $('#button1');
+    var $button2Id = $('#button2');
+    var $button3Id = $('#button3');
+    var $button4Id = $('#button4');
+    var $button5Id = $('#button5');
+    var $button6Id = $('#button6');
+    var $button7Id = $('#button7');
+     console.log($button1Id); // checked all the buttonIds and they work!
 
-// GRABBING PLAY HERE BUTTONS FROM THE HTML
-  var $button1Id = $('#button1');
-  var $button2Id = $('#button2');
-  var $button3Id = $('#button3');
-  var $button4Id = $('#button4');
-  var $button5Id = $('#button5');
-  var $button6Id = $('#button6');
-  var $button7Id = $('#button7');
-   console.log($button1Id); // checked all the buttonIds and they work!
-
-// click buttons is putting a color in an empty space.
-var clickButtons = function () {
-  $button1Id.on('click', function(){
-    for (var i = 0; i < column1.length; i++) {
-      if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
-        console.log('space is taken');
-      } else {
-        toggleFunction(column1[i]); // this makes the token red
-        break; // this will stop the column to be filled out completely
+  // click buttons is putting a color in an empty space.
+  var clickButtons = function () {
+    $button1Id.on('click', function(){
+      for (var i = 0; i < column1.length; i++) {
+        if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
+          console.log('space is taken');
+        } else {
+          toggleFunction(column1[i]); // this makes the token red
+          break; // this will stop the column to be filled out completely
+        }
       }
-    }
-  }); // --> click function ends
-}; // --> function ends
+    }); // --> click function ends
+
+    $button2Id.on('click', function(){
+      for (var i = 0; i < column2.length; i++) {
+        if (column2[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
+          console.log('space is taken');
+        } else {
+          toggleFunction(column2[i]); // this makes the token red
+          break; // this will stop the column to be filled out completely
+        }
+      }
+    }); // --> click function ends
+
+  }; // --> function ends
 
 clickButtons();
-// createBoard();
+
+
+// // CREATING COLUMNS ARRAYS
+//   var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
+//   var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
+//   var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
+//   var column4 = [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')];
+//   var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
+//   var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
+//   var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
+//   console.log(column1[2]); // I wrote the array correctly! :)
+//
+//
+// // GRABBING PLAY HERE BUTTONS FROM THE HTML
+//   var $buttonsIds = [$('#button1'), $('#button2'), $('#button3'), $('#button4'), $('#button5'), $('#button6'), $('#button7')];
+//    console.log($buttonsIds); // checked all the buttonIds and they work!
+//
+// // click buttons is putting a color in an empty space.
+// var clickButtons = function () {
+//   $buttonsIds.on('click', function(){
+//     for (var i = 0; i < column1.length; i++) {
+//       if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
+//         console.log('space is taken');
+//       } else {
+//         toggleFunction(column1[i]); // this makes the token red
+//         break; // this will stop the column to be filled out completely
+//       }
+//     }
+//   }); // --> click function ends
+// }; // --> function ends
+//
+// clickButtons();
+// // createBoard();
 
 
 // 3. CLEAR BOARD  [X]
@@ -114,35 +156,35 @@ clickButtons();
 
 // --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
 
-  $button2Id.on('click', function(){
-    // for (var i = 0; i < column2.length; i++) {
-    //   if (!column2[i].hasClass('red-token')) {
-    //   toggleFunction(column2[i]);
-    //   break;
-    //   }
-    // };
-    console.log('I clicked button2');
-  });
-
-  $button3Id.on('click', function(){
-    console.log('I clicked button3');
-  });
-
-  $button4Id.on('click', function(){
-    console.log('I clicked button4');
-  });
-
-  $button5Id.on('click', function(){
-    console.log('I clicked button5');
-  });
-
-  $button6Id.on('click', function(){
-    console.log('I clicked button6');
-  });
-
-  $button7Id.on('click', function(){
-    console.log('I clicked button7');
-  });
+  // $button2Id.on('click', function(){
+  //   // for (var i = 0; i < column2.length; i++) {
+  //   //   if (!column2[i].hasClass('red-token')) {
+  //   //   toggleFunction(column2[i]);
+  //   //   break;
+  //   //   }
+  //   // };
+  //   console.log('I clicked button2');
+  // });
+  //
+  // $button3Id.on('click', function(){
+  //   console.log('I clicked button3');
+  // });
+  //
+  // $button4Id.on('click', function(){
+  //   console.log('I clicked button4');
+  // });
+  //
+  // $button5Id.on('click', function(){
+  //   console.log('I clicked button5');
+  // });
+  //
+  // $button6Id.on('click', function(){
+  //   console.log('I clicked button6');
+  // });
+  //
+  // $button7Id.on('click', function(){
+  //   console.log('I clicked button7');
+  // });
 
 
 
@@ -659,3 +701,29 @@ clickButtons();
 // if ($('.red-token') || $('.black-token')) {
 //   $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
 // };
+
+
+// USE THIS! THIS IS WORKING!
+// // GRABBING PLAY HERE BUTTONS FROM THE HTML
+//   var $button1Id = $('#button1');
+//   var $button2Id = $('#button2');
+//   var $button3Id = $('#button3');
+//   var $button4Id = $('#button4');
+//   var $button5Id = $('#button5');
+//   var $button6Id = $('#button6');
+//   var $button7Id = $('#button7');
+//    console.log($button1Id); // checked all the buttonIds and they work!
+//
+// // click buttons is putting a color in an empty space.
+// var clickButtons = function () {
+//   $button1Id.on('click', function(){
+//     for (var i = 0; i < column1.length; i++) {
+//       if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
+//         console.log('space is taken');
+//       } else {
+//         toggleFunction(column1[i]); // this makes the token red
+//         break; // this will stop the column to be filled out completely
+//       }
+//     }
+//   }); // --> click function ends
+// }; // --> function ends
