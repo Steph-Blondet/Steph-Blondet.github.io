@@ -80,7 +80,7 @@ $(function() {
     var $button5Id = $('#button5');
     var $button6Id = $('#button6');
     var $button7Id = $('#button7');
-     console.log($button1Id); // checked all the buttonIds and they work!
+    //  console.log($button1Id); // checked all the buttonIds and they work!
 
 // creating a function to make the 'play here' buttons clickable
   var clickButtons = function () {
@@ -170,11 +170,19 @@ $(function() {
 
 // 4. WINNING TIMEEEEEEEEEEE
 
-var $winsArray = [
-    [$('#35'), $('#36'), $('#37'), $('#38')],
-    [$('#36'), $('#37'), $('#38'), $('#39')],
-    [$('#37'), $('#38'), $('#39'), $('#40')],
-    [$('#38'), $('#39'), $('#40'), $('#41')]
+// var $winsArray = [
+//     [$('#35'), $('#36'), $('#37'), $('#38')], // horizontal
+//     [$('#35'), $('#28'), $('#21'), $('#14')], // vertical
+//     [$('#21'), $('#15'), $('#9'), $('#3')], // diagonal
+//
+// ];
+
+var winsArray = [
+    ['#35', '#36', '#37', '#38'], // horizontal
+    ['#35', '#28', '#21', '#14'], // vertical
+    ['#21', '#15', '#9', '#3'], // diagonal
+    ['#28', '#22', '#16', '#10'], // diagonal
+
 ];
 
 // console.log($winsArray[3]);
@@ -187,26 +195,30 @@ var $winsArray = [
 // if false, go to the next array
 // ---> look into nested loops?
 
-var $checkingWins = function() {
-  for (var i = 0; i < $winsArray.length; i++) {
-    for (var j = 0; j < $winsArray.length; j++) {
-      console.log($winsArray[i][j]);
-    }
+// var $checkingWins = function() {
+//   for (var i = 0; i < $winsArray.length; i++) {
+//     console.log($winsArray[i]);
+//   }
+// }; // --> end $checkingWins function
+//
+// $checkingWins();
+
+
+var checkingWins = function() {
+  for (var i = 0; i < winsArray.length; i++) {
+    // for (var j = 0; j < winsArray.length; j++) {
+      // for (var k = 0; k < $winsArray.length; k++) {
+      //   console.log($winsArray[i][j][k]);
+      // }
+      console.log(winsArray[i]);
+    // }
   }
 }; // --> end $checkingWins function
 
-$checkingWins();
+checkingWins();
 
 
-// var $checkingWins = function() {
-//   for (var i = 0; i < $winsArray.length; i++) {
-//     if ($winsArray[i].hasClass('red-token')) {
-//   } else if () {
-//
-//   }
-// };
-//
-// $checkingWins();
+
 
 
 // 5. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
@@ -817,3 +829,13 @@ $checkingWins();
   //
   //
   // };
+
+  // var $checkingWins = function() {
+  //   for (var i = 0; i < $winsArray.length; i++) {
+  //     if ($winsArray[i].hasClass('red-token')) {
+  //   } else if () {
+  //
+  //   }
+  // };
+  //
+  // $checkingWins();
