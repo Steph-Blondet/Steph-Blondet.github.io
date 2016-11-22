@@ -5,7 +5,7 @@ $(function() {
 // SELECTING ELEMENTS
   var $board = $('#board'); // grabbing the board id
 
-  var $clearButton = $('#clear-board'); // grapbbing the clear-board id
+  var $clearButton = $('#clear-board'); // grabbing the clear-board id
 
   var $nextTurn = $('p'); // grabbing p tag from index
 
@@ -75,31 +75,51 @@ var buttonColumns = {
   button7: [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')]
 }
 
-var accessingObjects = function() {
-  for (var i = 0; i < buttonColumns.button1.length; i++) {
-    console.log(buttonColumns.button1[i]); // printing every element in the button1 key
-  }
-};
+  // GRABBING PLAY HERE BUTTONS FROM THE HTML
+    var $button1Id = $('#button1');
+    var $button2Id = $('#button2');
+    var $button3Id = $('#button3');
+    var $button4Id = $('#button4');
+    var $button5Id = $('#button5');
+    var $button6Id = $('#button6');
+    var $button7Id = $('#button7');
+     console.log($button1Id); // checked all the buttonIds and they work!
 
-accessingObjects(); // calling the function
+    $button1Id.on('click', function(){
+        console.log('I clicked button1');
+    });
 
-// CREATING COLUMNS ARRAYS
-  //  var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
-  //  var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
-  //  var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
-  //  var column4 = [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')];
-  //  var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
-  //  var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
-  //  var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
-  // console.log(column1[4]); // I wrote the array correctly! :)
-  // //
-  // var checking = function (){
-  //   for (var i = 0; i < column1.length; i++) {
-  //     array[i]
-  //   }
+    $button2Id.on('click', function(){
+        console.log('I clicked button2');
+    });
+
+    $button3Id.on('click', function(){
+        console.log('I clicked button3');
+    });
+
+    $button4Id.on('click', function(){
+        console.log('I clicked button4');
+    });
+
+    $button5Id.on('click', function(){
+        console.log('I clicked button5');
+    });
+
+    $button6Id.on('click', function(){
+        console.log('I clicked button6');
+    });
+
+    $button7Id.on('click', function(){
+        console.log('I clicked button7');
+    });
 
 
-  // };
+
+
+
+
+
+
 
 
 
@@ -504,10 +524,6 @@ accessingObjects(); // calling the function
 //   return false
 // };
 
-
-
-
-
     // var clearBoard = function() {
     //
     //   var $newBoardDiv = $('div');
@@ -521,3 +537,31 @@ accessingObjects(); // calling the function
 
     // var $newBoardDiv = $('div');
     // $newBoardDiv.off('click', toggleFunction);
+
+
+// CREATING COLUMNS ARRAYS
+  //  var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
+  //  var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
+  //  var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
+  //  var column4 = [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')];
+  //  var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
+  //  var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
+  //  var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
+  // console.log(column1[4]); // I wrote the array correctly! :)
+
+  // var checking = function (){
+  //   for (var i = 0; i < column1.length; i++) {
+  //     array[i]
+  //   }
+// };
+
+
+// var accessingObjects = function() {
+//   for (var i = 0; i < buttonColumns.button1.length; i++) {
+//     console.log(buttonColumns.button1[i]); // printing every element in the button1 key
+//
+//
+//   }
+// };
+//
+// accessingObjects(); // calling the function
