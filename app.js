@@ -171,9 +171,12 @@ $(function() {
 // 4. WINNING TIMEEEEEEEEEEE
 
 var $winsArray = [
-    [$('#35'), $('#36'), $('#37'), $('#38')], [$('#36'), $('#37'), $('#38'), $('#39')], [$('#37'), $('#38'), $('#39'), $('#40')], [$('#38'), $('#39'), $('#40'), $('#41')]
-
+    [$('#35'), $('#36'), $('#37'), $('#38')],
+    [$('#36'), $('#37'), $('#38'), $('#39')],
+    [$('#37'), $('#38'), $('#39'), $('#40')],
+    [$('#38'), $('#39'), $('#40'), $('#41')]
 ];
+
 // console.log($winsArray[3]);
 
 // WINNING PSEUDOCODE
@@ -184,22 +187,34 @@ var $winsArray = [
 // if false, go to the next array
 // ---> look into nested loops?
 
-
 var $checkingWins = function() {
   for (var i = 0; i < $winsArray.length; i++) {
-    if ($winsArray[i][i].hasClass('red-token'))
-  } else if ()
-};
+    for (var j = 0; j < $winsArray.length; j++) {
+      console.log($winsArray[i][j]);
+    }
+  }
+}; // --> end $checkingWins function
 
 $checkingWins();
 
 
+// var $checkingWins = function() {
+//   for (var i = 0; i < $winsArray.length; i++) {
+//     if ($winsArray[i].hasClass('red-token')) {
+//   } else if () {
+//
+//   }
+// };
+//
+// $checkingWins();
+
+
 // 5. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
 //  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
- $clearButton.on('click', function() {
-   createBoard();
-  //  clickButtons();
- }); // --> end clear button function
+ // $clearButton.on('click', function() {
+ //   createBoard();
+ //  //  clickButtons();
+ // }); // --> end clear button function
 
 
 });//---> end of code, do not change!
