@@ -36,11 +36,8 @@ $(function() {
       // console.log('toggle is false');
       };
 
-      toggle = !toggle;
-      // // a player should not be able to mark a space that has already been played
-      // if ($('.red-token') || $('.black-token')) {
-      //   $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
-      // };
+      toggle = !toggle; // alternates the turns between red and black
+
 
   };// --> closing toggleFunction function
 
@@ -72,7 +69,7 @@ $(function() {
   var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
   var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
   console.log(column1[2]); // I wrote the array correctly! :)
-  // console.log('this is number: ' + column1[1]);
+
 
 // GRABBING PLAY HERE BUTTONS FROM THE HTML
   var $button1Id = $('#button1');
@@ -87,7 +84,6 @@ $(function() {
 // click buttons is putting a color in an empty space.
 var clickButtons = function () {
   $button1Id.on('click', function(){
-
     for (var i = 0; i < column1.length; i++) {
       if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
         console.log('space is taken');
@@ -95,10 +91,7 @@ var clickButtons = function () {
         toggleFunction(column1[i]); // this makes the token red
         break; // this will stop the column to be filled out completely
       }
-        // alternates the turns between red and black
-
-
-      }
+    }
   }); // --> click function ends
 }; // --> function ends
 
@@ -660,3 +653,9 @@ clickButtons();
 //      } // --> if circle ends
 //    } // --> for loop ends
 // }); // --> function ends
+
+
+// // a player should not be able to mark a space that has already been played
+// if ($('.red-token') || $('.black-token')) {
+//   $(this).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
+// };
