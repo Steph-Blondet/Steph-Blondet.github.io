@@ -20,6 +20,30 @@ $(function() {
   var $newBoardDiv;
 
 
+// 2. SWITCH TURNS [X]
+  var toggleFunction = function(column) {
+    console.log('testing toggleFunction'); // click listener is working
+
+    if (toggle) {
+      $(column).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
+      $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
+      // console.log('toggle is true');
+      } else {
+      $(column).addClass('black-token'); // if toggle is false, it will add the class of blackToken to the $newBoardDiv created below
+      $nextTurn.text("It's Red's turn"); // when blackToken is added to the div, the p tag will change to red's turn
+      // console.log('toggle is false');
+      };
+
+      toggle = !toggle; // alternates the turns between red and black
+
+      // a player should not be able to mark a space that has already been played
+      // if ($('.red-token') || $('.black-token')) {
+      //   $(column).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
+      // };
+
+  };// --> closing toggleFunction function
+
+
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
     $board.empty() // this will reset the board after I click the clearButton
@@ -69,34 +93,15 @@ $(function() {
         if (!column1[i].hasClass('red-token')) {
           toggleFunction(column1[i]);
           break; // this will stop the column to be filled out completely
-        } else if (!column1[i].hasClass('red-token') || !column1[i].hasClass('black-token')) {
-          toggleFunction(column1[i]);
+        } else if (!column1[i].hasClass('red-token') && !column1[i].hasClass('black-token')) {
+          toggle = false;
+          // break;
+        } else if (column1[i].hasClass('red-token') && column1[i].hasClass('black-token')) {
+          toggle = true;
         }
-    }
-  });
+      }
+      });
 
-// 2. SWITCH TURNS [X]
-    var toggleFunction = function(column) {
-      console.log('testing toggleFunction'); // click listener is working
-
-      if (toggle) {
-        $(column).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
-        $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
-        // console.log('toggle is true');
-        } else {
-        $(column).addClass('black-token'); // if toggle is false, it will add the class of blackToken to the $newBoardDiv created below
-        $nextTurn.text("It's Red's turn"); // when blackToken is added to the div, the p tag will change to red's turn
-        // console.log('toggle is false');
-        };
-
-        toggle = !toggle; // alternates the turns between red and black
-
-        // a player should not be able to mark a space that has already been played
-        // if ($('.red-token') || $('.black-token')) {
-        //   $(column).off('click', toggleFunction); // turning off the toggle function so users can't click on the same token again
-        // };
-
-    };// --> closing toggleFunction function
 
 // --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
 
