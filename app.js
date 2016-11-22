@@ -19,7 +19,8 @@ $(function() {
 
   var $newBoardDiv;
 
-  var clickButtons;
+  // var clickButtons;
+
 
 
 // 2. SWITCH TURNS [X]
@@ -48,10 +49,8 @@ $(function() {
     for (var i = 0; i < 42; i++) { // I want to create 42 white circles that when clicked will change to red/black
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-        $newBoardDiv.attr('id', i); // adding ids with numbers to the circles -- adding this again just in case I need it later
+        $newBoardDiv.attr('id', i); // adding ids with numbers to the circles
         $board.append($newBoardDiv); // appending the newBoardDiv that goes inside the board div
-
-        // $newBoardDiv.on('click', toggleFunction); // on click, the circle will... (see the 'switch turns' above)
       };
   }; // --> closing createBoard function
 
@@ -60,9 +59,8 @@ $(function() {
 
 
 
-
-
-// CREATING COLUMNS ARRAYS
+// 4. MAKING THE PLAY HERE BUTTONS CLICKABLE
+// creating arrays for the columns
   var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
   var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
   var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
@@ -70,14 +68,13 @@ $(function() {
   var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
   var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
   var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
-  console.log(column1[2]); // I wrote the array correctly! :)
+  // console.log(column1[2]); // I wrote the array correctly! :)
 
 
-// GRABBING PLAY HERE BUTTONS FROM THE HTML
+// grabbin the 'play here' buttons
   // var $buttonsIds = [$('#button1'), $('#button2'), $('#button3'), $('#button4'), $('#button5'), $('#button6'), $('#button7')];
-  //  console.log($buttonsIds); // checked all the buttonIds and they work!
+  //  ---> take a look again, want to make this DRY!
 
-  // GRABBING PLAY HERE BUTTONS FROM THE HTML
     var $button1Id = $('#button1');
     var $button2Id = $('#button2');
     var $button3Id = $('#button3');
@@ -87,18 +84,15 @@ $(function() {
     var $button7Id = $('#button7');
      console.log($button1Id); // checked all the buttonIds and they work!
 
-  // click buttons is putting a color in an empty space.
-
-  //   var $buttonsIds = [$('#button1'), $('#button2'), $('#button3'), $('#button4'), $('#button5'), $('#button6'), $('#button7')];
-  //    console.log($buttonsIds); // checked all the buttonIds and they work!
-
+// creating a function to make the 'play here' buttons clickable
   var clickButtons = function () {
-    $button1Id.on('click', function(){
+
+    $button1Id.on('click', function(){ // when I click on this button, the for loop will run
       for (var i = 0; i < column1.length; i++) {
-        if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
-          console.log('space is taken');
-        } else {
-          toggleFunction(column1[i]); // this makes the token red
+        if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) { // if it has a red or black token, do nothing
+          // console.log('space is taken');
+        } else { // else, run the toggleFunction which will switch from red/black token
+          toggleFunction(column1[i]); // this makes the token start red
           break; // this will stop the column to be filled out completely
         }
       }
@@ -109,8 +103,8 @@ $(function() {
         if (column2[i].hasClass('red-token') || column2[i].hasClass('black-token')) {
           console.log('space is taken');
         } else {
-          toggleFunction(column2[i]); // this makes the token red
-          break; // this will stop the column to be filled out completely
+          toggleFunction(column2[i]);
+          break;
         }
       }
     }); // --> $button2Id click function ends
@@ -120,8 +114,8 @@ $(function() {
         if (column3[i].hasClass('red-token') || column3[i].hasClass('black-token')) {
           console.log('space is taken');
         } else {
-          toggleFunction(column3[i]); // this makes the token red
-          break; // this will stop the column to be filled out completely
+          toggleFunction(column3[i]);
+          break;
         }
       }
     }); // --> $button3Id click function ends
@@ -131,8 +125,8 @@ $(function() {
         if (column4[i].hasClass('red-token') || column4[i].hasClass('black-token')) {
           console.log('space is taken');
         } else {
-          toggleFunction(column4[i]); // this makes the token red
-          break; // this will stop the column to be filled out completely
+          toggleFunction(column4[i]);
+          break;
         }
       }
     }); // --> $button4Id click function ends
@@ -142,8 +136,8 @@ $(function() {
         if (column5[i].hasClass('red-token') || column5[i].hasClass('black-token')) {
           console.log('space is taken');
         } else {
-          toggleFunction(column5[i]); // this makes the token red
-          break; // this will stop the column to be filled out completely
+          toggleFunction(column5[i]);
+          break;
         }
       }
     }); // --> $button5Id click function ends
@@ -153,8 +147,8 @@ $(function() {
         if (column6[i].hasClass('red-token') || column6[i].hasClass('black-token')) {
           console.log('space is taken');
         } else {
-          toggleFunction(column6[i]); // this makes the token red
-          break; // this will stop the column to be filled out completely
+          toggleFunction(column6[i]);
+          break;
         }
       }
     }); // --> $button6Id click function ends
@@ -164,8 +158,8 @@ $(function() {
         if (column7[i].hasClass('red-token') || column7[i].hasClass('black-token')) {
           console.log('space is taken');
         } else {
-          toggleFunction(column7[i]); // this makes the token red
-          break; // this will stop the column to be filled out completely
+          toggleFunction(column7[i]);
+          break;
         }
       }
     }); // --> $button7Id click function ends
@@ -175,110 +169,15 @@ $(function() {
   clickButtons();
 
 
-
-// 3. CLEAR BOARD  [X]
- $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
- // $clearButton.on('click', function() {
- //   createBoard();
- //   // clickButtons();
- // }); // --> end clear button function
-
-
-
-
-
-
-
-// --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
-
-  // $button2Id.on('click', function(){
-  //   // for (var i = 0; i < column2.length; i++) {
-  //   //   if (!column2[i].hasClass('red-token')) {
-  //   //   toggleFunction(column2[i]);
-  //   //   break;
-  //   //   }
-  //   // };
-  //   console.log('I clicked button2');
-  // });
-  //
-  // $button3Id.on('click', function(){
-  //   console.log('I clicked button3');
-  // });
-  //
-  // $button4Id.on('click', function(){
-  //   console.log('I clicked button4');
-  // });
-  //
-  // $button5Id.on('click', function(){
-  //   console.log('I clicked button5');
-  // });
-  //
-  // $button6Id.on('click', function(){
-  //   console.log('I clicked button6');
-  // });
-  //
-  // $button7Id.on('click', function(){
-  //   console.log('I clicked button7');
-  // });
-
-
-
-
-
-
-
-
-
-
-
-
-
+  // 3. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
+  //  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+   $clearButton.on('click', function() {
+     createBoard();
+    //  clickButtons();
+   }); // --> end clear button function
 
 
 });//---> end of code, do not change!
-
-
-
-
-
-
-
-//********************* ORIGINAL CODE
-// if ($toggle == true) { // this will make the red token to start first
-//   var $tokenIds = $('#circles');
-//     $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
-//     // var $circleDiv = $('div');
-//     // $circleDiv.remove('#circle');
-//     $(this).remove('#circle');
-//   } else {
-//     $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
-//     // var $circleDiv = $('div');
-//     // $circleDiv.remove('#circle');
-//     $(this).remove('#circle');
-//   };
-//     $toggle = !$toggle;
-//
-// }
-//
-//
-// // CREATING CONNECT FOUR BOARD [X]
-// for (var i = 0; i < 42; i++) { // iterating 42 times
-//   var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
-//     $newBoardDiv.addClass('squares'); // adding the class squares to the board div
-//     $newBoardDiv.attr('tile', i);
-//     $board.append($newBoardDiv); // appending the new div that goes inside the board div
-//
-//   var $secondDiv = $('<div>'); // creating a new div that goes below the new board div
-//     $secondDiv.attr('id', 'circle'); // gave attribute of circle to the new div
-//     // $secondDiv.attr('tile', i); // every time the loop runs, add a tile attr with a number from 0-41
-//     $newBoardDiv.append($secondDiv); // appending the circle div that goes inside the $newBoardDiv
-//
-//     $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
-//
-//
-// };
-
-
 
 
 
@@ -811,3 +710,70 @@ $(function() {
 // }; // --> function ends
 //
 // clickButtons();
+
+// --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
+
+  // $button2Id.on('click', function(){
+  //   // for (var i = 0; i < column2.length; i++) {
+  //   //   if (!column2[i].hasClass('red-token')) {
+  //   //   toggleFunction(column2[i]);
+  //   //   break;
+  //   //   }
+  //   // };
+  //   console.log('I clicked button2');
+  // });
+  //
+  // $button3Id.on('click', function(){
+  //   console.log('I clicked button3');
+  // });
+  //
+  // $button4Id.on('click', function(){
+  //   console.log('I clicked button4');
+  // });
+  //
+  // $button5Id.on('click', function(){
+  //   console.log('I clicked button5');
+  // });
+  //
+  // $button6Id.on('click', function(){
+  //   console.log('I clicked button6');
+  // });
+  //
+  // $button7Id.on('click', function(){
+  //   console.log('I clicked button7');
+  // });
+
+  //********************* ORIGINAL CODE
+  // if ($toggle == true) { // this will make the red token to start first
+  //   var $tokenIds = $('#circles');
+  //     $(this).attr('id', 'red-token'); // gave attribute of redToken to the $circleDiv created below
+  //     // var $circleDiv = $('div');
+  //     // $circleDiv.remove('#circle');
+  //     $(this).remove('#circle');
+  //   } else {
+  //     $(this).attr('id', 'black-token'); // gave attribute of blackToken to $circleDiv created below
+  //     // var $circleDiv = $('div');
+  //     // $circleDiv.remove('#circle');
+  //     $(this).remove('#circle');
+  //   };
+  //     $toggle = !$toggle;
+  //
+  // }
+  //
+  //
+  // // CREATING CONNECT FOUR BOARD [X]
+  // for (var i = 0; i < 42; i++) { // iterating 42 times
+  //   var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
+  //     $newBoardDiv.addClass('squares'); // adding the class squares to the board div
+  //     $newBoardDiv.attr('tile', i);
+  //     $board.append($newBoardDiv); // appending the new div that goes inside the board div
+  //
+  //   var $secondDiv = $('<div>'); // creating a new div that goes below the new board div
+  //     $secondDiv.attr('id', 'circle'); // gave attribute of circle to the new div
+  //     // $secondDiv.attr('tile', i); // every time the loop runs, add a tile attr with a number from 0-41
+  //     $newBoardDiv.append($secondDiv); // appending the circle div that goes inside the $newBoardDiv
+  //
+  //     $newBoardDiv.on('click', $toggleFunction); // on click, the square will...
+  //
+  //
+  // };
