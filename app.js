@@ -13,9 +13,6 @@ $(function() {
 
   var $circleClass = $('.circle'); // grabbing the circle class
 
-  var $newBoardDiv;
-
-
 
 // 3. SWITCH TURNS [X]
   var toggleFunction = function(column) {
@@ -189,30 +186,27 @@ var $winsArray = [
   [$('#39'), $('#32'), $('#25'), $('#18')], [$('#32'), $('#25'), $('#18'), $('#11')], [$('#25'), $('#18'), $('#11'), $('#4')],
   [$('#40'), $('#33'), $('#26'), $('#19')], [$('#33'), $('#26'), $('#19'), $('#12')], [$('#26'), $('#19'), $('#12'), $('#5')],
   [$('#41'), $('#34'), $('#27'), $('#20')], [$('#34'), $('#27'), $('#20'), $('#13')], [$('#27'), $('#20'), $('#13'), $('#6')],
-
-  [$('#21'), $('#15'), $('#9'), $('#3')], // diagonal
 ];
 
-console.log($winsArray[0]);
 
 
 var checkingWins = function() {
   var redWin = 0;
   var blackWin = 0;
+
   for (var i = 0; i < $winsArray.length; i++) {
     for (var j = 0; j < $winsArray[i].length; j++) {
-      console.log($winsArray[i][j]);
       if ($winsArray[i][j].hasClass('red-token')) {
         redWin = j;
         if (redWin == 3) {
-          alert('red player wins');
+          console.log('red player wins');
           redWin = 0;
           break;
         }
       } else if ($winsArray[i][j].hasClass('black-token')) {
         blackWin = j;
         if (blackWin == 3) {
-          alert('black player wins');
+          console.log('black player wins');
           blackWin = 0;
           break;
         }
@@ -220,7 +214,7 @@ var checkingWins = function() {
     }
   }
 }; // --> end $checkingWins function
-
+checkingWins();
 
 
 // WINNING PSEUDOCODE
