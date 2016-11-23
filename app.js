@@ -219,21 +219,57 @@ var checkingWins = function() {
       $('#27').hasClass('red-token') && $('#20').hasClass('red-token') && $('#13').hasClass('red-token') && $('#6').hasClass('red-token') ||
 
       $('#35').hasClass('red-token') && $('#29').hasClass('red-token') && $('#23').hasClass('red-token') && $('#17').hasClass('red-token')) {
-          console.log('Red wins!');
+          console.log('Red wins!'); // --> on wed: try to change this to a message in the p tag or something creative
+  } else if (
+      $('#35').hasClass('black-token') && $('#36').hasClass('black-token') && $('#37').hasClass('black-token') && $('#38').hasClass('black-token') || $('#36').hasClass('black-token') && $('#37').hasClass('black-token') && $('#38').hasClass('black-token') && $('#39').hasClass('black-token') || $('#37').hasClass('black-token') && $('#38').hasClass('black-token') && $('#39').hasClass('black-token') && $('#40').hasClass('black-token') || $('#38').hasClass('black-token') && $('#39').hasClass('black-token') && $('#40').hasClass('black-token') && $('#41').hasClass('black-token') || $('#28').hasClass('black-token') && $('#29').hasClass('black-token') && $('#30').hasClass('black-token') && $('#31').hasClass('black-token') ||
+      $('#29').hasClass('black-token') && $('#30').hasClass('black-token') && $('#31').hasClass('black-token') && $('#32').hasClass('black-token') ||
+      $('#30').hasClass('black-token') && $('#31').hasClass('black-token') && $('#32').hasClass('black-token') && $('#33').hasClass('black-token') ||
+      $('#31').hasClass('black-token') && $('#32').hasClass('black-token') && $('#33').hasClass('black-token') && $('#34').hasClass('black-token') ||
+      $('#21').hasClass('black-token') && $('#22').hasClass('black-token') && $('#23').hasClass('black-token') && $('#24').hasClass('black-token') ||
+      $('#22').hasClass('black-token') && $('#23').hasClass('black-token') && $('#24').hasClass('black-token') && $('#25').hasClass('black-token') ||
+      $('#23').hasClass('black-token') && $('#24').hasClass('black-token') && $('#25').hasClass('black-token') && $('#26').hasClass('black-token') ||
+      $('#24').hasClass('black-token') && $('#25').hasClass('black-token') && $('#26').hasClass('black-token') && $('#27').hasClass('black-token') ||
+      $('#14').hasClass('black-token') && $('#15').hasClass('black-token') && $('#16').hasClass('black-token') && $('#17').hasClass('black-token') ||
+      $('#15').hasClass('black-token') && $('#16').hasClass('black-token') && $('#17').hasClass('black-token') && $('#18').hasClass('black-token') ||
+      $('#16').hasClass('black-token') && $('#17').hasClass('black-token') && $('#18').hasClass('black-token') && $('#19').hasClass('black-token') ||
+      $('#17').hasClass('black-token') && $('#18').hasClass('black-token') && $('#19').hasClass('black-token') && $('#20').hasClass('black-token') ||
+      $('#7').hasClass('black-token') && $('#8').hasClass('black-token') && $('#9').hasClass('black-token') && $('#10').hasClass('black-token') ||
+      $('#8').hasClass('black-token') && $('#9').hasClass('black-token') && $('#10').hasClass('black-token') && $('#11').hasClass('black-token') ||
+      $('#9').hasClass('black-token') && $('#10').hasClass('black-token') && $('#11').hasClass('black-token') && $('#12').hasClass('black-token') ||
+      $('#10').hasClass('black-token') && $('#11').hasClass('black-token') && $('#12').hasClass('black-token') && $('#13').hasClass('black-token') ||
+      $('#0').hasClass('black-token') && $('#1').hasClass('black-token') && $('#2').hasClass('black-token') && $('#3').hasClass('black-token') ||
+      $('#1').hasClass('black-token') && $('#2').hasClass('black-token') && $('#3').hasClass('black-token') && $('#4').hasClass('black-token') ||
+      $('#2').hasClass('black-token') && $('#3').hasClass('black-token') && $('#4').hasClass('black-token') && $('#5').hasClass('black-token') ||
+      $('#3').hasClass('black-token') && $('#4').hasClass('black-token') && $('#5').hasClass('black-token') && $('#6').hasClass('black-token') ||
+
+      $('#35').hasClass('black-token') && $('#28').hasClass('black-token') && $('#21').hasClass('black-token') && $('#14').hasClass('black-token') ||
+      $('#28').hasClass('black-token') && $('#21').hasClass('black-token') && $('#14').hasClass('black-token') && $('#7').hasClass('black-token') ||
+      $('#21').hasClass('black-token') && $('#14').hasClass('black-token') && $('#7').hasClass('black-token') && $('#0').hasClass('black-token') ||
+      $('#36').hasClass('black-token') && $('#29').hasClass('black-token') && $('#22').hasClass('black-token') && $('#15').hasClass('black-token') ||
+      $('#29').hasClass('black-token') && $('#22').hasClass('black-token') && $('#15').hasClass('black-token') && $('#8').hasClass('black-token') ||
+      $('#22').hasClass('black-token') && $('#15').hasClass('black-token') && $('#8').hasClass('black-token') && $('#1').hasClass('black-token') ||
+      $('#37').hasClass('black-token') && $('#30').hasClass('black-token') && $('#23').hasClass('black-token') && $('#16').hasClass('black-token') ||
+      $('#30').hasClass('black-token') && $('#23').hasClass('black-token') && $('#16').hasClass('black-token') && $('#9').hasClass('black-token') ||
+      $('#23').hasClass('black-token') && $('#16').hasClass('black-token') && $('#9').hasClass('black-token') && $('#2').hasClass('black-token') ||
+      $('#38').hasClass('black-token') && $('#31').hasClass('black-token') && $('#24').hasClass('black-token') && $('#17').hasClass('black-token') ||
+      $('#31').hasClass('black-token') && $('#24').hasClass('black-token') && $('#17').hasClass('black-token') && $('#10').hasClass('black-token') ||
+      $('#24').hasClass('black-token') && $('#17').hasClass('black-token') && $('#10').hasClass('black-token') && $('#3').hasClass('black-token') ||
+      $('#39').hasClass('black-token') && $('#32').hasClass('black-token') && $('#25').hasClass('black-token') && $('#18').hasClass('black-token') ||
+      $('#32').hasClass('black-token') && $('#25').hasClass('black-token') && $('#18').hasClass('black-token') && $('#11').hasClass('black-token') ||
+      $('#25').hasClass('black-token') && $('#18').hasClass('black-token') && $('#11').hasClass('black-token') && $('#4').hasClass('black-token') ||
+      $('#40').hasClass('black-token') && $('#33').hasClass('black-token') && $('#26').hasClass('black-token') && $('#19').hasClass('black-token') ||
+      $('#33').hasClass('black-token') && $('#26').hasClass('black-token') && $('#19').hasClass('black-token') && $('#12').hasClass('black-token') ||
+      $('#26').hasClass('black-token') && $('#19').hasClass('black-token') && $('#12').hasClass('black-token') && $('#5').hasClass('black-token') ||
+      $('#41').hasClass('black-token') && $('#34').hasClass('black-token') && $('#27').hasClass('black-token') && $('#20').hasClass('black-token') ||
+      $('#34').hasClass('black-token') && $('#27').hasClass('black-token') && $('#20').hasClass('black-token') && $('#13').hasClass('black-token') ||
+      $('#27').hasClass('black-token') && $('#20').hasClass('black-token') && $('#13').hasClass('black-token') && $('#6').hasClass('black-token') ||
+
+      $('#35').hasClass('black-token') && $('#29').hasClass('black-token') && $('#23').hasClass('black-token') && $('#17').hasClass('black-token')) {
+        console.log('Black Wins!');
   }
 
 }; // --> end $checkingWins function
 checkingWins();
-
-
-// WINNING PSEUDOCODE
-// I want to go to the first array and check if the token is red
-// if true, go to the next space in the same array and check if it's red
-// if true, go to the third space in the same array and check if it's red
-// if true, go to the fourth space in the same array and check if it's red
-// if false, go to the next array
-// ---> look into nested loops?
-
 
 
 // 5. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
@@ -900,7 +936,13 @@ checkingWins();
   // checkingWins();
 
 
-
+  // WINNING PSEUDOCODE
+  // I want to go to the first array and check if the token is red
+  // if true, go to the next space in the same array and check if it's red
+  // if true, go to the third space in the same array and check if it's red
+  // if true, go to the fourth space in the same array and check if it's red
+  // if false, go to the next array
+  // ---> look into nested loops?
 
 
 
