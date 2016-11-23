@@ -5,20 +5,20 @@ Your game of Connect Four must have at a minimum:
 [X] A way for players to mark an empty space on their turn
 [X] The turns should alternate (red, black, red, black, etc.)
 [X] A player should not be able to mark a space that has already been played
-- The game should announce a winner if a player gets four tokens in a row, horizontally or vertically
+[X] The game should announce a winner if a player gets four tokens in a row, horizontally or vertically
 *******************************************************************************************
 
 INSTRUCTOR's SUGGESTIONS:
 [X] change the id red,black token to classes. this will add it after the circle class in the same quotes.
-- arrange it to columns and rows instead of tile numbers
+[X] arrange it to columns and rows instead of tile numbers
   --> my thoughts: I need to figure out how to go to the bottom most first, then create an array with each circle number, create a for loop that checks if it's red/black, go to the next, check the same thing etc... until I have four of the same.
 [X] add a drop button instead of a mouseover
 
 // THINGS TO DO DURING THE WEEK
 
 [X] figure out how to make the tokens switch again after the user clicks on the 'new game' button
-2. figure out how to make the tokens go to the bottom
-3. figure out the winning conditions
+[X] figure out how to make the tokens go to the bottom
+[X] figure out the winning conditions
 
 
 
@@ -46,7 +46,7 @@ Things I need to see on the page:
     [X] show the tokens when somebody clicks on an arrow/column to fill out an empty space (do some research)
 [X] alternate tokens
 [X] when alternating tokens, show that text (do some research)
-5. winning conditions (for loop and if statements?)
+[X] winning conditions (for loop and if statements?)
 [X] clear out the discs when the user clicks on the 'new game' button
 
 
@@ -72,13 +72,13 @@ Things I need to see on the page:
 - title and copy fonts from Google Fonts
 
 
-** JS/JQUERY
+[X] JS/JQUERY
 - window.onload
 
-- when user hovers on a column, highlight that column/arrow
+[X] when user hovers on a column, highlight that column/arrow
   > mouseover event / css hover
 
-- when a user clicks on a column/arrow, add a token at the next space available
+[X] when a user clicks on a column/arrow, add a token at the next space available
   > click event?
 
 [X] switch turns
@@ -87,7 +87,7 @@ Things I need to see on the page:
 [X] clicked spaces do not respond to additional clicks
   > if/else?
 
-- announce a winner
+[X] announce a winner
   > winner conditions
     - if/else?
 
@@ -96,7 +96,7 @@ Things I need to see on the page:
 
 
 ////// THINGS TO FIGURE OUT
-1. winning conditions --> array with all possible winning conditions?
+[X] winning conditions --> array with all possible winning conditions?
 [X] how to design a board with holes in it
 [X] alternate turns
 [X] clear button
@@ -138,7 +138,7 @@ Things I need to see on the page:
 2   3   4   5   |                    |   41  33  25  17
 3   4   5   6   |                    |   33  25  17  9
                 |                    |   25  17  9   1
-
+= 24            |   = 21             |   = 21             === 66 winning conditions?
 
 
 // OLD -- WINNING CONDITIONS -- OLD
@@ -173,3 +173,38 @@ Things I need to see on the page:
 38  39  40  41  |                    |   7   13  19  25
 39  40  41  42  |                    |   13  19  25  31
                 |                    |   19  25  31  37
+
+
+///// NEED TO FINISH MY THOUGHT
+// CREATING COLUMNS ARRAYS
+  var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
+  var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
+  var column3 = [$('#37'), $('#30'), $('#23'), $('#16'), $('#9'), $('#2')];
+  var column4 = [$('#38'), $('#31'), $('#24'), $('#17'), $('#10'), $('#3')];
+  var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
+  var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
+  var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
+  console.log(column1[2]); // I wrote the array correctly! :)
+
+
+// GRABBING PLAY HERE BUTTONS FROM THE HTML
+  var $buttonsIds = [$('#button1'), $('#button2'), $('#button3'), $('#button4'), $('#button5'), $('#button6'), $('#button7')];
+
+   console.log($buttonsIds); // checked all the buttonIds and they work!
+
+// click buttons is putting a color in an empty space.
+var clickButtons = function () {
+  $buttonsIds.on('click', function(){
+    for (var i = 0; i < column1.length; i++) {
+      if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) {
+        console.log('space is taken');
+      } else {
+        toggleFunction(column1[i]); // this makes the token red
+        break; // this will stop the column to be filled out completely
+      }
+    }
+  }); // --> click function ends
+}; // --> function ends
+
+clickButtons();
+// createBoard();
