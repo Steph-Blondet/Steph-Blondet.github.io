@@ -97,8 +97,8 @@ $(function() {
     $button2Id.on('click', function(){
       for (var i = 0; i < column2.length; i++) {
         if (column2[i].hasClass('red-token') || column2[i].hasClass('black-token')) {
-          console.log('space is taken');
-          console.log(column2[i]);
+          // console.log('space is taken');
+          // console.log(column2[i]);
         } else {
           toggleFunction(column2[i]);
 
@@ -170,49 +170,58 @@ $(function() {
 
 // 4. WINNING TIMEEEEEEEEEEE
 
-var $winsArray = [
-  [$('#35'), $('#36'), $('#37'), $('#38')], [$('#36'), $('#37'), $('#38'), $('#39')], [$('#37'), $('#38'), $('#39'), $('#40')],
-  [$('#38'), $('#39'), $('#40'), $('#41')], [$('#28'), $('#29'), $('#30'), $('#31')], [$('#29'), $('#30'), $('#31'), $('#32')],
-  [$('#30'), $('#31'), $('#32'), $('#33')], [$('#31'), $('#32'), $('#33'), $('#34')], [$('#21'), $('#22'), $('#23'), $('#24')],
-  [$('#22'), $('#23'), $('#24'), $('#25')], [$('#23'), $('#24'), $('#25'), $('#26')], [$('#24'), $('#25'), $('#26'), $('#27')],
-  [$('#14'), $('#15'), $('#16'), $('#17')], [$('#15'), $('#16'), $('#17'), $('#18')], [$('#16'), $('#17'), $('#18'), $('#19')],
-  [$('#17'), $('#18'), $('#19'), $('#20')], [$('#7'), $('#8'), $('#9'), $('#10')], [$('#8'), $('#9'), $('#10'), $('#11')],
-  [$('#9'), $('#10'), $('#11'), $('#12')], [$('#10'), $('#11'), $('#12'), $('#13')], [$('#0'), $('#1'), $('#2'), $('#3')],
-  [$('#1'), $('#2'), $('#3'), $('#4')], [$('#2'), $('#3'), $('#4'), $('#5')], [$('#3'), $('#4'), $('#5'), $('#6')],
-  [$('#35'), $('#28'), $('#21'), $('#14')], [$('#28'), $('#21'), $('#14'), $('#7')], [$('#21'), $('#14'), $('#7'), $('#0')],
-  [$('#36'), $('#29'), $('#22'), $('#15')], [$('#29'), $('#22'), $('#15'), $('#8')], [$('#22'), $('#15'), $('#8'), $('#1')],
-  [$('#37'), $('#30'), $('#23'), $('#16')], [$('#30'), $('#23'), $('#16'), $('#9')], [$('#23'), $('#16'), $('#9'), $('#2')],
-  [$('#38'), $('#31'), $('#24'), $('#17')], [$('#31'), $('#24'), $('#17'), $('#10')], [$('#24'), $('#17'), $('#10'), $('#3')],
-  [$('#39'), $('#32'), $('#25'), $('#18')], [$('#32'), $('#25'), $('#18'), $('#11')], [$('#25'), $('#18'), $('#11'), $('#4')],
-  [$('#40'), $('#33'), $('#26'), $('#19')], [$('#33'), $('#26'), $('#19'), $('#12')], [$('#26'), $('#19'), $('#12'), $('#5')],
-  [$('#41'), $('#34'), $('#27'), $('#20')], [$('#34'), $('#27'), $('#20'), $('#13')], [$('#27'), $('#20'), $('#13'), $('#6')],
-];
-
-
-
 var checkingWins = function() {
-  var redWin = 0;
-  var blackWin = 0;
+  if ($('#35').hasClass('red-token') && $('#36').hasClass('red-token') && $('#37').hasClass('red-token') && $('#38').hasClass('red-token') ||
+      $('#36').hasClass('red-token') && $('#37').hasClass('red-token') && $('#38').hasClass('red-token') && $('#39').hasClass('red-token') ||
+      $('#37').hasClass('red-token') && $('#38').hasClass('red-token') && $('#39').hasClass('red-token') && $('#40').hasClass('red-token') ||
+      $('#38').hasClass('red-token') && $('#39').hasClass('red-token') && $('#40').hasClass('red-token') && $('#41').hasClass('red-token') ||
+      $('#28').hasClass('red-token') && $('#29').hasClass('red-token') && $('#30').hasClass('red-token') && $('#31').hasClass('red-token') ||
+      $('#29').hasClass('red-token') && $('#30').hasClass('red-token') && $('#31').hasClass('red-token') && $('#32').hasClass('red-token') ||
+      $('#30').hasClass('red-token') && $('#31').hasClass('red-token') && $('#32').hasClass('red-token') && $('#33').hasClass('red-token') ||
+      $('#31').hasClass('red-token') && $('#32').hasClass('red-token') && $('#33').hasClass('red-token') && $('#34').hasClass('red-token') ||
+      $('#21').hasClass('red-token') && $('#22').hasClass('red-token') && $('#23').hasClass('red-token') && $('#24').hasClass('red-token') ||
+      $('#22').hasClass('red-token') && $('#23').hasClass('red-token') && $('#24').hasClass('red-token') && $('#25').hasClass('red-token') ||
+      $('#23').hasClass('red-token') && $('#24').hasClass('red-token') && $('#25').hasClass('red-token') && $('#26').hasClass('red-token') ||
+      $('#24').hasClass('red-token') && $('#25').hasClass('red-token') && $('#26').hasClass('red-token') && $('#27').hasClass('red-token') ||
+      $('#14').hasClass('red-token') && $('#15').hasClass('red-token') && $('#16').hasClass('red-token') && $('#17').hasClass('red-token') ||
+      $('#15').hasClass('red-token') && $('#16').hasClass('red-token') && $('#17').hasClass('red-token') && $('#18').hasClass('red-token') ||
+      $('#16').hasClass('red-token') && $('#17').hasClass('red-token') && $('#18').hasClass('red-token') && $('#19').hasClass('red-token') ||
+      $('#17').hasClass('red-token') && $('#18').hasClass('red-token') && $('#19').hasClass('red-token') && $('#20').hasClass('red-token') ||
+      $('#7').hasClass('red-token') && $('#8').hasClass('red-token') && $('#9').hasClass('red-token') && $('#10').hasClass('red-token') ||
+      $('#8').hasClass('red-token') && $('#9').hasClass('red-token') && $('#10').hasClass('red-token') && $('#11').hasClass('red-token') ||
+      $('#9').hasClass('red-token') && $('#10').hasClass('red-token') && $('#11').hasClass('red-token') && $('#12').hasClass('red-token') ||
+      $('#10').hasClass('red-token') && $('#11').hasClass('red-token') && $('#12').hasClass('red-token') && $('#13').hasClass('red-token') ||
+      $('#0').hasClass('red-token') && $('#1').hasClass('red-token') && $('#2').hasClass('red-token') && $('#3').hasClass('red-token') ||
+      $('#1').hasClass('red-token') && $('#2').hasClass('red-token') && $('#3').hasClass('red-token') && $('#4').hasClass('red-token') ||
+      $('#2').hasClass('red-token') && $('#3').hasClass('red-token') && $('#4').hasClass('red-token') && $('#5').hasClass('red-token') ||
+      $('#3').hasClass('red-token') && $('#4').hasClass('red-token') && $('#5').hasClass('red-token') && $('#6').hasClass('red-token') ||
 
-  for (var i = 0; i < $winsArray.length; i++) {
-    for (var j = 0; j < $winsArray[i].length; j++) {
-      if ($winsArray[i][j].hasClass('red-token')) {
-        redWin = j;
-        if (redWin == 3) {
-          console.log('red player wins');
-          redWin = 0;
-          break;
-        }
-      } else if ($winsArray[i][j].hasClass('black-token')) {
-        blackWin = j;
-        if (blackWin == 3) {
-          console.log('black player wins');
-          blackWin = 0;
-          break;
-        }
-      }
-    }
+      $('#35').hasClass('red-token') && $('#28').hasClass('red-token') && $('#21').hasClass('red-token') && $('#14').hasClass('red-token') ||
+      $('#28').hasClass('red-token') && $('#21').hasClass('red-token') && $('#14').hasClass('red-token') && $('#7').hasClass('red-token') ||
+      $('#21').hasClass('red-token') && $('#14').hasClass('red-token') && $('#7').hasClass('red-token') && $('#0').hasClass('red-token') ||
+      $('#36').hasClass('red-token') && $('#29').hasClass('red-token') && $('#22').hasClass('red-token') && $('#15').hasClass('red-token') ||
+      $('#29').hasClass('red-token') && $('#22').hasClass('red-token') && $('#15').hasClass('red-token') && $('#8').hasClass('red-token') ||
+      $('#22').hasClass('red-token') && $('#15').hasClass('red-token') && $('#8').hasClass('red-token') && $('#1').hasClass('red-token') ||
+      $('#37').hasClass('red-token') && $('#30').hasClass('red-token') && $('#23').hasClass('red-token') && $('#16').hasClass('red-token') ||
+      $('#30').hasClass('red-token') && $('#23').hasClass('red-token') && $('#16').hasClass('red-token') && $('#9').hasClass('red-token') ||
+      $('#23').hasClass('red-token') && $('#16').hasClass('red-token') && $('#9').hasClass('red-token') && $('#2').hasClass('red-token') ||
+      $('#38').hasClass('red-token') && $('#31').hasClass('red-token') && $('#24').hasClass('red-token') && $('#17').hasClass('red-token') ||
+      $('#31').hasClass('red-token') && $('#24').hasClass('red-token') && $('#17').hasClass('red-token') && $('#10').hasClass('red-token') ||
+      $('#24').hasClass('red-token') && $('#17').hasClass('red-token') && $('#10').hasClass('red-token') && $('#3').hasClass('red-token') ||
+      $('#39').hasClass('red-token') && $('#32').hasClass('red-token') && $('#25').hasClass('red-token') && $('#18').hasClass('red-token') ||
+      $('#32').hasClass('red-token') && $('#25').hasClass('red-token') && $('#18').hasClass('red-token') && $('#11').hasClass('red-token') ||
+      $('#25').hasClass('red-token') && $('#18').hasClass('red-token') && $('#11').hasClass('red-token') && $('#4').hasClass('red-token') ||
+      $('#40').hasClass('red-token') && $('#33').hasClass('red-token') && $('#26').hasClass('red-token') && $('#19').hasClass('red-token') ||
+      $('#33').hasClass('red-token') && $('#26').hasClass('red-token') && $('#19').hasClass('red-token') && $('#12').hasClass('red-token') ||
+      $('#26').hasClass('red-token') && $('#19').hasClass('red-token') && $('#12').hasClass('red-token') && $('#5').hasClass('red-token') ||
+      $('#41').hasClass('red-token') && $('#34').hasClass('red-token') && $('#27').hasClass('red-token') && $('#20').hasClass('red-token') ||
+      $('#34').hasClass('red-token') && $('#27').hasClass('red-token') && $('#20').hasClass('red-token') && $('#13').hasClass('red-token') ||
+      $('#27').hasClass('red-token') && $('#20').hasClass('red-token') && $('#13').hasClass('red-token') && $('#6').hasClass('red-token') ||
+
+      $('#35').hasClass('red-token') && $('#29').hasClass('red-token') && $('#23').hasClass('red-token') && $('#17').hasClass('red-token')) {
+          console.log('Red wins!');
   }
+
 }; // --> end $checkingWins function
 checkingWins();
 
@@ -888,4 +897,83 @@ checkingWins();
   //   }
   // }; // --> end checkingWins function
   //
+  // checkingWins();
+
+
+
+
+
+
+  // var checkingWins = function() {
+  //   var redWin = 0;
+  //   var blackWin = 0;
+  //
+  //   for (var i = 0; i < $winsArray.length; i++) {
+  //     for (var j = 0; j < $winsArray[i].length; j++) {
+  //       if ($winsArray[i][j].hasClass('red-token')) {
+  //         redWin = j;
+  //         if (redWin == 3) {
+  //           console.log('red player wins');
+  //           redWin = 0;
+  //           break;
+  //         }
+  //       } else if ($winsArray[i][j].hasClass('black-token')) {
+  //         blackWin = j;
+  //         if (blackWin == 3) {
+  //           console.log('black player wins');
+  //           blackWin = 0;
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }; // --> end $checkingWins function
+  // checkingWins();
+
+
+  // var $winsArray = [
+  //   [$('#35'), $('#36'), $('#37'), $('#38')],
+  //   // [$('#36'), $('#37'), $('#38'), $('#39')], [$('#37'), $('#38'), $('#39'), $('#40')],
+  //   // [$('#38'), $('#39'), $('#40'), $('#41')], [$('#28'), $('#29'), $('#30'), $('#31')], [$('#29'), $('#30'), $('#31'), $('#32')],
+  //   // [$('#30'), $('#31'), $('#32'), $('#33')], [$('#31'), $('#32'), $('#33'), $('#34')], [$('#21'), $('#22'), $('#23'), $('#24')],
+  //   // [$('#22'), $('#23'), $('#24'), $('#25')], [$('#23'), $('#24'), $('#25'), $('#26')], [$('#24'), $('#25'), $('#26'), $('#27')],
+  //   // [$('#14'), $('#15'), $('#16'), $('#17')], [$('#15'), $('#16'), $('#17'), $('#18')], [$('#16'), $('#17'), $('#18'), $('#19')],
+  //   // [$('#17'), $('#18'), $('#19'), $('#20')], [$('#7'), $('#8'), $('#9'), $('#10')], [$('#8'), $('#9'), $('#10'), $('#11')],
+  //   // [$('#9'), $('#10'), $('#11'), $('#12')], [$('#10'), $('#11'), $('#12'), $('#13')], [$('#0'), $('#1'), $('#2'), $('#3')],
+  //   // [$('#1'), $('#2'), $('#3'), $('#4')], [$('#2'), $('#3'), $('#4'), $('#5')], [$('#3'), $('#4'), $('#5'), $('#6')],
+  //   // [$('#35'), $('#28'), $('#21'), $('#14')], [$('#28'), $('#21'), $('#14'), $('#7')], [$('#21'), $('#14'), $('#7'), $('#0')],
+  //   // [$('#36'), $('#29'), $('#22'), $('#15')], [$('#29'), $('#22'), $('#15'), $('#8')], [$('#22'), $('#15'), $('#8'), $('#1')],
+  //   // [$('#37'), $('#30'), $('#23'), $('#16')], [$('#30'), $('#23'), $('#16'), $('#9')], [$('#23'), $('#16'), $('#9'), $('#2')],
+  //   // [$('#38'), $('#31'), $('#24'), $('#17')], [$('#31'), $('#24'), $('#17'), $('#10')], [$('#24'), $('#17'), $('#10'), $('#3')],
+  //   // [$('#39'), $('#32'), $('#25'), $('#18')], [$('#32'), $('#25'), $('#18'), $('#11')], [$('#25'), $('#18'), $('#11'), $('#4')],
+  //   // [$('#40'), $('#33'), $('#26'), $('#19')], [$('#33'), $('#26'), $('#19'), $('#12')], [$('#26'), $('#19'), $('#12'), $('#5')],
+  //   // [$('#41'), $('#34'), $('#27'), $('#20')], [$('#34'), $('#27'), $('#20'), $('#13')], [$('#27'), $('#20'), $('#13'), $('#6')],
+  // ];
+
+
+
+  // var checkingWins = function() {
+  //   var redWin = 0;
+  //   var blackWin = 0;
+  //
+  //   for (var i = 0; i < $winsArray.length; i++) {
+  //     for (var j = 0; j < $winsArray[i].length; j++) {
+  //       if ($winsArray[i][j].hasClass('red-token')) {
+  //         redWin = j;
+  //         if (redWin == 3) {
+  //           console.log('red player wins');
+  //           redWin = 0;
+  //           break;
+  //         }
+  //       } else if ($winsArray[i][j].hasClass('black-token')) {
+  //         blackWin = j;
+  //         if (blackWin == 3) {
+  //           console.log('black player wins');
+  //           blackWin = 0;
+  //           break;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }; // --> end $checkingWins function
   // checkingWins();
