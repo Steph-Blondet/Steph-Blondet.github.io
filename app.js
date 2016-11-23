@@ -13,10 +13,6 @@ $(function() {
 
   var $circleClass = $('.circle'); // grabbing the circle class
 
-  // var $tileNmbr; // --?
-  //
-  // var $red, $black; // --?
-
   var $newBoardDiv;
 
 
@@ -24,7 +20,7 @@ $(function() {
 // 3. SWITCH TURNS [X]
   var toggleFunction = function(column) {
     console.log('testing toggleFunction'); // click listener is working
-    console.log($(column));
+    // console.log($(column));
     if (toggle) {
       $(column).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
       $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
@@ -37,7 +33,10 @@ $(function() {
 
       toggle = !toggle; // alternates the turns between red and black
 
+      checkingWins();
+
   };// --> closing toggleFunction function
+
 
 
 // 1. CREATING CONNECT FOUR BOARD [X]
@@ -181,14 +180,35 @@ var $winsArray = [
 
 ];
 
-// var winsArray = [
-//     ['#35', '#36', '#37', '#38'], // horizontal
-//     ['#35', '#28', '#21', '#14'], // vertical
-//     ['#21', '#15', '#9', '#3'], // diagonal
-//     ['#28', '#22', '#16', '#10'], // diagonal
-// ];
+console.log($winsArray[0]);
 
-// console.log($winsArray[3]);
+
+var checkingWins = function() {
+  var redWin = 0;
+  var blackWin = 0;
+  for (var i = 0; i < $winsArray.length; i++) {
+    for (var j = 0; j < $winsArray[i].length; j++) {
+      console.log($winsArray[i][j]);
+      if ($winsArray[i][j].hasClass('red-token')) {
+        redWin = j;
+        if (redWin == 3) {
+          alert('red player wins');
+          redWin = 0;
+          break;
+        }
+      } else if ($winsArray[i][j].hasClass('black-token')) {
+        blackWin = j;
+        if (blackWin == 3) {
+          alert('black player wins');
+          blackWin = 0;
+          break;
+        }
+      }
+    }
+  }
+}; // --> end $checkingWins function
+
+
 
 // WINNING PSEUDOCODE
 // I want to go to the first array and check if the token is red
@@ -199,7 +219,9 @@ var $winsArray = [
 // ---> look into nested loops?
 
 
-// var $checkingWins = function() {
+
+// var checkingWins = function() {
+//   var $circleClass = $('.circle');
 //   for (var i = 0; i < $winsArray.length; i++) {
 //   console.log($winsArray[i]);
 //     if ($winsArray[i].hasClass('red-token')) {
@@ -212,9 +234,9 @@ var $winsArray = [
 //       // }
 //     }
 //   }
-// }; // --> end $checkingWins function
+// }; // --> end checkingWins function
 //
-// $checkingWins();
+// checkingWins();
 
 
 
@@ -227,9 +249,6 @@ var $winsArray = [
   //  toggleFunction();
   //  clickButtons();
  }); // --> end clear button function
-
-
-
 
 
 
@@ -855,5 +874,31 @@ var $winsArray = [
   //     // }
   //   }
   // }; // --> end $checkingWins function
+  //
+  // checkingWins();
+
+  // var winsArray = [
+  //     ['#35', '#36', '#37', '#38'], // horizontal
+  //     ['#35', '#28', '#21', '#14'], // vertical
+  //     ['#21', '#15', '#9', '#3'], // diagonal
+  //     ['#28', '#22', '#16', '#10'], // diagonal
+  // ];
+
+
+  // var checkingWins = function() {
+  //   var $circleClass = $('.circle');
+  //   for (var i = 0; i < winsArray.length; i++) {
+  //   console.log(winsArray[i]);
+  //     if (winsArray[i].hasClass('red-token')) {
+  //       // if (winsArray[i].hasClass('red-token')) {
+  //       //   if (winsArray[i].hasClass('red-token')) {
+  //       //     if (winsArray[i].hasClass('red-token')) {
+  //             console.log('you won!');
+  //       //     }
+  //       //   }
+  //       // }
+  //     }
+  //   }
+  // }; // --> end checkingWins function
   //
   // checkingWins();
