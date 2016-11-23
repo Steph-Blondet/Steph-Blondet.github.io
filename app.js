@@ -17,20 +17,18 @@ $(function() {
 // 3. SWITCH TURNS [X]
   var toggleFunction = function(column) {
     console.log('testing toggleFunction'); // click listener is working
-    // console.log($(column));
+
     if (toggle) {
-      $(column).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
-      $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
-      // console.log('toggle is true');
-      } else {
-      $(column).addClass('black-token'); // if toggle is false, it will add the class of blackToken to the $newBoardDiv created below
-      $nextTurn.text("It's Red's turn"); // when blackToken is added to the div, the p tag will change to red's turn
-      // console.log('toggle is false');
-      };
+      $(column).addClass('red-token'); // if toggle is true, it will add the class of red-token to the $newBoardDiv created below
+      $nextTurn.text("It's Black's turn"); // when red-token is added to the div, the p tag will change to black's turn
+    } else {
+      $(column).addClass('black-token'); // if toggle is false, it will add the class of black-token to the $newBoardDiv created below
+      $nextTurn.text("It's Red's turn"); // when black-token is added to the div, the p tag will change to red's turn
+    };
 
       toggle = !toggle; // alternates the turns between red and black
 
-      checkingWins();
+      checkingWins(); // calls the checkingWins function to see who has won
 
   };// --> closing toggleFunction function
 
@@ -43,13 +41,13 @@ $(function() {
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
         $newBoardDiv.attr('id', i); // adding ids with numbers to the circles
-        $board.append($newBoardDiv); // appending the newBoardDiv that goes inside the board div
+        $board.append($newBoardDiv); // appending the $newBoardDiv that goes inside the board div
       };
 
   }; // --> closing createBoard function
 
   createBoard(); // calling createBoard to create the board when the page loads
-    // clickButtons();
+  // clickButtons();
 
 
 
@@ -62,21 +60,21 @@ $(function() {
   var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
   var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
   var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
-  // console.log(column1[2]); // I wrote the array correctly! :)
+  // console.log(column1[2]);
 
 
-// grabbing the 'play here' buttons
+// grabbing the 'play here' buttons from the html
+  var $button1Id = $('#button1');
+  var $button2Id = $('#button2');
+  var $button3Id = $('#button3');
+  var $button4Id = $('#button4');
+  var $button5Id = $('#button5');
+  var $button6Id = $('#button6');
+  var $button7Id = $('#button7');
+  //  console.log($button1Id); // checked all the buttonIds and they work!
+
   // var $buttonsIds = [$('#button1'), $('#button2'), $('#button3'), $('#button4'), $('#button5'), $('#button6'), $('#button7')];
   //  ---> take a look again, want to make this DRY!
-
-    var $button1Id = $('#button1');
-    var $button2Id = $('#button2');
-    var $button3Id = $('#button3');
-    var $button4Id = $('#button4');
-    var $button5Id = $('#button5');
-    var $button6Id = $('#button6');
-    var $button7Id = $('#button7');
-    //  console.log($button1Id); // checked all the buttonIds and they work!
 
 // creating a function to make the 'play here' buttons clickable
   var clickButtons = function () {
@@ -84,11 +82,8 @@ $(function() {
     $button1Id.on('click', function(){ // when I click on this button, the for loop will run
       for (var i = 0; i < column1.length; i++) {
         if ($(column1[i]).hasClass('red-token') || column1[i].hasClass('black-token')) { // if it has a red or black token, do nothing
-          console.log('space is taken by col 1');
-          // console.log(column1[i]);
-          // console.log('space is taken');
         } else { // else, run the toggleFunction which will switch from red/black token
-          toggleFunction(column1[i]); // this makes the token start red
+          toggleFunction(column1[i]); // this makes the token start red because toggle is set to true
           break; // this will stop the column to be filled out completely
         }
       }
@@ -97,11 +92,8 @@ $(function() {
     $button2Id.on('click', function(){
       for (var i = 0; i < column2.length; i++) {
         if (column2[i].hasClass('red-token') || column2[i].hasClass('black-token')) {
-          // console.log('space is taken');
-          // console.log(column2[i]);
         } else {
           toggleFunction(column2[i]);
-
           break;
         }
       }
@@ -164,11 +156,12 @@ $(function() {
 
   }; // --> clickButtons function ends
 
-  clickButtons();
+  clickButtons(); // calling the clickButtons function so the user can click the 'play here' buttons when the page loads
 
 
 
 // 4. WINNING TIMEEEEEEEEEEE
+  // I really, really, really want to make this DRY! I know there is a way, but haven't figure it out yet. The for loop and if statement I wrote before doesn't work on all the arrays.
 
 var checkingWins = function() {
   if ($('#35').hasClass('red-token') && $('#36').hasClass('red-token') && $('#37').hasClass('red-token') && $('#38').hasClass('red-token') ||
@@ -220,49 +213,22 @@ var checkingWins = function() {
 
       $('#35').hasClass('red-token') && $('#29').hasClass('red-token') && $('#23').hasClass('red-token') && $('#17').hasClass('red-token')) {
           alert('Red wins!'); // --> on wed: try to change this to a message in the p tag or something creative
-  } else if (
-      $('#35').hasClass('black-token') && $('#36').hasClass('black-token') && $('#37').hasClass('black-token') && $('#38').hasClass('black-token') || $('#36').hasClass('black-token') && $('#37').hasClass('black-token') && $('#38').hasClass('black-token') && $('#39').hasClass('black-token') || $('#37').hasClass('black-token') && $('#38').hasClass('black-token') && $('#39').hasClass('black-token') && $('#40').hasClass('black-token') || $('#38').hasClass('black-token') && $('#39').hasClass('black-token') && $('#40').hasClass('black-token') && $('#41').hasClass('black-token') || $('#28').hasClass('black-token') && $('#29').hasClass('black-token') && $('#30').hasClass('black-token') && $('#31').hasClass('black-token') ||
-      $('#29').hasClass('black-token') && $('#30').hasClass('black-token') && $('#31').hasClass('black-token') && $('#32').hasClass('black-token') ||
-      $('#30').hasClass('black-token') && $('#31').hasClass('black-token') && $('#32').hasClass('black-token') && $('#33').hasClass('black-token') ||
-      $('#31').hasClass('black-token') && $('#32').hasClass('black-token') && $('#33').hasClass('black-token') && $('#34').hasClass('black-token') ||
-      $('#21').hasClass('black-token') && $('#22').hasClass('black-token') && $('#23').hasClass('black-token') && $('#24').hasClass('black-token') ||
-      $('#22').hasClass('black-token') && $('#23').hasClass('black-token') && $('#24').hasClass('black-token') && $('#25').hasClass('black-token') ||
-      $('#23').hasClass('black-token') && $('#24').hasClass('black-token') && $('#25').hasClass('black-token') && $('#26').hasClass('black-token') ||
-      $('#24').hasClass('black-token') && $('#25').hasClass('black-token') && $('#26').hasClass('black-token') && $('#27').hasClass('black-token') ||
-      $('#14').hasClass('black-token') && $('#15').hasClass('black-token') && $('#16').hasClass('black-token') && $('#17').hasClass('black-token') ||
-      $('#15').hasClass('black-token') && $('#16').hasClass('black-token') && $('#17').hasClass('black-token') && $('#18').hasClass('black-token') ||
-      $('#16').hasClass('black-token') && $('#17').hasClass('black-token') && $('#18').hasClass('black-token') && $('#19').hasClass('black-token') ||
-      $('#17').hasClass('black-token') && $('#18').hasClass('black-token') && $('#19').hasClass('black-token') && $('#20').hasClass('black-token') ||
-      $('#7').hasClass('black-token') && $('#8').hasClass('black-token') && $('#9').hasClass('black-token') && $('#10').hasClass('black-token') ||
-      $('#8').hasClass('black-token') && $('#9').hasClass('black-token') && $('#10').hasClass('black-token') && $('#11').hasClass('black-token') ||
-      $('#9').hasClass('black-token') && $('#10').hasClass('black-token') && $('#11').hasClass('black-token') && $('#12').hasClass('black-token') ||
-      $('#10').hasClass('black-token') && $('#11').hasClass('black-token') && $('#12').hasClass('black-token') && $('#13').hasClass('black-token') ||
-      $('#0').hasClass('black-token') && $('#1').hasClass('black-token') && $('#2').hasClass('black-token') && $('#3').hasClass('black-token') ||
-      $('#1').hasClass('black-token') && $('#2').hasClass('black-token') && $('#3').hasClass('black-token') && $('#4').hasClass('black-token') ||
-      $('#2').hasClass('black-token') && $('#3').hasClass('black-token') && $('#4').hasClass('black-token') && $('#5').hasClass('black-token') ||
-      $('#3').hasClass('black-token') && $('#4').hasClass('black-token') && $('#5').hasClass('black-token') && $('#6').hasClass('black-token') ||
 
-      $('#35').hasClass('black-token') && $('#28').hasClass('black-token') && $('#21').hasClass('black-token') && $('#14').hasClass('black-token') ||
-      $('#28').hasClass('black-token') && $('#21').hasClass('black-token') && $('#14').hasClass('black-token') && $('#7').hasClass('black-token') ||
-      $('#21').hasClass('black-token') && $('#14').hasClass('black-token') && $('#7').hasClass('black-token') && $('#0').hasClass('black-token') ||
-      $('#36').hasClass('black-token') && $('#29').hasClass('black-token') && $('#22').hasClass('black-token') && $('#15').hasClass('black-token') ||
-      $('#29').hasClass('black-token') && $('#22').hasClass('black-token') && $('#15').hasClass('black-token') && $('#8').hasClass('black-token') ||
-      $('#22').hasClass('black-token') && $('#15').hasClass('black-token') && $('#8').hasClass('black-token') && $('#1').hasClass('black-token') ||
-      $('#37').hasClass('black-token') && $('#30').hasClass('black-token') && $('#23').hasClass('black-token') && $('#16').hasClass('black-token') ||
-      $('#30').hasClass('black-token') && $('#23').hasClass('black-token') && $('#16').hasClass('black-token') && $('#9').hasClass('black-token') ||
-      $('#23').hasClass('black-token') && $('#16').hasClass('black-token') && $('#9').hasClass('black-token') && $('#2').hasClass('black-token') ||
-      $('#38').hasClass('black-token') && $('#31').hasClass('black-token') && $('#24').hasClass('black-token') && $('#17').hasClass('black-token') ||
-      $('#31').hasClass('black-token') && $('#24').hasClass('black-token') && $('#17').hasClass('black-token') && $('#10').hasClass('black-token') ||
-      $('#24').hasClass('black-token') && $('#17').hasClass('black-token') && $('#10').hasClass('black-token') && $('#3').hasClass('black-token') ||
-      $('#39').hasClass('black-token') && $('#32').hasClass('black-token') && $('#25').hasClass('black-token') && $('#18').hasClass('black-token') ||
-      $('#32').hasClass('black-token') && $('#25').hasClass('black-token') && $('#18').hasClass('black-token') && $('#11').hasClass('black-token') ||
-      $('#25').hasClass('black-token') && $('#18').hasClass('black-token') && $('#11').hasClass('black-token') && $('#4').hasClass('black-token') ||
-      $('#40').hasClass('black-token') && $('#33').hasClass('black-token') && $('#26').hasClass('black-token') && $('#19').hasClass('black-token') ||
-      $('#33').hasClass('black-token') && $('#26').hasClass('black-token') && $('#19').hasClass('black-token') && $('#12').hasClass('black-token') ||
-      $('#26').hasClass('black-token') && $('#19').hasClass('black-token') && $('#12').hasClass('black-token') && $('#5').hasClass('black-token') ||
-      $('#41').hasClass('black-token') && $('#34').hasClass('black-token') && $('#27').hasClass('black-token') && $('#20').hasClass('black-token') ||
-      $('#34').hasClass('black-token') && $('#27').hasClass('black-token') && $('#20').hasClass('black-token') && $('#13').hasClass('black-token') ||
-      $('#27').hasClass('black-token') && $('#20').hasClass('black-token') && $('#13').hasClass('black-token') && $('#6').hasClass('black-token') ||
+  } else if (
+      $('#35').hasClass('black-token') && $('#36').hasClass('black-token') && $('#37').hasClass('black-token') && $('#38').hasClass('black-token') || $('#36').hasClass('black-token') && $('#37').hasClass('black-token') && $('#38').hasClass('black-token') && $('#39').hasClass('black-token') || $('#37').hasClass('black-token') && $('#38').hasClass('black-token') && $('#39').hasClass('black-token') && $('#40').hasClass('black-token') || $('#38').hasClass('black-token') && $('#39').hasClass('black-token') && $('#40').hasClass('black-token') && $('#41').hasClass('black-token') || $('#28').hasClass('black-token') && $('#29').hasClass('black-token') && $('#30').hasClass('black-token') && $('#31').hasClass('black-token') || $('#29').hasClass('black-token') && $('#30').hasClass('black-token') && $('#31').hasClass('black-token') && $('#32').hasClass('black-token') ||
+      $('#30').hasClass('black-token') && $('#31').hasClass('black-token') && $('#32').hasClass('black-token') && $('#33').hasClass('black-token') || $('#31').hasClass('black-token') && $('#32').hasClass('black-token') && $('#33').hasClass('black-token') && $('#34').hasClass('black-token') || $('#21').hasClass('black-token') && $('#22').hasClass('black-token') && $('#23').hasClass('black-token') && $('#24').hasClass('black-token') ||
+      $('#22').hasClass('black-token') && $('#23').hasClass('black-token') && $('#24').hasClass('black-token') && $('#25').hasClass('black-token') || $('#23').hasClass('black-token') && $('#24').hasClass('black-token') && $('#25').hasClass('black-token') && $('#26').hasClass('black-token') || $('#24').hasClass('black-token') && $('#25').hasClass('black-token') && $('#26').hasClass('black-token') && $('#27').hasClass('black-token') || $('#14').hasClass('black-token') && $('#15').hasClass('black-token') && $('#16').hasClass('black-token') && $('#17').hasClass('black-token') || $('#15').hasClass('black-token') && $('#16').hasClass('black-token') && $('#17').hasClass('black-token') && $('#18').hasClass('black-token') || $('#16').hasClass('black-token') && $('#17').hasClass('black-token') && $('#18').hasClass('black-token') && $('#19').hasClass('black-token') ||
+      $('#17').hasClass('black-token') && $('#18').hasClass('black-token') && $('#19').hasClass('black-token') && $('#20').hasClass('black-token') || $('#7').hasClass('black-token') && $('#8').hasClass('black-token') && $('#9').hasClass('black-token') && $('#10').hasClass('black-token') || $('#8').hasClass('black-token') && $('#9').hasClass('black-token') && $('#10').hasClass('black-token') && $('#11').hasClass('black-token') ||
+      $('#9').hasClass('black-token') && $('#10').hasClass('black-token') && $('#11').hasClass('black-token') && $('#12').hasClass('black-token') || $('#10').hasClass('black-token') && $('#11').hasClass('black-token') && $('#12').hasClass('black-token') && $('#13').hasClass('black-token') || $('#0').hasClass('black-token') && $('#1').hasClass('black-token') && $('#2').hasClass('black-token') && $('#3').hasClass('black-token') ||
+      $('#1').hasClass('black-token') && $('#2').hasClass('black-token') && $('#3').hasClass('black-token') && $('#4').hasClass('black-token') || $('#2').hasClass('black-token') && $('#3').hasClass('black-token') && $('#4').hasClass('black-token') && $('#5').hasClass('black-token') || $('#3').hasClass('black-token') && $('#4').hasClass('black-token') && $('#5').hasClass('black-token') && $('#6').hasClass('black-token') ||
+
+      $('#35').hasClass('black-token') && $('#28').hasClass('black-token') && $('#21').hasClass('black-token') && $('#14').hasClass('black-token') || $('#28').hasClass('black-token') && $('#21').hasClass('black-token') && $('#14').hasClass('black-token') && $('#7').hasClass('black-token') || $('#21').hasClass('black-token') && $('#14').hasClass('black-token') && $('#7').hasClass('black-token') && $('#0').hasClass('black-token') ||
+      $('#36').hasClass('black-token') && $('#29').hasClass('black-token') && $('#22').hasClass('black-token') && $('#15').hasClass('black-token') || $('#29').hasClass('black-token') && $('#22').hasClass('black-token') && $('#15').hasClass('black-token') && $('#8').hasClass('black-token') || $('#22').hasClass('black-token') && $('#15').hasClass('black-token') && $('#8').hasClass('black-token') && $('#1').hasClass('black-token') ||
+      $('#37').hasClass('black-token') && $('#30').hasClass('black-token') && $('#23').hasClass('black-token') && $('#16').hasClass('black-token') || $('#30').hasClass('black-token') && $('#23').hasClass('black-token') && $('#16').hasClass('black-token') && $('#9').hasClass('black-token') || $('#23').hasClass('black-token') && $('#16').hasClass('black-token') && $('#9').hasClass('black-token') && $('#2').hasClass('black-token') ||
+      $('#38').hasClass('black-token') && $('#31').hasClass('black-token') && $('#24').hasClass('black-token') && $('#17').hasClass('black-token') || $('#31').hasClass('black-token') && $('#24').hasClass('black-token') && $('#17').hasClass('black-token') && $('#10').hasClass('black-token') || $('#24').hasClass('black-token') && $('#17').hasClass('black-token') && $('#10').hasClass('black-token') && $('#3').hasClass('black-token') ||
+      $('#39').hasClass('black-token') && $('#32').hasClass('black-token') && $('#25').hasClass('black-token') && $('#18').hasClass('black-token') || $('#32').hasClass('black-token') && $('#25').hasClass('black-token') && $('#18').hasClass('black-token') && $('#11').hasClass('black-token') || $('#25').hasClass('black-token') && $('#18').hasClass('black-token') && $('#11').hasClass('black-token') && $('#4').hasClass('black-token') ||
+      $('#40').hasClass('black-token') && $('#33').hasClass('black-token') && $('#26').hasClass('black-token') && $('#19').hasClass('black-token') || $('#33').hasClass('black-token') && $('#26').hasClass('black-token') && $('#19').hasClass('black-token') && $('#12').hasClass('black-token') || $('#26').hasClass('black-token') && $('#19').hasClass('black-token') && $('#12').hasClass('black-token') && $('#5').hasClass('black-token') ||
+      $('#41').hasClass('black-token') && $('#34').hasClass('black-token') && $('#27').hasClass('black-token') && $('#20').hasClass('black-token') || $('#34').hasClass('black-token') && $('#27').hasClass('black-token') && $('#20').hasClass('black-token') && $('#13').hasClass('black-token') || $('#27').hasClass('black-token') && $('#20').hasClass('black-token') && $('#13').hasClass('black-token') && $('#6').hasClass('black-token') ||
 
       $('#35').hasClass('black-token') && $('#29').hasClass('black-token') && $('#23').hasClass('black-token') && $('#17').hasClass('black-token')) {
         alert('Black Wins!');
@@ -288,6 +254,7 @@ checkingWins();
 
 
 });//---> end of code, do not change!
+
 
 
 
