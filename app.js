@@ -219,7 +219,7 @@ var checkingWins = function() {
       $('#27').hasClass('red-token') && $('#20').hasClass('red-token') && $('#13').hasClass('red-token') && $('#6').hasClass('red-token') ||
 
       $('#35').hasClass('red-token') && $('#29').hasClass('red-token') && $('#23').hasClass('red-token') && $('#17').hasClass('red-token')) {
-          console.log('Red wins!'); // --> on wed: try to change this to a message in the p tag or something creative
+          alert('Red wins!'); // --> on wed: try to change this to a message in the p tag or something creative
   } else if (
       $('#35').hasClass('black-token') && $('#36').hasClass('black-token') && $('#37').hasClass('black-token') && $('#38').hasClass('black-token') || $('#36').hasClass('black-token') && $('#37').hasClass('black-token') && $('#38').hasClass('black-token') && $('#39').hasClass('black-token') || $('#37').hasClass('black-token') && $('#38').hasClass('black-token') && $('#39').hasClass('black-token') && $('#40').hasClass('black-token') || $('#38').hasClass('black-token') && $('#39').hasClass('black-token') && $('#40').hasClass('black-token') && $('#41').hasClass('black-token') || $('#28').hasClass('black-token') && $('#29').hasClass('black-token') && $('#30').hasClass('black-token') && $('#31').hasClass('black-token') ||
       $('#29').hasClass('black-token') && $('#30').hasClass('black-token') && $('#31').hasClass('black-token') && $('#32').hasClass('black-token') ||
@@ -265,7 +265,9 @@ var checkingWins = function() {
       $('#27').hasClass('black-token') && $('#20').hasClass('black-token') && $('#13').hasClass('black-token') && $('#6').hasClass('black-token') ||
 
       $('#35').hasClass('black-token') && $('#29').hasClass('black-token') && $('#23').hasClass('black-token') && $('#17').hasClass('black-token')) {
-        console.log('Black Wins!');
+        alert('Black Wins!');
+  } else {
+    console.log('what is this');
   }
 
 }; // --> end $checkingWins function
