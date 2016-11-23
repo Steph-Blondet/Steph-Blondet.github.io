@@ -24,7 +24,7 @@ $(function() {
 // 3. SWITCH TURNS [X]
   var toggleFunction = function(column) {
     console.log('testing toggleFunction'); // click listener is working
-
+    console.log($(column));
     if (toggle) {
       $(column).addClass('red-token'); // if toggle is true, it will add the class of redToken to the $newBoardDiv created below
       $nextTurn.text("It's Black's turn"); // when redToken is added to the div, the p tag will change to black's turn
@@ -40,20 +40,20 @@ $(function() {
   };// --> closing toggleFunction function
 
 
-
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
-    $board.empty() // this will reset the board after I click the clearButton
+    $board.empty();
     for (var i = 0; i < 42; i++) { // I want to create 42 white circles that when clicked will change to red/black
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
         $newBoardDiv.attr('id', i); // adding ids with numbers to the circles
         $board.append($newBoardDiv); // appending the newBoardDiv that goes inside the board div
       };
+
   }; // --> closing createBoard function
 
   createBoard(); // calling createBoard to create the board when the page loads
-  // clickButtons();
+    // clickButtons();
 
 
 
@@ -69,7 +69,7 @@ $(function() {
   // console.log(column1[2]); // I wrote the array correctly! :)
 
 
-// grabbin the 'play here' buttons
+// grabbing the 'play here' buttons
   // var $buttonsIds = [$('#button1'), $('#button2'), $('#button3'), $('#button4'), $('#button5'), $('#button6'), $('#button7')];
   //  ---> take a look again, want to make this DRY!
 
@@ -87,7 +87,9 @@ $(function() {
 
     $button1Id.on('click', function(){ // when I click on this button, the for loop will run
       for (var i = 0; i < column1.length; i++) {
-        if (column1[i].hasClass('red-token') || column1[i].hasClass('black-token')) { // if it has a red or black token, do nothing
+        if ($(column1[i]).hasClass('red-token') || column1[i].hasClass('black-token')) { // if it has a red or black token, do nothing
+          console.log('space is taken by col 1');
+          // console.log(column1[i]);
           // console.log('space is taken');
         } else { // else, run the toggleFunction which will switch from red/black token
           toggleFunction(column1[i]); // this makes the token start red
@@ -100,8 +102,10 @@ $(function() {
       for (var i = 0; i < column2.length; i++) {
         if (column2[i].hasClass('red-token') || column2[i].hasClass('black-token')) {
           console.log('space is taken');
+          console.log(column2[i]);
         } else {
           toggleFunction(column2[i]);
+
           break;
         }
       }
@@ -170,20 +174,19 @@ $(function() {
 
 // 4. WINNING TIMEEEEEEEEEEE
 
-// var $winsArray = [
-//     [$('#35'), $('#36'), $('#37'), $('#38')], // horizontal
-//     [$('#35'), $('#28'), $('#21'), $('#14')], // vertical
-//     [$('#21'), $('#15'), $('#9'), $('#3')], // diagonal
-//
-// ];
-
-var winsArray = [
-    ['#35', '#36', '#37', '#38'], // horizontal
-    ['#35', '#28', '#21', '#14'], // vertical
-    ['#21', '#15', '#9', '#3'], // diagonal
-    ['#28', '#22', '#16', '#10'], // diagonal
+var $winsArray = [
+    [$('#35'), $('#36'), $('#37'), $('#38')], // horizontal
+    [$('#35'), $('#28'), $('#21'), $('#14')], // vertical
+    [$('#21'), $('#15'), $('#9'), $('#3')], // diagonal
 
 ];
+
+// var winsArray = [
+//     ['#35', '#36', '#37', '#38'], // horizontal
+//     ['#35', '#28', '#21', '#14'], // vertical
+//     ['#21', '#15', '#9', '#3'], // diagonal
+//     ['#28', '#22', '#16', '#10'], // diagonal
+// ];
 
 // console.log($winsArray[3]);
 
@@ -195,38 +198,40 @@ var winsArray = [
 // if false, go to the next array
 // ---> look into nested loops?
 
+
 // var $checkingWins = function() {
 //   for (var i = 0; i < $winsArray.length; i++) {
-//     console.log($winsArray[i]);
+//   console.log($winsArray[i]);
+//     if ($winsArray[i].hasClass('red-token')) {
+//       // if (winsArray[i].hasClass('red-token')) {
+//       //   if (winsArray[i].hasClass('red-token')) {
+//       //     if (winsArray[i].hasClass('red-token')) {
+//             console.log('you won!');
+//       //     }
+//       //   }
+//       // }
+//     }
 //   }
 // }; // --> end $checkingWins function
 //
 // $checkingWins();
 
 
-var checkingWins = function() {
-  for (var i = 0; i < winsArray.length; i++) {
-    // for (var j = 0; j < winsArray.length; j++) {
-      // for (var k = 0; k < $winsArray.length; k++) {
-      //   console.log($winsArray[i][j][k]);
-      // }
-      console.log(winsArray[i]);
-    // }
-  }
-}; // --> end $checkingWins function
-
-checkingWins();
-
-
-
-
 
 // 5. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
 //  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
- // $clearButton.on('click', function() {
- //   createBoard();
- //  //  clickButtons();
- // }); // --> end clear button function
+ $clearButton.on('click', function() {
+  //  $board.empty(); // this will reset the board after I click the clearButton
+   createBoard();
+   toggle = !toggle;
+  //  toggleFunction();
+  //  clickButtons();
+ }); // --> end clear button function
+
+
+
+
+
 
 
 });//---> end of code, do not change!
@@ -839,3 +844,16 @@ checkingWins();
   // };
   //
   // $checkingWins();
+
+  // var checkingWins = function() {
+  //   for (var i = 0; i < winsArray.length; i++) {
+  //     // for (var j = 0; j < winsArray.length; j++) {
+  //       // for (var k = 0; k < $winsArray.length; k++) {
+  //       //   console.log($winsArray[i][j][k]);
+  //       // }
+  //       console.log(winsArray[i]);
+  //     // }
+  //   }
+  // }; // --> end $checkingWins function
+  //
+  // checkingWins();
