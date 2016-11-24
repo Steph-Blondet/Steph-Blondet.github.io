@@ -1,88 +1,116 @@
-/*create board (rectangle)*/
-/*create new game button*/
-/*create turns box*/
-
-* {
-  font-size: 0px;
-}
-
-h1, h2, p {
-  text-align: center;
-  font-family: "Times New Roman", Georgia, Serif;
+body {
+  background-size: 100%;
+  background: url(images/marble-background-1.jpg) no-repeat center;
 }
 
 h1, p {
-  padding-top: 1%;
+  text-align: center;
 }
 
 h1 {
-  font-size: 40px;
-}
-
-h2 {
-  font-size: 30px;
+  font-size: 4em;
+  font-family: 'Roboto', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 900;
 }
 
 p {
-  font-size: 20px;
+  font-size: 2em;
+  font-family: 'Josefin Sans', sans-serif;
+  padding-top: 0.3em;
 }
 
 .container {
-  width: 720px;
-  margin: 2% auto;
+  width: 46em;
+  margin: auto;
   display: block;
-  /*background-color: red;*/
+  /*background-color: blue;*/
 }
 
 .play-here-button {
   display: inline-block;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.8em;
+  font-weight: 700;
   text-transform: uppercase;
   text-align: center;
-  margin: 2% 1.4%;
+  letter-spacing: 0.04em;
+  margin: 2% 1.05%;
+  padding: 0 0 0 1em;
+  border: none;
+  background-color: transparent;
+  color: #ED3D88;
+}
 
+.play-here-button:hover {
+  color: darkgrey;
 }
 
 #board {
-  width: 714px;
-  height: 612px;
-  margin: 2% auto;
+  width: 45em;
+  height: 40em;
+  margin: 1% auto;
   display: block;
-  border: 4px solid pink;
+  border: 1em solid pink;
+  border-radius: 5%;
   background-color: pink;
+  box-shadow: 10px 10px 5px gray;
+
 }
 
 .circle {
-  width: 98px;
-	height: 98px;
+  width: 3.7em;
+	height: 3.7em;
   display: inline-block;
-	background: white;
-  border-radius: 50px;
-  margin: 2px;
+	background: #F0F0F0;
+  border-radius: 50%;
+  margin: 1%;
+  padding: 2%;
+
 }
 
-.red-token {
-  width: 98px;
-	height: 98px;
-	background: red;
-  border-radius: 50px;
-  margin: 2px;
+.shadow {
+  box-shadow: inset 8px 5px 5px #636363;
 }
 
-.black-token {
-  width: 98px;
-	height: 98px;
-	background: black;
-  border-radius: 50px;
-  margin: 2px;
+.teal-token {
+  width: 3.7em;
+	height: 3.7em;
+	background: #1cbbba;
+  border-radius: 50%;
+  margin: 1%;
+  padding: 2%;
+  box-shadow: inset 3px 1px 1px #636363;
+}
+
+
+.blue-token {
+  width: 3.7em;
+	height: 3.7em;
+	background: #0054A6;
+  border-radius: 50%;
+  margin: 1%;
+  padding: 2%;
+  box-shadow: inset 3px 2px 2px #4C4C4C;
 }
 
 #clear-board {
-  margin: auto;
+  margin: 4% auto;
   display: block;
-  font-family: "Times New Roman", Georgia, Serif;
-  font-size: 16px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 0.75em;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1em 3em;
+  background-color: #ED3D88;
+  border: none;
+  color: white;
+}
+
+#clear-board:hover {
+  background-color: darkgrey;
+  color: white;
 }
 
 
@@ -123,3 +151,7 @@ p {
   text-align: center;
   border: 0.5px solid green;/*just for visualization
 }*/
+
+/*create board (rectangle)*/
+/*create new game button*/
+/*create turns box*/
