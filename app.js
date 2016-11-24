@@ -21,14 +21,14 @@ $(function() {
     if (toggle) {
       $(column).addClass('teal-token'); // if toggle is true, it will add the class of teal-token to the $newBoardDiv created below
       $(column).removeClass('shadow');
-      $nextTurn.text("It's Black's turn"); // when teal-token is added to the div, the p tag will change to black's turn
+      $nextTurn.text("It's Blue's turn"); // when teal-token is added to the div, the p tag will change to blue's turn
     } else {
       $(column).addClass('blue-token'); // if toggle is false, it will add the class of blue-token to the $newBoardDiv created below
       $(column).removeClass('shadow');
-      $nextTurn.text("It's Red's turn"); // when blue-token is added to the div, the p tag will change to red's turn
+      $nextTurn.text("It's Teal's turn"); // when blue-token is added to the div, the p tag will change to teal's turn
     };
 
-      toggle = !toggle; // alternates the turns between red and black
+      toggle = !toggle; // alternates the turns between teal and blue
 
       checkingWins(); // calls the checkingWins function to see who has won
 
@@ -39,7 +39,7 @@ $(function() {
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
     $board.empty(); // this will reset the board after I click the clearButton
-    for (var i = 0; i < 42; i++) { // I want to create 42 white circles that when clicked will change to red/black
+    for (var i = 0; i < 42; i++) { // I want to create 42 white circles that when clicked will change to teal/blue
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
         $newBoardDiv.addClass('shadow');
@@ -84,9 +84,9 @@ $(function() {
 
     $button1Id.on('click', function(){ // when I click on this button, the for loop will run
       for (var i = 0; i < column1.length; i++) {
-        if ($(column1[i]).hasClass('teal-token') || column1[i].hasClass('blue-token')) { // if it has a red or black token, do nothing
-        } else { // else, run the toggleFunction which will switch from red/black token
-          toggleFunction(column1[i]); // this makes the token start red because toggle is set to true
+        if ($(column1[i]).hasClass('teal-token') || column1[i].hasClass('blue-token')) { // if it has a teal or blue token, do nothing
+        } else { // else, run the toggleFunction which will switch from teal/blue token
+          toggleFunction(column1[i]); // this makes the token start teal because toggle is set to true
           break; // this will stop the column to be filled out completely
         }
       }
@@ -215,7 +215,7 @@ var checkingWins = function() {
       $('#27').hasClass('teal-token') && $('#20').hasClass('teal-token') && $('#13').hasClass('teal-token') && $('#6').hasClass('teal-token') ||
 
       $('#35').hasClass('teal-token') && $('#29').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#17').hasClass('teal-token')) {
-          alert('Red wins!'); // --> on wed: try to change this to a message in the p tag or something creative
+          $nextTurn.text("Teal Wins!"); 
 
   } else if (
       $('#35').hasClass('blue-token') && $('#36').hasClass('blue-token') && $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') || $('#36').hasClass('blue-token') && $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') || $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') && $('#40').hasClass('blue-token') || $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') && $('#40').hasClass('blue-token') && $('#41').hasClass('blue-token') || $('#28').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') || $('#29').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#32').hasClass('blue-token') ||
@@ -234,7 +234,7 @@ var checkingWins = function() {
       $('#41').hasClass('blue-token') && $('#34').hasClass('blue-token') && $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') || $('#34').hasClass('blue-token') && $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') && $('#13').hasClass('blue-token') || $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') && $('#13').hasClass('blue-token') && $('#6').hasClass('blue-token') ||
 
       $('#35').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#17').hasClass('blue-token')) {
-        alert('Black Wins!');
+        $nextTurn.text("Blue Wins!");
   } else {
     console.log('what is this');
   }
@@ -287,7 +287,7 @@ checkingWins();
 // 1. write the numbers of tiles as strings in the columns arrays from bottom to top
 //        ---> if strings don't work try tile and number
 // 2. create a function that checks the tile number
-  // 3. create a function that checks if the tile is red/black
+  // 3. create a function that checks if the tile is teal/blue
   // 4. create a function that checks the player's turn
 
 
@@ -322,8 +322,8 @@ checkingWins();
 // }
 
 
-// var $redToken = $('#circle'); // getting circle id
-// $redToken.addClass('teal-token'); // adding the teal-token class to the circle id
+// var $tealToken = $('#circle'); // getting circle id
+// $tealToken.addClass('teal-token'); // adding the teal-token class to the circle id
 
 // } else if ($toggle == true) {
 //   $circleDiv.remove('#circle');
@@ -334,26 +334,26 @@ checkingWins();
 // };
 
 
-// var $redToken = $('<div>'); // creating a new div that goes below the new board div
-//   $redToken.attr('id', 'teal-token'); // gave attribute of redToken to the new div
-//   $newBoardDiv.append($redToken); // appending the redToken div to the newBoardDiv (squares)
+// var $tealToken = $('<div>'); // creating a new div that goes below the new board div
+//   $tealToken.attr('id', 'teal-token'); // gave attribute of tealToken to the new div
+//   $newBoardDiv.append($tealToken); // appending the tealToken div to the newBoardDiv (squares)
 //
-// var $blackToken = $('<div>'); // creating a new div that goes below the new board div
-//   $blackToken.attr('id', 'blue-token'); // gave attribute of blackToken to the new div
-//   $newBoardDiv.append($blackToken); // appending the blackToken div to the newBoardDiv (squares)
+// var $blueToken = $('<div>'); // creating a new div that goes below the new board div
+//   $blueToken.attr('id', 'blue-token'); // gave attribute of blueToken to the new div
+//   $newBoardDiv.append($blueToken); // appending the blueToken div to the newBoardDiv (squares)
 
 
 // WORKING
 // if ($toggle === '#teal-token' || $toggle === '#blue-token') {
 //   //do nothing
-// } else if ($toggle == true) { // this will make the red token to start first
-//     $(this).attr('id', 'teal-token'); // gave attribute of redToken to the $newBoardDiv created below
-//     $nextTurn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
+// } else if ($toggle == true) { // this will make the teal token to start first
+//     $(this).attr('id', 'teal-token'); // gave attribute of tealToken to the $newBoardDiv created below
+//     $nextTurn.text("It's blue's turn"); // when teal token is added to the div, the p tag will change to blue's turn
 //   } else {
-//     $(this).attr('id', 'blue-token'); // gave attribute of blackToken to $newBoardDiv created below
-//     $nextTurn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
+//     $(this).attr('id', 'blue-token'); // gave attribute of blueToken to $newBoardDiv created below
+//     $nextTurn.text("It's teal's turn"); // when blue token is added to the div, the p tag will change to teal's turn
 //   };
-//     $toggle = !$toggle; // alternates the turns between red and black
+//     $toggle = !$toggle; // alternates the turns between teal and blue
 //
 //   // a player should not be able to mark a space that has already been played
 //   if ($('#teal-token') || $('#blue-token')) {
@@ -377,9 +377,9 @@ checkingWins();
 //   console.log(div); // click listener is working
 //   if ($toggle === '#teal-token' || $toggle === '#blue-token') {
 //     } else if ($toggle == true) {
-//       $circleDiv.attr('id', 'teal-token'); // gave attribute of redToken to the circle div
+//       $circleDiv.attr('id', 'teal-token'); // gave attribute of tealToken to the circle div
 //     } else {
-//       $circleDiv.attr('id', 'blue-token'); // gave attribute of blackToken to the circle div
+//       $circleDiv.attr('id', 'blue-token'); // gave attribute of blueToken to the circle div
 //     };
 //       $toggle = !$toggle;
 //     // if ($('#teal-token') || $('#teal-token')) {
@@ -390,9 +390,9 @@ checkingWins();
 // if ($toggle === '#teal-token' || $toggle === '#blue-token') {
 //     //do nothing//
 //   } else if ($toggle == true) {
-//     $circleDiv.attr('id', 'teal-token'); // gave attribute of redToken to the $circleDiv created below
+//     $circleDiv.attr('id', 'teal-token'); // gave attribute of tealToken to the $circleDiv created below
 //   } else {
-//     $circleDiv.attr('id', 'blue-token'); // gave attribute of blackToken to $circleDiv created below
+//     $circleDiv.attr('id', 'blue-token'); // gave attribute of blueToken to $circleDiv created below
 //   };
 //     $toggle = !$toggle;
 
@@ -405,9 +405,9 @@ checkingWins();
 //     if ($toggle === 'teal-token' || $toggle === 'blue-token') {
 //         //do nothing//
 //       } else if ($toggle == true) {
-//         $secondDiv.addClass('teal-token'); // gave attribute of redToken to the $circleDiv created below
+//         $secondDiv.addClass('teal-token'); // gave attribute of tealToken to the $circleDiv created below
 //       } else {
-//         $secondDiv.addClass('blue-token'); // gave attribute of blackToken to $circleDiv created below
+//         $secondDiv.addClass('blue-token'); // gave attribute of blueToken to $circleDiv created below
 //       };
 //         $toggle = !$toggle;
 //
@@ -429,8 +429,8 @@ checkingWins();
 //     };
 
 //   $clearBoard.on('click', function(){
-//     for (var i = 0; i < $redToken.length; i++) {
-//       $redToken.remove('#teal-token');
+//     for (var i = 0; i < $tealToken.length; i++) {
+//       $tealToken.remove('#teal-token');
 //          console.log('I clicked the clear button'); // button is working
 //     }
 //
@@ -439,11 +439,11 @@ checkingWins();
 // $circleDiv.remove('#circle');
 
 
-// var $redToken = $('#teal-token');
+// var $tealToken = $('#teal-token');
 //
 // $clearBoard.on('click', function(){
-//   for (var i = 0; i < $redToken.length; i++) {
-//     $redToken.remove('#teal-token');
+//   for (var i = 0; i < $tealToken.length; i++) {
+//     $tealToken.remove('#teal-token');
 //        console.log('I clicked the clear button'); // button is working
 //   }
 // });
@@ -519,14 +519,14 @@ checkingWins();
 // var $toggleFunction = function() {
 //   console.log('testing toggleFunction'); // click listener is working
 //
-//   if ($toggle) { // this will make the red token to start first
-//       $(this).attr('id', 'teal-token'); // gave attribute of redToken to the $newBoardDiv created below
-//       $nextTurn.text("It's Black's turn"); // when red token is added to the div, the p tag will change to black's turn
+//   if ($toggle) { // this will make the teal token to start first
+//       $(this).attr('id', 'teal-token'); // gave attribute of tealToken to the $newBoardDiv created below
+//       $nextTurn.text("It's blue's turn"); // when teal token is added to the div, the p tag will change to blue's turn
 //     } else {
-//       $(this).attr('id', 'blue-token'); // gave attribute of blackToken to $newBoardDiv created below
-//       $nextTurn.text("It's Red's turn"); // when black token is added to the div, the p tag will change to red's turn
+//       $(this).attr('id', 'blue-token'); // gave attribute of blueToken to $newBoardDiv created below
+//       $nextTurn.text("It's teal's turn"); // when blue token is added to the div, the p tag will change to teal's turn
 //     };
-//       $toggle = !$toggle; // alternates the turns between red and black
+//       $toggle = !$toggle; // alternates the turns between teal and blue
 //
 //   // a player should not be able to mark a space that has already been played
 //   if ($('#teal-token') || $('#blue-token')) {
@@ -577,13 +577,13 @@ checkingWins();
 // 	$tileNmbr++;
 // 	var $circleClass = $('.circle');
 //
-// 	if ($checkTiles($red)) {
+// 	if ($checkTiles($teal)) {
 // 		for (var i=0; i < $circleClass.length; i++) {
-// 			$circleClass[i].text("red won!");
+// 			$circleClass[i].text("teal won!");
 // 		}
-// 	} else if ($checkTiles($black)) {
+// 	} else if ($checkTiles($blue)) {
 // 		for (var j=0; j < $circleClass.length; j++) {
-// 			$circleClass.text("black won!");
+// 			$circleClass.text("blue won!");
 // 		}
 // 	} else if ($tileNmbr == 42) {
 // 		$board.text("tie!");
@@ -691,7 +691,7 @@ checkingWins();
 //    toggle = true;
 //  }
 //  else if (('.teal-token') || ('.blue-token')){
-//      toggle = true; // this makes the token black
+//      toggle = true; // this makes the token blue
 //   }
 
 
@@ -701,11 +701,11 @@ checkingWins();
 //   for (var i = 0; i < column1.length; i++) {
 //    if (column1[i].hasClass('circle')) {
 //       if (!column1[i].hasClass('teal-token')) {
-//         toggleFunction(column1[i]); // this makes the token red
+//         toggleFunction(column1[i]); // this makes the token teal
 //         break; // this will stop the column to be filled out completely
-//       } // --> if red ends
+//       } // --> if teal ends
 //
-//        toggle = !toggle; // alternates the turns between red and black
+//        toggle = !toggle; // alternates the turns between teal and blue
 //      } // --> if circle ends
 //    } // --> for loop ends
 // }); // --> function ends
@@ -735,7 +735,7 @@ checkingWins();
 //       if (column1[i].hasClass('teal-token') || column1[i].hasClass('blue-token')) {
 //         console.log('space is taken');
 //       } else {
-//         toggleFunction(column1[i]); // this makes the token red
+//         toggleFunction(column1[i]); // this makes the token teal
 //         break; // this will stop the column to be filled out completely
 //       }
 //     }
@@ -770,7 +770,7 @@ checkingWins();
 //       if (column1[i].hasClass('teal-token') || column1[i].hasClass('blue-token')) {
 //         console.log('space is taken');
 //       } else {
-//         toggleFunction(column1[i]); // this makes the token red
+//         toggleFunction(column1[i]); // this makes the token teal
 //         break; // this will stop the column to be filled out completely
 //       }
 //     }
@@ -781,7 +781,7 @@ checkingWins();
 //       if (column2[i].hasClass('teal-token') || column1[i].hasClass('blue-token')) {
 //         console.log('space is taken');
 //       } else {
-//         toggleFunction(column2[i]); // this makes the token red
+//         toggleFunction(column2[i]); // this makes the token teal
 //         break; // this will stop the column to be filled out completely
 //       }
 //     }
@@ -791,7 +791,7 @@ checkingWins();
 //
 // clickButtons();
 
-// --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the red token, else add the black token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the red token, else add the black token.
+// --> if button1id is clicked go to #35 and check if it only has the class circle, if so add the teal token, else add the blue token. if button1id is clicked again, go to #28 and check if it only has the class circle, if so add the teal token, else add the blue token.
 
   // $button2Id.on('click', function(){
   //   // for (var i = 0; i < column2.length; i++) {
@@ -824,14 +824,14 @@ checkingWins();
   // });
 
   //********************* ORIGINAL CODE
-  // if ($toggle == true) { // this will make the red token to start first
+  // if ($toggle == true) { // this will make the teal token to start first
   //   var $tokenIds = $('#circles');
-  //     $(this).attr('id', 'teal-token'); // gave attribute of redToken to the $circleDiv created below
+  //     $(this).attr('id', 'teal-token'); // gave attribute of tealToken to the $circleDiv created below
   //     // var $circleDiv = $('div');
   //     // $circleDiv.remove('#circle');
   //     $(this).remove('#circle');
   //   } else {
-  //     $(this).attr('id', 'blue-token'); // gave attribute of blackToken to $circleDiv created below
+  //     $(this).attr('id', 'blue-token'); // gave attribute of blueToken to $circleDiv created below
   //     // var $circleDiv = $('div');
   //     // $circleDiv.remove('#circle');
   //     $(this).remove('#circle');
@@ -909,33 +909,33 @@ checkingWins();
 
 
   // WINNING PSEUDOCODE
-  // I want to go to the first array and check if the token is red
-  // if true, go to the next space in the same array and check if it's red
-  // if true, go to the third space in the same array and check if it's red
-  // if true, go to the fourth space in the same array and check if it's red
+  // I want to go to the first array and check if the token is teal
+  // if true, go to the next space in the same array and check if it's teal
+  // if true, go to the third space in the same array and check if it's teal
+  // if true, go to the fourth space in the same array and check if it's teal
   // if false, go to the next array
   // ---> look into nested loops?
 
 
 
   // var checkingWins = function() {
-  //   var redWin = 0;
-  //   var blackWin = 0;
+  //   var tealWin = 0;
+  //   var blueWin = 0;
   //
   //   for (var i = 0; i < $winsArray.length; i++) {
   //     for (var j = 0; j < $winsArray[i].length; j++) {
   //       if ($winsArray[i][j].hasClass('teal-token')) {
-  //         redWin = j;
-  //         if (redWin == 3) {
-  //           console.log('red player wins');
-  //           redWin = 0;
+  //         tealWin = j;
+  //         if (tealWin == 3) {
+  //           console.log('teal player wins');
+  //           tealWin = 0;
   //           break;
   //         }
   //       } else if ($winsArray[i][j].hasClass('blue-token')) {
-  //         blackWin = j;
-  //         if (blackWin == 3) {
-  //           console.log('black player wins');
-  //           blackWin = 0;
+  //         blueWin = j;
+  //         if (blueWin == 3) {
+  //           console.log('blue player wins');
+  //           blueWin = 0;
   //           break;
   //         }
   //       }
@@ -967,23 +967,23 @@ checkingWins();
 
 
   // var checkingWins = function() {
-  //   var redWin = 0;
-  //   var blackWin = 0;
+  //   var tealWin = 0;
+  //   var blueWin = 0;
   //
   //   for (var i = 0; i < $winsArray.length; i++) {
   //     for (var j = 0; j < $winsArray[i].length; j++) {
   //       if ($winsArray[i][j].hasClass('teal-token')) {
-  //         redWin = j;
-  //         if (redWin == 3) {
-  //           console.log('red player wins');
-  //           redWin = 0;
+  //         tealWin = j;
+  //         if (tealWin == 3) {
+  //           console.log('teal player wins');
+  //           tealWin = 0;
   //           break;
   //         }
   //       } else if ($winsArray[i][j].hasClass('blue-token')) {
-  //         blackWin = j;
-  //         if (blackWin == 3) {
-  //           console.log('black player wins');
-  //           blackWin = 0;
+  //         blueWin = j;
+  //         if (blueWin == 3) {
+  //           console.log('blue player wins');
+  //           blueWin = 0;
   //           break;
   //         }
   //       }
