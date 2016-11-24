@@ -8,6 +8,7 @@ $(function() {
   var $clearButton = $('#clear-board'); // grabbing the clear-board id
 
   var $nextTurn = $('p'); // grabbing p tag from index
+    // $nextTurn.css('color', '#1cbbba'); // setting the p tag to start with the color teal
 
   var toggle = true; // global variable set to true
 
@@ -20,12 +21,14 @@ $(function() {
 
     if (toggle) {
       $(column).addClass('teal-token'); // if toggle is true, it will add the class of teal-token to the $newBoardDiv created below
-      $(column).removeClass('shadow');
+      $(column).removeClass('shadow'); // removing
       $nextTurn.text("It's Blue's turn"); // when teal-token is added to the div, the p tag will change to blue's turn
+      $nextTurn.css('color', '#0054A6');
     } else {
       $(column).addClass('blue-token'); // if toggle is false, it will add the class of blue-token to the $newBoardDiv created below
       $(column).removeClass('shadow');
-      $nextTurn.text("It's Teal's turn"); // when blue-token is added to the div, the p tag will change to teal's turn
+      $nextTurn.text("It's Teal's turn");// when blue-token is added to the div, the p tag will change to teal's turn
+      $nextTurn.css('color', '#1cbbba');
     };
 
       toggle = !toggle; // alternates the turns between teal and blue
@@ -215,7 +218,8 @@ var checkingWins = function() {
       $('#27').hasClass('teal-token') && $('#20').hasClass('teal-token') && $('#13').hasClass('teal-token') && $('#6').hasClass('teal-token') ||
 
       $('#35').hasClass('teal-token') && $('#29').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#17').hasClass('teal-token')) {
-          $nextTurn.text("Teal Wins!"); 
+          $nextTurn.text("Teal Wins!");
+          $nextTurn.css('color', '#1cbbba');
 
   } else if (
       $('#35').hasClass('blue-token') && $('#36').hasClass('blue-token') && $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') || $('#36').hasClass('blue-token') && $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') || $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') && $('#40').hasClass('blue-token') || $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') && $('#40').hasClass('blue-token') && $('#41').hasClass('blue-token') || $('#28').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') || $('#29').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#32').hasClass('blue-token') ||
@@ -235,6 +239,7 @@ var checkingWins = function() {
 
       $('#35').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#17').hasClass('blue-token')) {
         $nextTurn.text("Blue Wins!");
+        $nextTurn.css('color', '#0054A6');
   } else {
     console.log('what is this');
   }

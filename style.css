@@ -19,6 +19,7 @@ p {
   font-size: 2em;
   font-family: 'Josefin Sans', sans-serif;
   padding-top: 0.3em;
+  color: #1cbbba;
 }
 
 .container {
@@ -151,6 +152,20 @@ p {
   text-align: center;
   border: 0.5px solid green;/*just for visualization
 }*/
+/*
+@keyframes winning {
+  from {color: #1cbbba;}
+  to {color: yellow;}
+}
+
+p {
+  font-size: 2em;
+  font-family: 'Josefin Sans', sans-serif;
+  padding-top: 0.3em;
+  color: #1cbbba;
+  animation-name: winning;
+  animation-duration: 4s;
+} */
 
 /*create board (rectangle)*/
 /*create new game button*/
