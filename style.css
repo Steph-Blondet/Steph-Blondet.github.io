@@ -22,6 +22,24 @@ p {
   color: #1cbbba;
 }
 
+.teal-wins {
+  color: white;
+  background-color: #1cbbba;
+  width: 6em;
+	padding: 0.3em;
+  margin: 3% auto;
+  transition: transform .5s;
+  transform: rotate(-5deg);
+}
+
+.blue-wins {
+  color: #000;
+  background-color: #0054A6;
+  width: 6em;
+	padding: 0.3em;
+  margin: 3% auto;
+}
+
 .container {
   width: 46em;
   margin: auto;
@@ -57,7 +75,6 @@ p {
   border-radius: 5%;
   background-color: pink;
   box-shadow: 10px 10px 5px gray;
-
 }
 
 .circle {
@@ -85,7 +102,6 @@ p {
   box-shadow: inset 3px 1px 1px #636363;
 }
 
-
 .blue-token {
   width: 3.7em;
 	height: 3.7em;
@@ -95,6 +111,8 @@ p {
   padding: 2%;
   box-shadow: inset 3px 2px 2px #4C4C4C;
 }
+
+
 
 #clear-board {
   margin: 4% auto;
