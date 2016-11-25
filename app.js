@@ -40,7 +40,7 @@ $(function() {
 
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
-    $board.empty(); // this will reset the board after I click the clearButton
+    // $board.empty(); // this will reset the board after I click the clearButton
     for (var i = 0; i < 42; i++) { // I want to create 42 white circles that when clicked will change to teal/blue
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
@@ -54,6 +54,17 @@ $(function() {
   createBoard(); // calling createBoard to create the board when the page loads
   // clickButtons();
 
+  var $removingPTag = function() {
+    var $nextTurn = $('p');
+      $nextTurn.addClass('start-title');
+      $nextTurn.removeClass('blue-wins');
+      $nextTurn.removeClass('teal-wins');
+      // $nextTurn.text("It's Teal's turn");
+     // $nextTurn.css('color', '#1cbbba');
+
+  };
+
+$removingPTag();
 
 
 // 2. MAKING THE PLAY HERE BUTTONS CLICKABLE
@@ -249,11 +260,16 @@ var checkingWins = function() {
 checkingWins();
 
 
+
+
 // 5. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
 //  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
  $clearButton.on('click', function() {
   //  $board.empty(); // this will reset the board after I click the clearButton
    createBoard();
+   $removingPTag();
+  //  $nextTurn.remove('.blue-wins');
+  //  $nextTurn.remove('.teal-wins');
   //  toggle = !toggle;
   //  toggleFunction();
   //  clickButtons();
