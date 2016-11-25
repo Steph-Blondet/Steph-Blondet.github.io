@@ -29,7 +29,7 @@ p {
 	padding: 0.3em;
   margin: 3% auto;
   transition: transform .5s;
-  transform: rotate(-5deg);
+  transform:  scale(2);
 }
 
 .blue-wins {
@@ -38,6 +38,8 @@ p {
   width: 6em;
 	padding: 0.3em;
   margin: 3% auto;
+  transition: transform .5s;
+  transform:  scale(2);
 }
 
 .container {
