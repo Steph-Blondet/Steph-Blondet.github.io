@@ -158,8 +158,6 @@ $(function() {
 
 
 // 4. WINNING TIMEEEEEEEEEEE
-  // I really, really, really want to make this DRY! I know there is a way, but haven't figure it out yet. The for loop and if statement I wrote before doesn't work on all the arrays.
-
 var checkingWins = function() {
   // horizontal row 1
   if ($('#35').hasClass('teal-token') && $('#36').hasClass('teal-token') && $('#37').hasClass('teal-token') && $('#38').hasClass('teal-token') ||
@@ -345,11 +343,12 @@ var checkingWins = function() {
 checkingWins();
 
 
-// 5. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
-//  $clearButton.on('click', createBoard); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+// 5. CLEAR BOARD
  $clearButton.on('click', function() {
    $board.empty(); // this will reset the board after I click the clearButton
-   createBoard();
+   createBoard(); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+   $nextTurn.remove('p'); // removing the p tag after the new game button is clicked.
+
  }); // --> end clear button function
 
 
