@@ -40,15 +40,13 @@ $(function() {
 
 // 1. CREATING CONNECT FOUR BOARD [X]
   var createBoard = function() {
-    // $board.empty(); // this will reset the board after I click the clearButton
     for (var i = 0; i < 42; i++) { // I want to create 42 white circles that when clicked will change to teal/blue
       var $newBoardDiv = $('<div>'); // creating a new div that goes below the div board
         $newBoardDiv.addClass('circle'); // adding the class circle to the new board div
-        $newBoardDiv.addClass('shadow');
+        $newBoardDiv.addClass('shadow'); // adding the class shadow to the new board div
         $newBoardDiv.attr('id', i); // adding ids with numbers to the circles
         $board.append($newBoardDiv); // appending the $newBoardDiv that goes inside the board div
       };
-
   }; // --> closing createBoard function
 
   createBoard(); // calling createBoard to create the board when the page loads
@@ -63,7 +61,6 @@ $(function() {
   var column5 = [$('#39'), $('#32'), $('#25'), $('#18'), $('#11'), $('#4')];
   var column6 = [$('#40'), $('#33'), $('#26'), $('#19'), $('#12'), $('#5')];
   var column7 = [$('#41'), $('#34'), $('#27'), $('#20'), $('#13'), $('#6')];
-  // console.log(column1[2]);
 
 
 // grabbing the 'play here' buttons from the html
@@ -74,10 +71,7 @@ $(function() {
   var $button5Id = $('#button5');
   var $button6Id = $('#button6');
   var $button7Id = $('#button7');
-  //  console.log($button1Id); // checked all the buttonIds and they work!
 
-  // var $buttonsIds = [$('#button1'), $('#button2'), $('#button3'), $('#button4'), $('#button5'), $('#button6'), $('#button7')];
-  //  ---> take a look again, want to make this DRY!
 
 // creating a function to make the 'play here' buttons clickable
   var clickButtons = function () {
@@ -167,75 +161,179 @@ $(function() {
   // I really, really, really want to make this DRY! I know there is a way, but haven't figure it out yet. The for loop and if statement I wrote before doesn't work on all the arrays.
 
 var checkingWins = function() {
+  // horizontal row 1
   if ($('#35').hasClass('teal-token') && $('#36').hasClass('teal-token') && $('#37').hasClass('teal-token') && $('#38').hasClass('teal-token') ||
       $('#36').hasClass('teal-token') && $('#37').hasClass('teal-token') && $('#38').hasClass('teal-token') && $('#39').hasClass('teal-token') ||
       $('#37').hasClass('teal-token') && $('#38').hasClass('teal-token') && $('#39').hasClass('teal-token') && $('#40').hasClass('teal-token') ||
       $('#38').hasClass('teal-token') && $('#39').hasClass('teal-token') && $('#40').hasClass('teal-token') && $('#41').hasClass('teal-token') ||
+      // horizontal row 2
       $('#28').hasClass('teal-token') && $('#29').hasClass('teal-token') && $('#30').hasClass('teal-token') && $('#31').hasClass('teal-token') ||
       $('#29').hasClass('teal-token') && $('#30').hasClass('teal-token') && $('#31').hasClass('teal-token') && $('#32').hasClass('teal-token') ||
       $('#30').hasClass('teal-token') && $('#31').hasClass('teal-token') && $('#32').hasClass('teal-token') && $('#33').hasClass('teal-token') ||
       $('#31').hasClass('teal-token') && $('#32').hasClass('teal-token') && $('#33').hasClass('teal-token') && $('#34').hasClass('teal-token') ||
+      // horizontal row 3
       $('#21').hasClass('teal-token') && $('#22').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#24').hasClass('teal-token') ||
       $('#22').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#24').hasClass('teal-token') && $('#25').hasClass('teal-token') ||
       $('#23').hasClass('teal-token') && $('#24').hasClass('teal-token') && $('#25').hasClass('teal-token') && $('#26').hasClass('teal-token') ||
       $('#24').hasClass('teal-token') && $('#25').hasClass('teal-token') && $('#26').hasClass('teal-token') && $('#27').hasClass('teal-token') ||
+      // horizontal row 4
       $('#14').hasClass('teal-token') && $('#15').hasClass('teal-token') && $('#16').hasClass('teal-token') && $('#17').hasClass('teal-token') ||
       $('#15').hasClass('teal-token') && $('#16').hasClass('teal-token') && $('#17').hasClass('teal-token') && $('#18').hasClass('teal-token') ||
       $('#16').hasClass('teal-token') && $('#17').hasClass('teal-token') && $('#18').hasClass('teal-token') && $('#19').hasClass('teal-token') ||
       $('#17').hasClass('teal-token') && $('#18').hasClass('teal-token') && $('#19').hasClass('teal-token') && $('#20').hasClass('teal-token') ||
+      // horizontal row 5
       $('#7').hasClass('teal-token') && $('#8').hasClass('teal-token') && $('#9').hasClass('teal-token') && $('#10').hasClass('teal-token') ||
       $('#8').hasClass('teal-token') && $('#9').hasClass('teal-token') && $('#10').hasClass('teal-token') && $('#11').hasClass('teal-token') ||
       $('#9').hasClass('teal-token') && $('#10').hasClass('teal-token') && $('#11').hasClass('teal-token') && $('#12').hasClass('teal-token') ||
       $('#10').hasClass('teal-token') && $('#11').hasClass('teal-token') && $('#12').hasClass('teal-token') && $('#13').hasClass('teal-token') ||
+      // horizontal row 6
       $('#0').hasClass('teal-token') && $('#1').hasClass('teal-token') && $('#2').hasClass('teal-token') && $('#3').hasClass('teal-token') ||
       $('#1').hasClass('teal-token') && $('#2').hasClass('teal-token') && $('#3').hasClass('teal-token') && $('#4').hasClass('teal-token') ||
       $('#2').hasClass('teal-token') && $('#3').hasClass('teal-token') && $('#4').hasClass('teal-token') && $('#5').hasClass('teal-token') ||
       $('#3').hasClass('teal-token') && $('#4').hasClass('teal-token') && $('#5').hasClass('teal-token') && $('#6').hasClass('teal-token') ||
-
+      // vertical column 1
       $('#35').hasClass('teal-token') && $('#28').hasClass('teal-token') && $('#21').hasClass('teal-token') && $('#14').hasClass('teal-token') ||
       $('#28').hasClass('teal-token') && $('#21').hasClass('teal-token') && $('#14').hasClass('teal-token') && $('#7').hasClass('teal-token') ||
       $('#21').hasClass('teal-token') && $('#14').hasClass('teal-token') && $('#7').hasClass('teal-token') && $('#0').hasClass('teal-token') ||
+      // vertical column 2
       $('#36').hasClass('teal-token') && $('#29').hasClass('teal-token') && $('#22').hasClass('teal-token') && $('#15').hasClass('teal-token') ||
       $('#29').hasClass('teal-token') && $('#22').hasClass('teal-token') && $('#15').hasClass('teal-token') && $('#8').hasClass('teal-token') ||
       $('#22').hasClass('teal-token') && $('#15').hasClass('teal-token') && $('#8').hasClass('teal-token') && $('#1').hasClass('teal-token') ||
+      // vertical column 3
       $('#37').hasClass('teal-token') && $('#30').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#16').hasClass('teal-token') ||
       $('#30').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#16').hasClass('teal-token') && $('#9').hasClass('teal-token') ||
       $('#23').hasClass('teal-token') && $('#16').hasClass('teal-token') && $('#9').hasClass('teal-token') && $('#2').hasClass('teal-token') ||
+      // vertical column 4
       $('#38').hasClass('teal-token') && $('#31').hasClass('teal-token') && $('#24').hasClass('teal-token') && $('#17').hasClass('teal-token') ||
       $('#31').hasClass('teal-token') && $('#24').hasClass('teal-token') && $('#17').hasClass('teal-token') && $('#10').hasClass('teal-token') ||
       $('#24').hasClass('teal-token') && $('#17').hasClass('teal-token') && $('#10').hasClass('teal-token') && $('#3').hasClass('teal-token') ||
+      // vertical column 5
       $('#39').hasClass('teal-token') && $('#32').hasClass('teal-token') && $('#25').hasClass('teal-token') && $('#18').hasClass('teal-token') ||
       $('#32').hasClass('teal-token') && $('#25').hasClass('teal-token') && $('#18').hasClass('teal-token') && $('#11').hasClass('teal-token') ||
       $('#25').hasClass('teal-token') && $('#18').hasClass('teal-token') && $('#11').hasClass('teal-token') && $('#4').hasClass('teal-token') ||
+      // vertical column 6
       $('#40').hasClass('teal-token') && $('#33').hasClass('teal-token') && $('#26').hasClass('teal-token') && $('#19').hasClass('teal-token') ||
       $('#33').hasClass('teal-token') && $('#26').hasClass('teal-token') && $('#19').hasClass('teal-token') && $('#12').hasClass('teal-token') ||
       $('#26').hasClass('teal-token') && $('#19').hasClass('teal-token') && $('#12').hasClass('teal-token') && $('#5').hasClass('teal-token') ||
+      // vertical column 7
       $('#41').hasClass('teal-token') && $('#34').hasClass('teal-token') && $('#27').hasClass('teal-token') && $('#20').hasClass('teal-token') ||
       $('#34').hasClass('teal-token') && $('#27').hasClass('teal-token') && $('#20').hasClass('teal-token') && $('#13').hasClass('teal-token') ||
       $('#27').hasClass('teal-token') && $('#20').hasClass('teal-token') && $('#13').hasClass('teal-token') && $('#6').hasClass('teal-token') ||
-
-      $('#35').hasClass('teal-token') && $('#29').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#17').hasClass('teal-token')) {
+      // diagonal to the right
+      $('#21').hasClass('teal-token') && $('#15').hasClass('teal-token') && $('#9').hasClass('teal-token') && $('#3').hasClass('teal-token') ||
+      $('#28').hasClass('teal-token') && $('#22').hasClass('teal-token') && $('#16').hasClass('teal-token') && $('#10').hasClass('teal-token') ||
+      $('#22').hasClass('teal-token') && $('#16').hasClass('teal-token') && $('#10').hasClass('teal-token') && $('#4').hasClass('teal-token') ||
+      $('#35').hasClass('teal-token') && $('#29').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#17').hasClass('teal-token') ||
+      $('#29').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#17').hasClass('teal-token') && $('#11').hasClass('teal-token') ||
+      $('#23').hasClass('teal-token') && $('#17').hasClass('teal-token') && $('#11').hasClass('teal-token') && $('#5').hasClass('teal-token') ||
+      $('#36').hasClass('teal-token') && $('#30').hasClass('teal-token') && $('#24').hasClass('teal-token') && $('#18').hasClass('teal-token') ||
+      $('#30').hasClass('teal-token') && $('#24').hasClass('teal-token') && $('#18').hasClass('teal-token') && $('#12').hasClass('teal-token') ||
+      $('#24').hasClass('teal-token') && $('#18').hasClass('teal-token') && $('#12').hasClass('teal-token') && $('#6').hasClass('teal-token') ||
+      $('#37').hasClass('teal-token') && $('#31').hasClass('teal-token') && $('#25').hasClass('teal-token') && $('#19').hasClass('teal-token') ||
+      $('#31').hasClass('teal-token') && $('#25').hasClass('teal-token') && $('#19').hasClass('teal-token') && $('#13').hasClass('teal-token') ||
+      $('#38').hasClass('teal-token') && $('#32').hasClass('teal-token') && $('#26').hasClass('teal-token') && $('#20').hasClass('teal-token') ||
+      // diagonal to the left
+      $('#38').hasClass('teal-token') && $('#30').hasClass('teal-token') && $('#22').hasClass('teal-token') && $('#14').hasClass('teal-token') ||
+      $('#39').hasClass('teal-token') && $('#31').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#15').hasClass('teal-token') ||
+      $('#31').hasClass('teal-token') && $('#23').hasClass('teal-token') && $('#15').hasClass('teal-token') && $('#7').hasClass('teal-token') ||
+      $('#40').hasClass('teal-token') && $('#32').hasClass('teal-token') && $('#24').hasClass('teal-token') && $('#16').hasClass('teal-token') ||
+      $('#32').hasClass('teal-token') && $('#24').hasClass('teal-token') && $('#16').hasClass('teal-token') && $('#8').hasClass('teal-token') ||
+      $('#24').hasClass('teal-token') && $('#16').hasClass('teal-token') && $('#8').hasClass('teal-token') && $('#0').hasClass('teal-token') ||
+      $('#41').hasClass('teal-token') && $('#33').hasClass('teal-token') && $('#25').hasClass('teal-token') && $('#17').hasClass('teal-token') ||
+      $('#33').hasClass('teal-token') && $('#25').hasClass('teal-token') && $('#17').hasClass('teal-token') && $('#9').hasClass('teal-token') ||
+      $('#25').hasClass('teal-token') && $('#17').hasClass('teal-token') && $('#9').hasClass('teal-token') && $('#1').hasClass('teal-token') ||
+      $('#34').hasClass('teal-token') && $('#26').hasClass('teal-token') && $('#18').hasClass('teal-token') && $('#10').hasClass('teal-token') ||
+      $('#26').hasClass('teal-token') && $('#18').hasClass('teal-token') && $('#10').hasClass('teal-token') && $('#2').hasClass('teal-token') ||
+      $('#27').hasClass('teal-token') && $('#19').hasClass('teal-token') && $('#11').hasClass('teal-token') && $('#3').hasClass('teal-token')) {
           $nextTurn.text("Teal Wins!");
           $nextTurn.css('color', 'white');
           $nextTurn.addClass('teal-wins');
 
   } else if (
-      $('#35').hasClass('blue-token') && $('#36').hasClass('blue-token') && $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') || $('#36').hasClass('blue-token') && $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') || $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') && $('#40').hasClass('blue-token') || $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') && $('#40').hasClass('blue-token') && $('#41').hasClass('blue-token') || $('#28').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') || $('#29').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#32').hasClass('blue-token') ||
-      $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#32').hasClass('blue-token') && $('#33').hasClass('blue-token') || $('#31').hasClass('blue-token') && $('#32').hasClass('blue-token') && $('#33').hasClass('blue-token') && $('#34').hasClass('blue-token') || $('#21').hasClass('blue-token') && $('#22').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#24').hasClass('blue-token') ||
-      $('#22').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#25').hasClass('blue-token') || $('#23').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#26').hasClass('blue-token') || $('#24').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#26').hasClass('blue-token') && $('#27').hasClass('blue-token') || $('#14').hasClass('blue-token') && $('#15').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#17').hasClass('blue-token') || $('#15').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#18').hasClass('blue-token') || $('#16').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#19').hasClass('blue-token') ||
-      $('#17').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#19').hasClass('blue-token') && $('#20').hasClass('blue-token') || $('#7').hasClass('blue-token') && $('#8').hasClass('blue-token') && $('#9').hasClass('blue-token') && $('#10').hasClass('blue-token') || $('#8').hasClass('blue-token') && $('#9').hasClass('blue-token') && $('#10').hasClass('blue-token') && $('#11').hasClass('blue-token') ||
-      $('#9').hasClass('blue-token') && $('#10').hasClass('blue-token') && $('#11').hasClass('blue-token') && $('#12').hasClass('blue-token') || $('#10').hasClass('blue-token') && $('#11').hasClass('blue-token') && $('#12').hasClass('blue-token') && $('#13').hasClass('blue-token') || $('#0').hasClass('blue-token') && $('#1').hasClass('blue-token') && $('#2').hasClass('blue-token') && $('#3').hasClass('blue-token') ||
-      $('#1').hasClass('blue-token') && $('#2').hasClass('blue-token') && $('#3').hasClass('blue-token') && $('#4').hasClass('blue-token') || $('#2').hasClass('blue-token') && $('#3').hasClass('blue-token') && $('#4').hasClass('blue-token') && $('#5').hasClass('blue-token') || $('#3').hasClass('blue-token') && $('#4').hasClass('blue-token') && $('#5').hasClass('blue-token') && $('#6').hasClass('blue-token') ||
-
-      $('#35').hasClass('blue-token') && $('#28').hasClass('blue-token') && $('#21').hasClass('blue-token') && $('#14').hasClass('blue-token') || $('#28').hasClass('blue-token') && $('#21').hasClass('blue-token') && $('#14').hasClass('blue-token') && $('#7').hasClass('blue-token') || $('#21').hasClass('blue-token') && $('#14').hasClass('blue-token') && $('#7').hasClass('blue-token') && $('#0').hasClass('blue-token') ||
-      $('#36').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#22').hasClass('blue-token') && $('#15').hasClass('blue-token') || $('#29').hasClass('blue-token') && $('#22').hasClass('blue-token') && $('#15').hasClass('blue-token') && $('#8').hasClass('blue-token') || $('#22').hasClass('blue-token') && $('#15').hasClass('blue-token') && $('#8').hasClass('blue-token') && $('#1').hasClass('blue-token') ||
-      $('#37').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#16').hasClass('blue-token') || $('#30').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#9').hasClass('blue-token') || $('#23').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#9').hasClass('blue-token') && $('#2').hasClass('blue-token') ||
-      $('#38').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#17').hasClass('blue-token') || $('#31').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#10').hasClass('blue-token') || $('#24').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#10').hasClass('blue-token') && $('#3').hasClass('blue-token') ||
-      $('#39').hasClass('blue-token') && $('#32').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#18').hasClass('blue-token') || $('#32').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#11').hasClass('blue-token') || $('#25').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#11').hasClass('blue-token') && $('#4').hasClass('blue-token') ||
-      $('#40').hasClass('blue-token') && $('#33').hasClass('blue-token') && $('#26').hasClass('blue-token') && $('#19').hasClass('blue-token') || $('#33').hasClass('blue-token') && $('#26').hasClass('blue-token') && $('#19').hasClass('blue-token') && $('#12').hasClass('blue-token') || $('#26').hasClass('blue-token') && $('#19').hasClass('blue-token') && $('#12').hasClass('blue-token') && $('#5').hasClass('blue-token') ||
-      $('#41').hasClass('blue-token') && $('#34').hasClass('blue-token') && $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') || $('#34').hasClass('blue-token') && $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') && $('#13').hasClass('blue-token') || $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') && $('#13').hasClass('blue-token') && $('#6').hasClass('blue-token') ||
-
-      $('#35').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#17').hasClass('blue-token')) {
+      // horizontal row 1
+      $('#35').hasClass('blue-token') && $('#36').hasClass('blue-token') && $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') ||
+      $('#36').hasClass('blue-token') && $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') ||
+      $('#37').hasClass('blue-token') && $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') && $('#40').hasClass('blue-token') ||
+      $('#38').hasClass('blue-token') && $('#39').hasClass('blue-token') && $('#40').hasClass('blue-token') && $('#41').hasClass('blue-token') ||
+      // horizontal row 2
+      $('#28').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') ||
+      $('#29').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#32').hasClass('blue-token') ||
+      $('#30').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#32').hasClass('blue-token') && $('#33').hasClass('blue-token') ||
+      $('#31').hasClass('blue-token') && $('#32').hasClass('blue-token') && $('#33').hasClass('blue-token') && $('#34').hasClass('blue-token') ||
+      // horizontal row 3
+      $('#21').hasClass('blue-token') && $('#22').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#24').hasClass('blue-token') ||
+      $('#22').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#25').hasClass('blue-token') ||
+      $('#23').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#26').hasClass('blue-token') ||
+      $('#24').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#26').hasClass('blue-token') && $('#27').hasClass('blue-token') ||
+      // horizontal row 4
+      $('#14').hasClass('blue-token') && $('#15').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#17').hasClass('blue-token') ||
+      $('#15').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#18').hasClass('blue-token') ||
+      $('#16').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#19').hasClass('blue-token') ||
+      $('#17').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#19').hasClass('blue-token') && $('#20').hasClass('blue-token') ||
+      // horizontal row 5
+      $('#7').hasClass('blue-token') && $('#8').hasClass('blue-token') && $('#9').hasClass('blue-token') && $('#10').hasClass('blue-token') ||
+      $('#8').hasClass('blue-token') && $('#9').hasClass('blue-token') && $('#10').hasClass('blue-token') && $('#11').hasClass('blue-token') ||
+      $('#9').hasClass('blue-token') && $('#10').hasClass('blue-token') && $('#11').hasClass('blue-token') && $('#12').hasClass('blue-token') ||
+      $('#10').hasClass('blue-token') && $('#11').hasClass('blue-token') && $('#12').hasClass('blue-token') && $('#13').hasClass('blue-token') ||
+      // horizontal row 6
+      $('#0').hasClass('blue-token') && $('#1').hasClass('blue-token') && $('#2').hasClass('blue-token') && $('#3').hasClass('blue-token') ||
+      $('#1').hasClass('blue-token') && $('#2').hasClass('blue-token') && $('#3').hasClass('blue-token') && $('#4').hasClass('blue-token') ||
+      $('#2').hasClass('blue-token') && $('#3').hasClass('blue-token') && $('#4').hasClass('blue-token') && $('#5').hasClass('blue-token') ||
+      $('#3').hasClass('blue-token') && $('#4').hasClass('blue-token') && $('#5').hasClass('blue-token') && $('#6').hasClass('blue-token') ||
+      // vertical column 1
+      $('#35').hasClass('blue-token') && $('#28').hasClass('blue-token') && $('#21').hasClass('blue-token') && $('#14').hasClass('blue-token') ||
+      $('#28').hasClass('blue-token') && $('#21').hasClass('blue-token') && $('#14').hasClass('blue-token') && $('#7').hasClass('blue-token') ||
+      $('#21').hasClass('blue-token') && $('#14').hasClass('blue-token') && $('#7').hasClass('blue-token') && $('#0').hasClass('blue-token') ||
+      // vertical column 2
+      $('#36').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#22').hasClass('blue-token') && $('#15').hasClass('blue-token') ||
+      $('#29').hasClass('blue-token') && $('#22').hasClass('blue-token') && $('#15').hasClass('blue-token') && $('#8').hasClass('blue-token') ||
+      $('#22').hasClass('blue-token') && $('#15').hasClass('blue-token') && $('#8').hasClass('blue-token') && $('#1').hasClass('blue-token') ||
+      // vertical column 3
+      $('#37').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#16').hasClass('blue-token') ||
+      $('#30').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#9').hasClass('blue-token') ||
+      $('#23').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#9').hasClass('blue-token') && $('#2').hasClass('blue-token') ||
+      // vertical column 4
+      $('#38').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#17').hasClass('blue-token') ||
+      $('#31').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#10').hasClass('blue-token') ||
+      $('#24').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#10').hasClass('blue-token') && $('#3').hasClass('blue-token') ||
+      // vertical column 5
+      $('#39').hasClass('blue-token') && $('#32').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#18').hasClass('blue-token') ||
+      $('#32').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#11').hasClass('blue-token') ||
+      $('#25').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#11').hasClass('blue-token') && $('#4').hasClass('blue-token') ||
+      // vertical column 6
+      $('#40').hasClass('blue-token') && $('#33').hasClass('blue-token') && $('#26').hasClass('blue-token') && $('#19').hasClass('blue-token') ||
+      $('#33').hasClass('blue-token') && $('#26').hasClass('blue-token') && $('#19').hasClass('blue-token') && $('#12').hasClass('blue-token') ||
+      $('#26').hasClass('blue-token') && $('#19').hasClass('blue-token') && $('#12').hasClass('blue-token') && $('#5').hasClass('blue-token') ||
+      // vertical column 7
+      $('#41').hasClass('blue-token') && $('#34').hasClass('blue-token') && $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') ||
+      $('#34').hasClass('blue-token') && $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') && $('#13').hasClass('blue-token') ||
+      $('#27').hasClass('blue-token') && $('#20').hasClass('blue-token') && $('#13').hasClass('blue-token') && $('#6').hasClass('blue-token') ||
+      // diagonal to the right
+      $('#21').hasClass('blue-token') && $('#15').hasClass('blue-token') && $('#9').hasClass('blue-token') && $('#3').hasClass('blue-token') ||
+      $('#28').hasClass('blue-token') && $('#22').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#10').hasClass('blue-token') ||
+      $('#22').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#10').hasClass('blue-token') && $('#4').hasClass('blue-token') ||
+      $('#35').hasClass('blue-token') && $('#29').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#17').hasClass('blue-token') ||
+      $('#29').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#11').hasClass('blue-token') ||
+      $('#23').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#11').hasClass('blue-token') && $('#5').hasClass('blue-token') ||
+      $('#36').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#18').hasClass('blue-token') ||
+      $('#30').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#12').hasClass('blue-token') ||
+      $('#24').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#12').hasClass('blue-token') && $('#6').hasClass('blue-token') ||
+      $('#37').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#19').hasClass('blue-token') ||
+      $('#31').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#19').hasClass('blue-token') && $('#13').hasClass('blue-token') ||
+      $('#38').hasClass('blue-token') && $('#32').hasClass('blue-token') && $('#26').hasClass('blue-token') && $('#20').hasClass('blue-token') ||
+      // diagonal to the left
+      $('#38').hasClass('blue-token') && $('#30').hasClass('blue-token') && $('#22').hasClass('blue-token') && $('#14').hasClass('blue-token') ||
+      $('#39').hasClass('blue-token') && $('#31').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#15').hasClass('blue-token') ||
+      $('#31').hasClass('blue-token') && $('#23').hasClass('blue-token') && $('#15').hasClass('blue-token') && $('#7').hasClass('blue-token') ||
+      $('#40').hasClass('blue-token') && $('#32').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#16').hasClass('blue-token') ||
+      $('#32').hasClass('blue-token') && $('#24').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#8').hasClass('blue-token') ||
+      $('#24').hasClass('blue-token') && $('#16').hasClass('blue-token') && $('#8').hasClass('blue-token') && $('#0').hasClass('blue-token') ||
+      $('#41').hasClass('blue-token') && $('#33').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#17').hasClass('blue-token') ||
+      $('#33').hasClass('blue-token') && $('#25').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#9').hasClass('blue-token') ||
+      $('#25').hasClass('blue-token') && $('#17').hasClass('blue-token') && $('#9').hasClass('blue-token') && $('#1').hasClass('blue-token') ||
+      $('#34').hasClass('blue-token') && $('#26').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#10').hasClass('blue-token') ||
+      $('#26').hasClass('blue-token') && $('#18').hasClass('blue-token') && $('#10').hasClass('blue-token') && $('#2').hasClass('blue-token') ||
+      $('#27').hasClass('blue-token') && $('#19').hasClass('blue-token') && $('#11').hasClass('blue-token') && $('#3').hasClass('blue-token')) {
         $nextTurn.text("Blue Wins!");
         $nextTurn.css('color', 'white');
         $nextTurn.addClass('blue-wins');
@@ -245,8 +343,6 @@ var checkingWins = function() {
 
 }; // --> end $checkingWins function
 checkingWins();
-
-
 
 
 // 5. CLEAR BOARD  --> can't play again anymore!!!! ugghhhhhh
