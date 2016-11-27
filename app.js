@@ -7,7 +7,7 @@ $(function() {
 
   var $clearButton = $('#clear-board'); // grabbing the clear-board id
 
-  var $nextTurn = $('p'); // grabbing p tag from index
+  var $nextTurn = $('p'); // grabbing p tag from the html
 
   var toggle = true; // global variable set to true
 
@@ -20,14 +20,14 @@ $(function() {
 
     if (toggle) {
       $(column).addClass('teal-token'); // if toggle is true, it will add the class of teal-token to the $newBoardDiv created below
-      $(column).removeClass('shadow'); // removing
+      $(column).removeClass('shadow'); // removing the shadow class
       $nextTurn.text("It's Blue's turn"); // when teal-token is added to the div, the p tag will change to blue's turn
-      $nextTurn.css('color', '#0054A6');
+      $nextTurn.css('color', '#0054A6'); // changing the color of the p tag to blue
     } else {
       $(column).addClass('blue-token'); // if toggle is false, it will add the class of blue-token to the $newBoardDiv created below
-      $(column).removeClass('shadow');
-      $nextTurn.text("It's Teal's turn");// when blue-token is added to the div, the p tag will change to teal's turn
-      $nextTurn.css('color', '#1cbbba');
+      $(column).removeClass('shadow'); // removing the shadow class
+      $nextTurn.text("It's Teal's turn"); // when blue-token is added to the div, the p tag will change to teal's turn
+      $nextTurn.css('color', '#1cbbba'); // changing the color of the p tag to teal
     };
 
       toggle = !toggle; // alternates the turns between teal and blue
@@ -157,7 +157,7 @@ $(function() {
 
 
 
-// 4. WINNING TIMEEEEEEEEEEE
+// 4. WINNING TIMEEEEEEEEEEE [X]
 var checkingWins = function() {
   // horizontal row 1
   if ($('#35').hasClass('teal-token') && $('#36').hasClass('teal-token') && $('#37').hasClass('teal-token') && $('#38').hasClass('teal-token') ||
@@ -345,8 +345,8 @@ checkingWins();
 
 // 5. CLEAR BOARD
  $clearButton.on('click', function() {
-   $board.empty(); // this will reset the board after I click the clearButton
-   createBoard(); // when I click on the 'new game' button, it will run the createBoard again but it will reset the board so I can play again
+   $board.empty(); // this will reset the board after I click the clearButton and will stop it from creating 42 circles again
+   createBoard(); // this will run the createBoard again 
    $nextTurn.remove('p'); // removing the p tag after the new game button is clicked.
 
  }); // --> end clear button function
