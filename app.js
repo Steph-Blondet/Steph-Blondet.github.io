@@ -52,7 +52,8 @@ $(function() {
   createBoard(); // calling createBoard to create the board when the page loads
 
 
-// 2. MAKING THE PLAY HERE BUTTONS CLICKABLE
+
+// 2. MAKING THE PLAY HERE BUTTONS CLICKABLE [X]
 // creating arrays for the columns
   var column1 = [$('#35'), $('#28'), $('#21'), $('#14'), $('#7'), $('#0')];
   var column2 = [$('#36'), $('#29'), $('#22'), $('#15'), $('#8'), $('#1')];
@@ -343,12 +344,12 @@ var checkingWins = function() {
 checkingWins();
 
 
-// 5. CLEAR BOARD
+
+// 5. CLEAR BOARD [X]
  $clearButton.on('click', function() {
    $board.empty(); // this will reset the board after I click the clearButton and will stop it from creating 42 circles again
-   createBoard(); // this will run the createBoard again 
+   createBoard(); // this will run the createBoard again
    $nextTurn.remove('p'); // removing the p tag after the new game button is clicked.
-
  }); // --> end clear button function
 
 
