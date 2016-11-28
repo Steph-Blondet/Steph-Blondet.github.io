@@ -2,7 +2,7 @@
 
 PROJECT #1: CONNECT FOUR GAME
 
-For my first project at General Assembly, I had to create a Connect Four from scratch. I used HTML and CSS to layout the board, buttons
+For my first project at General Assembly, I had to create a Connect Four from scratch. I used HTML and CSS to lay out the board, buttons
 and tokens. I used JavaScript and jQuery to make it interactive and functional.
 
 ------ 
@@ -21,6 +21,8 @@ Unsolved problems: The 'new game' button is working (meaning that it removes the
 says the turn), but I can't play again after the button has been clicked.
 
 Solved but needs more work: I wrote the code for all the winning conditions (horizontal, vertical and diagonal) but I didn't use a for loop. This creates a long function that I would like to revise to make the code cleaner and DRY.
+
+Overall Comments: The game is working and it meets the minimum requirements, but there are a few things that I would like to improve and add.
 
 ------ 
 This specific game was designed and coded by Stephanie Blondet. 
