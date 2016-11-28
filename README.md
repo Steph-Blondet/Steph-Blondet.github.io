@@ -20,5 +20,7 @@ the winner announcement.
 Unsolved problems: The 'new game' button is working (meaning that it removes the tokens from the board and it clears the message where it
 says the turn), but I can't play again after the button has been clicked.
 
-Solved but needs more work: I wrote the code for all the winning conditions (horizontal, vertical and diagonal) but I didn't use a for loop.
-This creates a long function that I would like to revise to make the code cleaner and DRY.
+Solved but needs more work: I wrote the code for all the winning conditions (horizontal, vertical and diagonal) but I didn't use a for loop. This creates a long function that I would like to revise to make the code cleaner and DRY.
+
+------ 
+This specific game was designed and coded by Stephanie Blondet. 
