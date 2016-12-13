@@ -1,6 +1,4 @@
-# Steph-Blondet.github.io
-
-PROJECT #1: CONNECT FOUR GAME
+# PROJECT #1: CONNECT FOUR GAME
 
 For my first project at General Assembly's Full Stack Web Development program, I had to create a Connect Four game from scratch. I used HTML and CSS to lay out the board, buttons and tokens. I used JavaScript and jQuery to make it interactive and functional.
 
