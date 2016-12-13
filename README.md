@@ -22,4 +22,4 @@ Solved but needs more work: I wrote the code for all the winning conditions (hor
 Overall Comments: The game is working and exceeds the minimum requirements for the project!
 
 ------ 
-* Designed and Developed by Stephanie Blondet, November 2016. 
+*Designed and Developed by Stephanie Blondet, November 2016. 
