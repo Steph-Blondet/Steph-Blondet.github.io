@@ -5,7 +5,7 @@ PROJECT #1: CONNECT FOUR GAME
 For my first project at General Assembly's Full Stack Web Development program, I had to create a Connect Four game from scratch. I used HTML and CSS to lay out the board, buttons and tokens. I used JavaScript and jQuery to make it interactive and functional.
 
 ------ 
-[Link to the live game] (https://steph-blondet.github.io/)
+[Link to the live game] (https://steph-blondet.github.io/connect-four/)
 
 - No installation is required to play this game. The game will load as soon as the page loads.
 - The game will start with the teal token.
