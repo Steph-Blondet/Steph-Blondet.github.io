@@ -2,11 +2,10 @@
 
 PROJECT #1: CONNECT FOUR GAME
 
-For my first project at General Assembly, I had to create a Connect Four from scratch. I used HTML and CSS to lay out the board, buttons
-and tokens. I used JavaScript and jQuery to make it interactive and functional.
+For my first project at General Assembly's Full Stack Web Development program, I had to create a Connect Four game from scratch. I used HTML and CSS to lay out the board, buttons and tokens. I used JavaScript and jQuery to make it interactive and functional.
 
 ------ 
-Link to the game: https://steph-blondet.github.io/
+[Link to the live game] (https://steph-blondet.github.io/)
 
 - No installation is required to play this game. The game will load as soon as the page loads.
 - The game will start with the teal token.
@@ -18,11 +17,11 @@ Link to the game: https://steph-blondet.github.io/
 the winner announcement.
 
 Unsolved problems: The 'new game' button is working (meaning that it removes the tokens from the board and it clears the message where it
-says the turn), but I can't play again after the button has been clicked.
+says the turn), but the user can't play again after the button has been clicked.
 
 Solved but needs more work: I wrote the code for all the winning conditions (horizontal, vertical and diagonal) but I didn't use a for loop. This creates a long function that I would like to revise to make the code cleaner and DRY.
 
-Overall Comments: The game is working and it meets the minimum requirements, but there are a few things that I would like to improve and add.
+Overall Comments: The game is working and exceeds the minimum requirements for the project!
 
 ------ 
-This specific game was designed and coded by Stephanie Blondet. 
+* Designed and Developed by Stephanie Blondet, November 2016. 
