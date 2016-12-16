@@ -14,6 +14,9 @@ For my first project at General Assembly's Full Stack Web Development program, I
 - To start a new game, the user will have to click on the 'new game' button. This will clear the tokens from the board and it will remove
 the winner announcement.
 
+![Connect Four Screen Shot](images/connect-four-game.png "Connect Four Screen Shot")
+
+
 Unsolved problems: The 'new game' button is working (meaning that it removes the tokens from the board and it clears the message where it
 says the turn), but the user can't play again after the button has been clicked.
 
